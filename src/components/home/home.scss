@@ -1,0 +1,271 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+/*CAROUSEL - SLIDER*/
+.carousel-indicators li {
+    width: 8px;
+    height: 7px;
+    background: transparent;
+    border: 2px solid white;
+    border-radius: 50%;
+}
+
+.carousel-indicators li.active {
+    background: white;
+}
+
+.item-1{
+    background:linear-gradient((to top, black, transparent)), url("../../assets/slide1.jpg");
+}
+
+.item-2{
+    background:linear-gradient((to top, black, transparent)), url("../../assets/slide2.jpg");
+}
+
+.item-3{
+    background:linear-gradient((to top, black, transparent)), url("../../assets/slide3.jpg");
+}
+
+.carousel-item {
+    height: 100vh;
+    background-position: 50% 10%;
+    background-size: cover;
+}
+
+.carousel-item-caption {
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+
+.carousel-item-caption .game-title img{
+    width: 50%;
+    height: auto;
+}
+
+.carousel-item-info .content-rating {
+    padding: 2%;
+    border: 2px solid white;
+    border-radius: 50%;
+    font-weight: bold;
+}
+
+.carousel-item-info .buynow-block {
+    font-family: Nunito;
+    font-size: 18px;
+    border: 2px solid white;
+    position: absolute;
+    left: 20%;
+}
+
+.carousel-item-info .buynow-block:hover {
+    color: black;
+    background-color: white;
+}
+
+/*GAME PLATFORMS*/
+
+.games::before {
+    content:'';
+    height: 1px;
+    background: -webkit-linear-gradient(left, black ,red, yellow, green, cyan, blue, black); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, black ,red, yellow, green, cyan, blue, black); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, black ,red, yellow, green, cyan, blue, black); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, black ,red, yellow, green, cyan, blue, black); /* Standard syntax (must be last) */
+    display: block;
+}
+
+.games .platforms{
+    font-family: Nunito;
+}
+
+.games .platforms h3{
+    font-size: 18px;
+    margin-right: 4%;
+    color: #d9d9d9;
+}
+
+
+.games .platforms .platform-option{
+    font-size: 16px;
+    padding-top: 3px;
+    margin-right: 2%;
+    color: #525353
+}
+
+.games .platforms .platform-option:hover{
+    color: #d9d9d9
+}
+
+.games .game-preview {
+    position: relative;
+    color: white;
+}
+
+.games .game-preview:hover {
+    -webkit-filter: brightness(80%);
+    filter:brightness(80%);
+}
+
+.games .game-preview .game-cover img{
+    width: 100%;
+    border-radius: 3px;
+    // -webkit-filter: brightness(80%);
+    // filter:brightness(80%);
+}
+
+
+.games .game-preview .game-cover:after{
+    content:'';
+    display:block;
+    width: 100%;
+    height: 60%;
+    position: absolute;
+    top: 40%;
+    z-index: 99;
+    background: linear-gradient((to top, black, rgba(0, 0, 0, 0)));
+}
+
+.games .game-preview .game-name {
+    position:absolute;
+    color: white;
+    font-family: Nunito;
+    top: 50%;
+    left: 5%;
+    z-index: 99;
+}
+
+.games .game-preview .game-rating {
+    position:absolute;
+    color: white;
+    font-family: Montserrat;
+    font-weight: bold;
+    top: 49%;
+    right: 7%;
+    padding: 3%;
+    border: 2px solid white;
+    border-radius: 50%;
+    z-index:99;
+}
+
+.games .game-preview .game-genres {
+    position: absolute;
+    color: white;
+    font-family: Nunito;
+    font-weight: bold;
+    font-size: 16px;
+    top: 69%;
+    left: 5%;
+    z-index: 99;
+}
+
+.games .game-preview .game-publisher {
+    position: absolute;
+    color: white;
+    font-family: Nunito;
+    font-weight: bold;
+    font-size: 14px;
+    top: 74%;
+    left: 5%;
+    z-index: 99;
+}
+
+.games .game-preview .game-price {
+    position: absolute;
+    color: white;
+    font-family: Nunito;
+    font-weight: bold;
+    font-size: 18px;
+    top: 84%;
+    left: 5%;
+    z-index: 99;
+}
+
+.games .game-preview .game-platform {
+    position: absolute;
+    color: white;
+    font-family: Nunito;
+    font-weight: bold;
+    font-size: 18px;
+    top: 84%;
+    right: 3%;
+    z-index: 99;
+}
+
+.games .game-preview .game-platform i{
+    margin-left: 5px;
+}
+
+@media only screen and (max-width: 1199px){
+    .games .game-preview .game-rating {
+        position:absolute;
+        color: white;
+        font-family: Montserrat;
+        font-weight: bold;
+        top: 69%;
+        right: 7%;
+        z-index: 99;
+        padding: 2%;
+        border: 2px solid white;
+        border-radius: 50%;
+    }
+}
+
+@media only screen and (min-width: 767px) and (max-width: 991px){
+
+    .games .game-preview .game-name {
+        font-size: 1.2rem
+    }
+
+    .games .game-preview .game-publisher, .games .game-preview .game-genres {
+        font-size: 1rem
+    }   
+
+    .games .game-preview .game-rating {
+        position:absolute;
+        color: white;
+        font-family: Montserrat;
+        font-weight: bold;
+        font-size: 13px;
+        top: 67%;
+        right: 1%;
+        z-index: 99;
+        padding: 3%;
+        border: 2px solid white;
+        border-radius: 50%;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .games .game-preview .game-name {
+        font-size: 1rem
+    }
+
+    .games .game-preview .game-publisher, .games .game-preview .game-genres, .games .game-preview .game-price, .games .game-preview .game-platform{
+        font-size: 0.8rem
+    }
+
+    .games .game-preview .game-rating {
+        position:absolute;
+        color: white;
+        font-family: Montserrat;
+        font-weight: bold;
+        font-size: 11px;
+        top: 67%;
+        right: 1%;
+        z-index: 99;
+        padding: 3%;
+        border: 2px solid white;
+        border-radius: 50%;
+    }
+  }
+
+/*COMING SOON - PRELAUNCH SLIDER*/
+.prelaunch h3 {
+    font-size: 18px;
+    margin-right: 4%;
+    color: #d9d9d9;
+    font-family: Nunito;
+}
