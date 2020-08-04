@@ -81,7 +81,13 @@ export default function Games() {
                             <div className="text-center">
                                 <p className="game-price">$9.99</p>
                                 
-                                <p className="game-platform ">{platform != '6' ? (platform == '48' ? <i className="fab fa-playstation pr-1"></i> : <i className="fab fa-xbox pr-1"></i>)  : <i className="fab fa-windows pr-1"></i>}</p>
+                                <div className="game-platform ">{
+                                    platform !== '6' 
+                                    ? (platform === '48' 
+                                        ? <i className="fab fa-playstation pr-1"></i> 
+                                        : (platform !== "(6, 48, 49)" ? <i className="fab fa-xbox pr-1"></i>
+                                                            : <div><i className="fab fa-xbox pr-1"></i><i className="fab fa-playstation pr-1"></i><i className="fab fa-windows pr-1"></i></div>))
+                                    : <i className="fab fa-windows pr-1"></i>}</div>
                         </div>
                     </div>
                 </div>
