@@ -58,6 +58,8 @@
     border: 2px solid white;
     position: absolute;
     left: 20%;
+    color: white;
+    text-decoration: none;
 }
 
 .carousel-item-info .buynow-block:hover {
@@ -87,6 +89,9 @@
     color: #d9d9d9;
 }
 
+.games .platforms .platform-option.active{
+    color: white;
+}
 
 .games .platforms .platform-option{
     font-size: 16px;
@@ -104,16 +109,22 @@
     color: white;
 }
 
-.games .game-preview:hover {
-    -webkit-filter: brightness(80%);
-    filter:brightness(80%);
+.games .game-preview .game-cover {
+    height: 340px;
 }
 
 .games .game-preview .game-cover img{
     width: 100%;
     border-radius: 3px;
-    // -webkit-filter: brightness(80%);
-    // filter:brightness(80%);
+    -webkit-filter: brightness(60%);
+    filter:brightness(60%);
+    height: 100%;
+}
+
+
+.games .game-preview:hover img{
+    -webkit-filter: brightness(100%);
+    filter:brightness(100%);
 }
 
 
@@ -132,7 +143,9 @@
     position:absolute;
     color: white;
     font-family: Nunito;
-    top: 50%;
+    font-size: 120%;
+    top: 40%;
+    margin-right: 5%;
     left: 5%;
     z-index: 99;
 }
@@ -142,9 +155,10 @@
     color: white;
     font-family: Montserrat;
     font-weight: bold;
-    top: 49%;
+    font-size: 100%;
+    top: 57%;
     right: 7%;
-    padding: 3%;
+    padding: 4%;
     border: 2px solid white;
     border-radius: 50%;
     z-index:99;
@@ -156,8 +170,9 @@
     font-family: Nunito;
     font-weight: bold;
     font-size: 16px;
-    top: 69%;
+    top: 59%;
     left: 5%;
+    margin-right: 40%;
     z-index: 99;
 }
 
@@ -166,7 +181,7 @@
     color: white;
     font-family: Nunito;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 12px;
     top: 74%;
     left: 5%;
     z-index: 99;
@@ -177,7 +192,7 @@
     color: white;
     font-family: Nunito;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 130%;
     top: 84%;
     left: 5%;
     z-index: 99;
@@ -188,7 +203,7 @@
     color: white;
     font-family: Nunito;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 100%;
     top: 84%;
     right: 3%;
     z-index: 99;
@@ -204,6 +219,7 @@
         color: white;
         font-family: Montserrat;
         font-weight: bold;
+        font-size:100%;
         top: 69%;
         right: 7%;
         z-index: 99;
@@ -211,53 +227,55 @@
         border: 2px solid white;
         border-radius: 50%;
     }
+
+    .games .game-preview .game-name {
+        position:absolute;
+        color: white;
+        font-family: Nunito;
+        font-size: 21px;
+        top: 40%;
+        left: 5%;
+        z-index: 99;
+    }
+
+    .games .game-preview .game-genres {
+        position: absolute;
+        color: white;
+        font-family: Nunito;
+        font-weight: bold;
+        font-size: 80%;
+        top: 69%;
+        left: 5%;
+        margin-right: 30%;
+        z-index: 99;
+    }
 }
 
 @media only screen and (min-width: 767px) and (max-width: 991px){
 
-    .games .game-preview .game-name {
-        font-size: 1.2rem
-    }
-
-    .games .game-preview .game-publisher, .games .game-preview .game-genres {
-        font-size: 1rem
-    }   
-
     .games .game-preview .game-rating {
-        position:absolute;
-        color: white;
-        font-family: Montserrat;
-        font-weight: bold;
-        font-size: 13px;
+        font-size: 100%;
         top: 67%;
         right: 1%;
-        z-index: 99;
         padding: 3%;
-        border: 2px solid white;
-        border-radius: 50%;
+    }
+
+    .games .game-preview .game-genres {
+        font-size: 70%;
+        top: 65%;
+        left: 5%;
+        margin-right: 20%;
+        z-index: 99;
     }
 }
 
 @media only screen and (max-width: 767px) {
-    .games .game-preview .game-name {
-        font-size: 1rem
-    }
-
-    .games .game-preview .game-publisher, .games .game-preview .game-genres, .games .game-preview .game-price, .games .game-preview .game-platform{
-        font-size: 0.8rem
-    }
-
-    .games .game-preview .game-rating {
-        position:absolute;
-        color: white;
-        font-family: Montserrat;
-        font-weight: bold;
-        font-size: 11px;
+    .games .game-preview .game-rating { 
+        font-size: 100%;
         top: 67%;
         right: 1%;
         z-index: 99;
         padding: 3%;
-        border: 2px solid white;
         border-radius: 50%;
     }
   }

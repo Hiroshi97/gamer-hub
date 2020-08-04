@@ -1,31 +1,22 @@
 import {Carousel} from '3d-react-carousal';
 import apicalypse from 'apicalypse';
 import React, {useEffect, useState} from 'react';
-
+import {REQUEST} from '../../../constants/constants';
 
 export default function Prelaunch() {
     const [slides, setSlides]= useState([]);
-    const request = {
-        queryMethod: 'body',
-        method: 'post',
-        baseURL: 'https://cors-anywhere.herokuapp.com/https://api-v3.igdb.com/',
-        headers: {
-            'Access-Control-Allow-Origin': '*',
-            'user-key': 'bcfc2527f2248a1ab7d5625a20c90223',
-            'Accept': 'application/json'
-        },
-        responseType: 'json'
-    }
 
     async function fetchData() {
         const now = Date.now();
         let coming_soon = [];
-        const response = await apicalypse(request)
-                .fields('name, age_ratings, cover.*, genres, rating, release_dates')
+        const response = await apicalypse(REQUEST)
+                .fields('name, cover.*, genres.*, rating')
                 .where(`platforms = 48 & release_dates.date >${now}`)
+                .offset(25)
                 .limit(5)
                 .request('/games');
         coming_soon = response.data;
+        console.log(coming_soon)
         coming_soon.forEach(game => game.cover.url = "https://" + game.cover.url.split("//")[1].replace("thumb", "720p"));
         coming_soon = coming_soon.map((game, index) => (<img src={game.cover.url} alt={index.toString()} />));
         setSlides(coming_soon);
@@ -37,7 +28,7 @@ export default function Prelaunch() {
     if (slides.length > 0)
         return (
             <div className="container">
-                <div className="row">
+                <div className="row mt-4">
                     <div className="col-12 prelaunch">
                         <h3 className="d-inline-block">Pre-launch games: </h3>             
                     </div>
