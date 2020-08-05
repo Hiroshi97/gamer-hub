@@ -1,13 +1,14 @@
 import React, {useState, useEffect} from 'react'
 import apicalypse from 'apicalypse';
 import {REQUEST} from '../../../constants/constants';
+import {NavLink } from 'react-router-dom';
 
 export default function Games() {
     const [games, setGames] = useState([]);
     const [platform, setPlatform] = useState('6');
-    const [selected, setSelected] = useState('6');
-
     async function fetchGameData(platform) {
+        if (platform == '0')
+            platform = "(6,48,49)";
         let fetchGames = [];
         try {
             const response = await apicalypse(REQUEST)
@@ -18,12 +19,11 @@ export default function Games() {
                     .sort('popularity', 'asc')
                     .request('/games');
             fetchGames = response.data;
-            console.log(response);
             fetchGames.forEach(async (game) => {
                 game.cover.url = "https://" + game.cover.url.split("//")[1].replace("thumb", "1080p");
                 game.rating = game.rating ? (game.rating / 10.0).toFixed(1) : null;
                 if(game.genres)
-                    game.genres = game.genres.reduce(((genres, genre) => genres + " " + genre.name ), "").split(" ").slice(1).join(", ");
+                    game.genres = game.genres.reduce(((genres, genre) => genres + " " + genre.name ), "").split(" ").slice(1, 5).join(", ");
                 // console.log(game.involved_companies[0]);
                 // const response = await apicalypse(request)
                 //     .fields('name')
@@ -46,10 +46,7 @@ export default function Games() {
 
     const handlePlatformClick = (e) => {
         e.preventDefault();
-        setSelected(e.target.id)
-        if (e.target.id === "0")
-            setPlatform("(6, 48, 49)");
-        else setPlatform(e.target.id);
+        setPlatform(e.target.id);
     }
 
     //6 - PC, 48 - PS4, 49 - XBOX ONE, Switch - 130
@@ -59,10 +56,10 @@ export default function Games() {
                 <div className="col-12">
                     <h3 className="d-inline-block">Choose your platform: </h3>
                     
-                    <a onClick={handlePlatformClick} id="0" href="#" className="d-inline-block platform-option px-2"><i className="fas fa-th-large pr-1"></i>All</a>
-                    <a onClick={handlePlatformClick} id="6" href="#" className="d-inline-block platform-option active px-2"><i className="fab fa-windows pr-1"></i>PC</a>
-                    <a onClick={handlePlatformClick} id="48" href="#" className="d-inline-block platform-option px-2"><i className="fab fa-playstation pr-1"></i>Playstation</a>
-                    <a onClick={handlePlatformClick} id="49" href="#" className="d-inline-block platform-option px-2"><i className="fab fa-xbox pr-1"></i>Xbox</a>
+                    <NavLink activeClassName={platform === '0' ? 'active': ''} onClick={handlePlatformClick} id="0" to="/#" className="d-inline-block platform-option px-2"><i className="fas fa-th-large pr-1"></i>All</NavLink>
+                    <NavLink activeClassName={platform === '6' ? 'active': ''} onClick={handlePlatformClick} id="6" to="/#" className="d-inline-block platform-option px-2"><i className="fab fa-windows pr-1"></i>PC</NavLink>
+                    <NavLink activeClassName={platform === '48' ? 'active': ''} onClick={handlePlatformClick} id="48" to="/#" className="d-inline-block platform-option px-2"><i className="fab fa-playstation pr-1"></i>Playstation</NavLink>
+                    <NavLink activeClassName={platform === '49' ? 'active': ''} onClick={handlePlatformClick} id="49" to="/#" className="d-inline-block platform-option px-2"><i className="fab fa-xbox pr-1"></i>Xbox</NavLink>
 
                 </div>
             </div>
@@ -85,7 +82,7 @@ export default function Games() {
                                     platform !== '6' 
                                     ? (platform === '48' 
                                         ? <i className="fab fa-playstation pr-1"></i> 
-                                        : (platform !== "(6, 48, 49)" ? <i className="fab fa-xbox pr-1"></i>
+                                        : (platform !== "0" ? <i className="fab fa-xbox pr-1"></i>
                                                             : <div><i className="fab fa-xbox pr-1"></i><i className="fab fa-playstation pr-1"></i><i className="fab fa-windows pr-1"></i></div>))
                                     : <i className="fab fa-windows pr-1"></i>}</div>
                         </div>
