@@ -5,7 +5,8 @@ export const REQUEST = {
     headers: {
         'Access-Control-Allow-Origin': '*',
         'user-key': 'bcfc2527f2248a1ab7d5625a20c90223',
-        'Accept': 'application/json'
+        'Accept': 'application/json',
+        'Origin': 'X-Requested-With'
     },
     responseType: 'json'
 }
