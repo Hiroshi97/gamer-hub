@@ -14,15 +14,16 @@ export default function Games() {
 
     const handlePlatformClick = (e) => {
         e.preventDefault();
-        setPlatform(e.target.id);
+        console.log(e.target.id)
+        if (platform !== e.target.id)
+            setPlatform(e.target.id);
     }
 
-    //6 - PC, 48 - PS4, 49 - XBOX ONE, Switch - 130
     return (
         <div className="container games">
             <div className="row mt-5 platforms">
                 <div className="col-12">
-                    <h3 className="d-inline-block">Choose your platform: </h3>
+                    <h3 className="d-inline-block title">Choose your platform: </h3>
                     
                     <NavLink activeClassName={platform === '0' ? 'active': ''} onClick={handlePlatformClick} id="0" to="/#" className="d-inline-block platform-option px-2"><i className="fas fa-th-large pr-1"></i>All</NavLink>
                     <NavLink activeClassName={platform === '6' ? 'active': ''} onClick={handlePlatformClick} id="6" to="/#" className="d-inline-block platform-option px-2"><i className="fab fa-windows pr-1"></i>PC</NavLink>
@@ -41,7 +42,6 @@ export default function Games() {
                             {game.rating ? <span className="game-rating">{game.rating}</span> : null}
                             <div className="game-info">
                                 <p className="game-genres">{game.genres}</p>
-                                {/* <p className="game-publisher">{game.involve_companies[0].name}</p> */}
                             </div>
                             <div className="text-center">
                                 <p className="game-price">$9.99</p>
@@ -56,7 +56,7 @@ export default function Games() {
                         </div>
                     </div>
                 </div>
-            )) : null}
+            )) : <div className="col text-center error-no-list"><p>Something wrong. Please try again!</p></div>}
             </div>
         </div>
     )

@@ -10,13 +10,12 @@ export default function Prelaunch() {
     
     if (slides.length > 0)
         return (
-            <div className="container">
-                <div className="row mt-4">
-                    <div className="col-12 prelaunch">
-                        <h3 className="d-inline-block">Pre-launch games: </h3>             
-                    </div>
+            <div className="container mt-3">
+                <div className="row">
+                    <h3 className="d-inline-block title">Pre-launch games: </h3>
                 </div>
                 <div className="row mt-3">
+                
                     <div className="col-12 prelaunch mt-3">
                         <Carousel slides={slides} autoplay={true} interval={6000}/>
                     </div>

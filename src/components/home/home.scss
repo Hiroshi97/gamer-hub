@@ -1,5 +1,26 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
+/*ALL*/
+.home-content {
+    font-family: Nunito;
+}
+
+.home-content .title {
+    font-size: 18px;
+    margin-right: 4%;
+    color: #d9d9d9;
+    font-family: Nunito;
+}
+
+.home-content .games::before, .home-content .game-category::after {
+    content:'';
+    height: 1px;
+    background: -webkit-linear-gradient(left, black ,red, yellow, green, cyan, blue, black); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, black ,red, yellow, green, cyan, blue, black); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, black ,red, yellow, green, cyan, blue, black); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, black ,red, yellow, green, cyan, blue, black); /* Standard syntax (must be last) */
+    display: block;
+}
 
 /*CAROUSEL - SLIDER*/
 .carousel-indicators li {
@@ -68,15 +89,9 @@
 }
 
 /*GAME PLATFORMS*/
-
-.games::before {
-    content:'';
-    height: 1px;
-    background: -webkit-linear-gradient(left, black ,red, yellow, green, cyan, blue, black); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(right, black ,red, yellow, green, cyan, blue, black); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(right, black ,red, yellow, green, cyan, blue, black); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to right, black ,red, yellow, green, cyan, blue, black); /* Standard syntax (must be last) */
-    display: block;
+.games {
+    color: white;
+    font-family: Nunito;
 }
 
 .games .platforms{
@@ -213,6 +228,10 @@
     margin-left: 5px;
 }
 
+.games .error-no-list {
+    font-size: 36px;
+}
+
 @media only screen and (max-width: 1199px){
     .games .game-preview .game-rating {
         position:absolute;
@@ -281,9 +300,25 @@
   }
 
 /*COMING SOON - PRELAUNCH SLIDER*/
-.prelaunch h3 {
-    font-size: 18px;
-    margin-right: 4%;
-    color: #d9d9d9;
-    font-family: Nunito;
+
+
+/*GAME CATEGORY*/
+.game-category img{
+    width: 100%;
+    height: auto;
+}
+
+.game-category .category-link {
+    position: absolute;
+    font-size: 130%;
+    font-weight: bold;
+    z-index: 99;
+    color: white;
+    right: 10%;
+    bottom: 10%;
+}
+
+.game-category span {
+    font-size: 17px;
+    border: 1px solid white;
 }
