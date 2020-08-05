@@ -1,47 +1,15 @@
 import React, {useState, useEffect} from 'react'
-import apicalypse from 'apicalypse';
-import {REQUEST} from '../../../constants/constants';
+import {getGamesBasedOnPlatform as getGames} from '../../../api/gameAPI';
 import {NavLink } from 'react-router-dom';
 
 export default function Games() {
     const [games, setGames] = useState([]);
     const [platform, setPlatform] = useState('6');
-    async function fetchGameData(platform) {
-        if (platform == '0')
-            platform = "(6,48,49)";
-        let fetchGames = [];
-        try {
-            const response = await apicalypse(REQUEST)
-                    .fields('name, age_ratings, involved_companies.*, cover.*, genres.*, rating')
-                    .where('rating >= 80 & platforms =' + platform)
-                    .offset(0)
-                    .limit(4)
-                    .sort('popularity', 'asc')
-                    .request('/games');
-            fetchGames = response.data;
-            fetchGames.forEach(async (game) => {
-                game.cover.url = "https://" + game.cover.url.split("//")[1].replace("thumb", "1080p");
-                game.rating = game.rating ? (game.rating / 10.0).toFixed(1) : null;
-                if(game.genres)
-                    game.genres = game.genres.reduce(((genres, genre) => genres + " " + genre.name ), "").split(" ").slice(1, 5).join(", ");
-                // console.log(game.involved_companies[0]);
-                // const response = await apicalypse(request)
-                //     .fields('name')
-                //     .where('id = ' + game.involved_companies[0].id)
-                //     .limit(4)
-                //     .sort('popularity', 'desc')
-                //     .request('/companies');
-                // game.involve_companies = response.data;
-                // console.log(game.involve_companies);
-            });
-            setGames(fetchGames);
-        } catch (err){
-            console.log(err.response);
-        }
-    }
-
+    
     useEffect(() => {
-        fetchGameData(platform);
+        getGames(platform).then(gamesList => {
+            setGames(gamesList);
+        });
     }, [platform])
 
     const handlePlatformClick = (e) => {
@@ -65,7 +33,7 @@ export default function Games() {
             </div>
             
             <div className="row mt-3 justify-content-center">
-            {games.map(game => (
+            {games ? games.map(game => (
                 <div key={game.id}  className="col-6 col-xs-6 col-sm-6 col-md-3 col-lg-3">
                     <div className="game-preview">
                             <div className="game-cover"><img src={game.cover.url} alt=""/></div>
@@ -88,7 +56,7 @@ export default function Games() {
                         </div>
                     </div>
                 </div>
-            ))}
+            )) : null}
             </div>
         </div>
     )
