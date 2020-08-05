@@ -11,11 +11,10 @@ export const getGamesBasedOnPlatform = async(platform) => {
         const response = await apicalypse(REQUEST)
                 .fields('name, age_ratings, involved_companies.*, cover.*, genres.*, rating')
                 .where('rating >= 80 & platforms =' + platform)
-                .offset(5)
+                .offset(20)
                 .limit(4)
                 .sort('popularity', 'asc')
                 .request('/games');
-        console.log(response.data)
         fetchGames = response.data;
         fetchGames.forEach(async (game) => {
             game.cover.url = "https://" + game.cover.url.split("//")[1].replace("thumb", "1080p");
