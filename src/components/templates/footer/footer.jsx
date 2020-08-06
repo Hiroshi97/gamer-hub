@@ -31,7 +31,7 @@ export default function Footer() {
             <div className="row mt-5">
                 <div className="col-4 mt-5 text-center">
                     <img src={require("../../../assets/logo2.png")} alt=""/>
-                    <div className="mt-3">{medias.map((media,index) => <NavLink key={index} className="mx-2 text-white" to={media.url}><i className={media.icon}></i></NavLink>)}</div>
+                    <div className="mt-3">{medias.map((media,index) => <a key={index} className="mx-2 text-white" href={media.url}><i className={media.icon}></i></a>)}</div>
                     <p className="copyrights mt-3">Copyrights {copyright} {year} - Nguyen The Anh Dinh (Andy). All rights reserved.</p>
                 </div>
                 <div className="col-8">
