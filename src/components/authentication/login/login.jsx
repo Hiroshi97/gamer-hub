@@ -8,7 +8,7 @@ export default function Login() {
         <div className="h-100 row justify-content-center align-items-center">
           <div className="col col-6">
           <div className="text-center">
-          <img className="mx-auto" src={require('../../../assets/logo-andy.png')} alt=""/>
+          <img src={require('../../../assets/logo-andy.png')} alt=""/>
           <h1>LOGIN</h1>
           </div>
           
