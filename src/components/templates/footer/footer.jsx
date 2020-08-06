@@ -31,7 +31,7 @@ export default function Footer() {
             <div className="row mt-5">
                 <div className="col-4 mt-5 text-center">
                     <img src={require("../../../assets/logo2.png")} alt=""/>
-                    <div className="mt-3">{medias.map(media => <NavLink className="mx-2 text-white" to={media.url}><i className={media.icon}></i></NavLink>)}</div>
+                    <div className="mt-3">{medias.map((media,index) => <NavLink key={index} className="mx-2 text-white" to={media.url}><i className={media.icon}></i></NavLink>)}</div>
                     <p className="copyrights mt-3">Copyrights {copyright} {year} - Nguyen The Anh Dinh (Andy). All rights reserved.</p>
                 </div>
                 <div className="col-8">
@@ -40,26 +40,26 @@ export default function Footer() {
                             <div className="col-6 col-sm-2 col-lg-2 footer-category text-danger">
                                 <h6 className="footer-category-publishers">Publishers</h6>
                                 <ul>
-                                    {publishers.map(item => <li><NavLink className="inactive" to="/#">{item}</NavLink></li>)}
+                                    {publishers.map((item,index) => <li key={index}><NavLink className="inactive" to="/#">{item}</NavLink></li>)}
                                 </ul>
                             </div>
                             
                             <div className="col-6 col-sm-2 col-lg-2 footer-category text-warning">
                                 <h6 className="footer-category-categories">Categories</h6>
                                 <ul>
-                                    {games.map(game => <li><NavLink className="inactive" to="/#">{game}</NavLink></li>)}
+                                    {games.map((game,index) => <li key={index}><NavLink className="inactive" to="/#">{game}</NavLink></li>)}
                                 </ul>
                             </div>
                             <div className="col-6 col-sm-2 col-lg-2 footer-category text-info">
                                 <h6 className="footer-category-about">About</h6>
                                 <ul>
-                                    {about.map(item => <li><NavLink className="inactive" to="/#">{item}</NavLink></li>)}
+                                    {about.map((item,index) => <li key={index}><NavLink className="inactive" to="/#">{item}</NavLink></li>)}
                                 </ul>
                             </div>
                             <div className="col-6 col-sm-2 col-lg-2 footer-category text-primary">
                                 <h6 className="footer-category-others">Others</h6>
                                 <ul>
-                                    {others.map(item => <li><NavLink className="inactive" to="/#">{item}</NavLink></li>)}
+                                    {others.map((item,index) => <li key={index}><NavLink className="inactive" to="/#">{item}</NavLink></li>)}
                                     </ul>
                             </div>
                         </div>
