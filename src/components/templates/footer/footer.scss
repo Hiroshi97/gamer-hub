@@ -6,6 +6,7 @@
     font-family: Nunito;
     text-align: left;
     font-size: 100%;
+    margin-top: 3%;
 }
 
 .footer .footer-category h6::after {
@@ -18,7 +19,7 @@
 }
 
 .footer .footer-category ul {
-    list-style-type: none;
+    list-style-type: none; //No bullet points
     margin: 0;
     padding: 0;
     font-size: 13px;
@@ -31,7 +32,11 @@
 
 .footer .footer-category .inactive:hover{
     color: white;
-    text-decoration: none;
+    text-decoration: none; //No underline for link
+}
+
+.footer .copyrights {
+    font-size: 70%;
 }
 
 

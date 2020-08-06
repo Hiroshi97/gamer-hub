@@ -17,7 +17,7 @@ export default function Prelaunch() {
                 <div className="row mt-3">
                 
                     <div className="col-12 prelaunch mt-3">
-                        <Carousel slides={slides} autoplay={true} interval={6000}/>
+                        <Carousel slides={slides} autoplay={true} interval={4000}/>
                     </div>
                 </div>
             </div>
