@@ -3,7 +3,7 @@ import { useHistory, Redirect } from "react-router-dom";
 import { userLogin } from '../../../apis/userAPI';
 import { emailRegex } from '../../../constants/constants';
 import "./login.scss";
-import AuthContext from "../../../contexts/authContext";
+import {AuthContext} from "../../../contexts/";
 
 
 export default function Login(props) {
