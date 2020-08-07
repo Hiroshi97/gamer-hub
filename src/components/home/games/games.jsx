@@ -1,14 +1,16 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import {getGamesBasedOnPlatform as getGames} from '../../../api/gameAPI';
 import {NavLink } from 'react-router-dom';
 
 export default function Games() {
-    const [games, setGames] = useState([]);
+    //const [games, setGames] = useState([]);
+    let games = useRef([]);
     const [platform, setPlatform] = useState('6');
     
     useEffect(() => {
         getGames(platform).then(gamesList => {
-            setGames(gamesList);
+            // setGames(gamesList);
+            games.current = gamesList;
         });
     }, [platform])
 
@@ -34,7 +36,7 @@ export default function Games() {
             </div>
             
             <div className="row mt-3 justify-content-center">
-            {games ? games.map(game => (
+            {games.current ? games.current.map(game => (
                 <div key={game.id}  className="col-6 col-xs-6 col-sm-6 col-md-3 col-lg-3">
                     <div className="game-preview">
                             <div className="game-cover"><img src={game.cover.url} alt=""/></div>
