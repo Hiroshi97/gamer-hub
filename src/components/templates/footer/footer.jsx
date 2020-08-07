@@ -29,7 +29,7 @@ export default function Footer() {
     return (
         <footer className="footer container">
             <div className="row mt-5">
-                <div className="col-4 mt-5 text-center">
+                <div className="col-4 mt-3 text-center">
                     <img className="logo-footer" src={require("../../../assets/logo2.png")} alt=""/>
                     <div className="mt-3">{medias.map((media,index) => <a key={index} className="mx-2 text-white" href={media.url}><i className={media.icon}></i></a>)}</div>
                     <p className="copyrights mt-3">Copyrights {copyright} {year} - Nguyen The Anh Dinh (Andy). All rights reserved.</p>

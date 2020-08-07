@@ -49,7 +49,6 @@ export const getComingSoonGames = async () => {
             .limit(5)
             .request('/games');
     coming_soon = response.data;
-    console.log(coming_soon)
     coming_soon.forEach(game => game.cover.url = "https://" + game.cover.url.split("//")[1].replace("thumb", "720p"));
     coming_soon = coming_soon.map((game, index) => (<img src={game.cover.url} alt={index.toString()} />));
     return coming_soon;
