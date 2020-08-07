@@ -4,7 +4,7 @@ import "./login.scss";
 export default function Login() {
   return (
     <div className="container-fluid h-100 login-page">
-      <div className="container h-100 login-form">
+      <div className="container h-100 login-form mt-5">
         <div className="h-100 row justify-content-center align-items-center">
           <div className="col col-6">
           <div className="text-center">
