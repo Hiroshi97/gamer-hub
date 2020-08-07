@@ -17,7 +17,7 @@ export default function Slider() {
         <li data-target="#carouselGameIndicators" data-slide-to="2"></li>
       </ol>
       <div className="carousel-inner">
-        <div className="carousel-item carousel-item-overlay item-1 active">
+        <div className="carousel-item carousel-item-overlay item-1 active" data-interval="2000">
          
             <div className="container carousel-item-caption d-none d-md-block">
                 <div className="game-title"><img src="https://i.pinimg.com/originals/6d/b4/85/6db48503abb29129a46ff78cfa354925.png"/></div>
@@ -26,7 +26,7 @@ export default function Slider() {
                 </div>
             </div>
         </div>
-        <div className="carousel-item carousel-item-overlay item-2">
+        <div className="carousel-item carousel-item-overlay item-2" data-interval="2000">
         <div className="container carousel-item-caption d-none d-md-block">
                 <div className="game-title"><img src="https://www.pngmart.com/files/2/Batman-Arkham-Knight-Transparent-Background.png"/></div>
                 <div className="carousel-item-info mt-3">
@@ -34,7 +34,7 @@ export default function Slider() {
                 </div>
             </div>
         </div>
-        <div className="carousel-item carousel-item-overlay item-3">
+        <div className="carousel-item carousel-item-overlay item-3" data-interval="2000">
           <div className="container carousel-item-caption d-none d-md-block">
                 <div className="game-title"><img src="https://pluspng.com/img-png/battlefield-logo-png-battlefield-png-images-free-img-3160x676.png"/></div>
                 <div className="carousel-item-info mt-3">
