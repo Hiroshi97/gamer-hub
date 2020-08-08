@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import './navbar.scss';
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { AuthContext } from "../../../contexts";
 
 export default function Navbar() {
+  const { userData, setUserData } = useContext(AuthContext);
+  let history = useHistory();
+
+  const handleLogout = (e) => {
+      e.preventDefault();
+      localStorage.clear();
+      setUserData(null);
+      history.push('/');
+    }
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark py-0">
       <Link className="navbar-brand" to="/">
@@ -40,12 +51,24 @@ export default function Navbar() {
           </li>
         </ul>
         <ul className="navbar-nav ml-auto mr-4">
-          <li className="nav-item login">
+        {!userData ?
+          (<li className="nav-item login">
               <Link className="nav-link" to="/login">
               <i className="fas fa-user login-icon pr-1"></i>
               {/* <span className="nav-item-text">Login</span> */}
             </Link>
-          </li>
+          </li>) 
+          : 
+          (<li className="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i className="fas fa-user login-icon pr-1"></i>
+          </a>
+          <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+            <Link className="nav-link text-dark" to="/profile"><i class="far fa-id-card mr-2"></i>My Profile</Link>
+            <Link className="nav-link text-dark" to="/#" onClick={handleLogout}><i class="fas fa-sign-out-alt mr-2"></i>Log Out</Link>
+          </div>
+          </li>)}
+
           <li className="nav-item cart">
             <Link className="nav-link" to="#">
               <i className="fas fa-shopping-cart cart-icon pr-1"></i>
