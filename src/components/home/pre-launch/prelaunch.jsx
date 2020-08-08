@@ -1,26 +1,29 @@
 import {Carousel} from '3d-react-carousal';
-import React, {useEffect, useState} from 'react';
-import { getComingSoonGames as fetchGameData } from '../../../api/gameAPI';
+import React, {useEffect, useState, useRef} from 'react';
+import { getComingSoonGames as fetchGameData } from '../../../apis/gameAPI';
 
 export default function Prelaunch() {
     const [slides, setSlides]= useState([]);
-
+    const isDone = useRef(false);
     //6 - PC, 48 - PS4, 49 - XBOX ONE, Switch - 130
-    useEffect(() => { fetchGameData().then(games => {setSlides(games)}) }, [])
+    useEffect(() => { 
+        fetchGameData().then(games => 
+            {
+                if(!isDone.current)
+                    setSlides(games)
+            });
+        return () => { isDone.current = true };  
+        }, [])
     
-    if (slides.length > 0)
         return (
             <div className="container mt-3">
-                <div className="row">
-                    <h3 className="d-inline-block title">Pre-launch games: </h3>
-                </div>
+                <h3 className="d-inline-block title">Pre-launch games: </h3>
                 <div className="row mt-3">
-                
                     <div className="col-12 prelaunch mt-3">
-                        <Carousel slides={slides} autoplay={true} interval={4000}/>
+                        {slides.length > 0 ? <Carousel slides={slides} autoplay={true} interval={4000}/> : null }
                     </div>
                 </div>
             </div>
         )
-    else return (null);
+
 }

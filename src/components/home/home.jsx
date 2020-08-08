@@ -10,7 +10,7 @@ export default function Home() {
         <div className="home-content">
             <Slider/>
             <Games/>
-            <Prelaunch/>
+            {/* <Prelaunch/> */}
             <Category/>
         </div>
     )

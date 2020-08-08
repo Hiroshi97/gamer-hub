@@ -1,14 +1,14 @@
-import React, {useState, useEffect} from 'react'
-import {getGamesBasedOnPlatform as getGames} from '../../../api/gameAPI';
+import React, {useState, useEffect, useRef} from 'react'
+import {getGamesBasedOnPlatform as getGames} from '../../../apis/gameAPI';
 import {NavLink } from 'react-router-dom';
 
 export default function Games() {
     const [games, setGames] = useState([]);
     const [platform, setPlatform] = useState('6');
-    
+
     useEffect(() => {
         getGames(platform).then(gamesList => {
-            setGames(gamesList);
+                setGames(gamesList);
         });
     }, [platform])
 
