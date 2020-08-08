@@ -1,5 +1,5 @@
 import React, {useRef, useState, useContext} from "react";
-import { useHistory, Redirect } from "react-router-dom";
+import { useHistory, Redirect, Link } from "react-router-dom";
 import { userLogin } from '../../../apis/userAPI';
 import { emailRegex } from '../../../constants/constants';
 import "./login.scss";
@@ -78,9 +78,10 @@ export default function Login(props) {
                 </label>
               </div>
               <div className="form-group form-submit text-center">
-                <button onClick={handleLogin} type="submit" className="btn btn-primary">
+                <button onClick={handleLogin} type="submit" className="btn btn-primary mb-3">
                 Login
               </button>
+              <p>Do not have an account yet? <Link to="/signup">Sign up</Link></p>
               </div>
             </form>
           </div>
