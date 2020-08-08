@@ -28,7 +28,11 @@ export default function Login(props) {
         setUserData({key: res.localId, email: res.email});
         history.push('/');
       })
-      .catch(err => {setError('Invalid email or password!')});
+      .catch(err => {
+        let errorMsg = err.response.data.error.message;
+        errorMsg = errorMsg.split("_").join(" ");
+        setError(errorMsg);
+      });
     }
   }
 
@@ -42,7 +46,7 @@ export default function Login(props) {
           <h1>LOGIN</h1>
           { error ? 
           <div className="alert alert-danger" role="alert">
-            <i class="fas fa-times mr-1"></i>{error}
+            <i className="fas fa-times mr-1"></i>{error}
             </div> : null}
           </div>
           

@@ -12,6 +12,8 @@ export const userSignUp = async (userInfo) => {
     }
 
     const res = await axios.post(url, request);
+
+    return res.data;
 }
 
 //LOGIN
