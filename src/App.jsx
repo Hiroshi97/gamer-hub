@@ -4,6 +4,7 @@ import { Home } from "./components/home/";
 import { Navbar, Footer } from "./components/templates";
 import { Login, AuthRoute, Signup, Profile } from "./components/authentication";
 import { AuthContext } from "./contexts";
+import Page404 from "./components/404/404";
 import "./App.scss";
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
               isAuthed={userData ? true : false}
               component={Profile}
             ></AuthRoute>
+            <Route component={Page404}/>
           </Switch>
           <Footer />
         </AuthContext.Provider>

@@ -1,10 +1,10 @@
 .login-page {
-    position: absolute;
     color: white;
     font-family: Nunito;
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.9)), url("../../../assets/background-login.jpg");
     background-size: cover;
-    background-repeat: no-repeat;;
+    background-repeat: no-repeat;
+    padding: 4% 0 4% 0;
 }
 
 .login-page .login-form img {

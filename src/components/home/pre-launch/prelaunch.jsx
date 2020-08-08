@@ -9,10 +9,8 @@ export default function Prelaunch() {
     useEffect(() => { 
         fetchGameData().then(games => 
             {
-                if(!isDone.current)
-                    setSlides(games)
+                setSlides(games)
             });
-        return () => { isDone.current = true };  
         }, [])
     
         return (
