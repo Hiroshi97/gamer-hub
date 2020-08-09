@@ -5,11 +5,14 @@ import {NavLink } from 'react-router-dom';
 export default function Games() {
     const [games, setGames] = useState([]);
     const [platform, setPlatform] = useState('6');
+    const isDone = useRef(false);
 
     useEffect(() => {
         getGames(platform).then(gamesList => {
+            if(!isDone)
                 setGames(gamesList);
         });
+        return () => {isDone.current = true};
     }, [platform])
 
     const handlePlatformClick = (e) => {
