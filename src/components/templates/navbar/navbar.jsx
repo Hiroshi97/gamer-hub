@@ -1,18 +1,10 @@
 import React, { useContext } from "react";
 import './navbar.scss';
-import { Link, useHistory } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { AuthContext } from "../../../contexts";
 
 export default function Navbar() {
   const { userData, setUserData } = useContext(AuthContext);
-  let history = useHistory();
-
-  const handleLogout = (e) => {
-      e.preventDefault();
-      localStorage.clear();
-      setUserData(null);
-      history.push('/');
-    }
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark py-0">
@@ -65,7 +57,7 @@ export default function Navbar() {
           </a>
           <div className="dropdown-menu" aria-labelledby="navbarDropdown">
             <Link className="nav-link text-dark" to="/profile"><i className="far fa-id-card mr-2"></i>My Profile</Link>
-            <Link className="nav-link text-dark" to="/#" onClick={handleLogout}><i className="fas fa-sign-out-alt mr-2"></i>Log Out</Link>
+            <Link className="nav-link text-dark" to="/logout"><i className="fas fa-sign-out-alt mr-2"></i>Log Out</Link>
           </div>
           </li>)}
 
