@@ -24,8 +24,8 @@ export default function Login(props) {
     else {
       userLogin(email.value, password.value)
       .then(res => {
-        localStorage.setItem('user', JSON.stringify({key: res.localId, email: res.email}))
-        setUserData({key: res.localId, email: res.email});
+        localStorage.setItem('user', JSON.stringify(res))
+        setUserData(res);
         history.push('/');
       })
       .catch(err => {

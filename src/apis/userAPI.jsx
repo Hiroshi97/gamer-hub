@@ -15,7 +15,9 @@ export const userSignUp = async (userInfo) => {
 
     const updateName = await userUpdateInfo({idToken: res.data.idToken, displayName: userInfo.name});
 
-    return res.data;
+    const getInfo = await userGetInfo({idToken: updateName.idToken});
+
+    return getInfo.users[0];
 }
 
 //LOGIN
@@ -30,7 +32,9 @@ export const userLogin = async (email, password) => {
 
     const res = await axios.post(url, request);
 
-    return res.data;
+    const getInfo = await userGetInfo(res.data.idToken);
+
+    return getInfo.users[0];
 }
 
 //UPDATE USER INFO AFTER REGISTRATION
@@ -41,3 +45,12 @@ export const userUpdateInfo = async (info) => {
 
     return res.data;
 };
+
+//GET USER INFO
+export const userGetInfo = async(idToken) => {
+    const url = 'https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=' + API_KEY;
+
+    const res = await axios.post(url, {idToken});
+
+    return res.data;
+}

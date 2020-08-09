@@ -44,7 +44,7 @@ export default function Signup() {
         .then((res) => {
           localStorage.setItem(
             "user",
-            JSON.stringify({ key: res.localId, email: res.email })
+            JSON.stringify(res)
           );
           history.push("/");
         })
