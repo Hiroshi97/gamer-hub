@@ -43,11 +43,10 @@
 //     position: relative;
 // }
 
-// .cart .nav-link .nav-item-text {
-//     display:none;
-// }
+.login .nav-link .nav-item-text {
+    display: none;
+}
 
-// .cart .nav-link:hover .nav-item-text{
-//     display: block;
-//     transition: 1s;    
-// }
+.login .nav-link:hover .nav-item-text{
+    display: inline-block;
+}

@@ -55,17 +55,17 @@ export default function Navbar() {
           (<li className="nav-item login">
               <Link className="nav-link" to="/login">
               <i className="fas fa-user login-icon pr-1"></i>
-              {/* <span className="nav-item-text">Login</span> */}
+              <span className="nav-item-text">Login</span>
             </Link>
           </li>) 
           : 
           (<li className="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i className="fas fa-user login-icon pr-1"></i>
           </a>
           <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-            <Link className="nav-link text-dark" to="/profile"><i class="far fa-id-card mr-2"></i>My Profile</Link>
-            <Link className="nav-link text-dark" to="/#" onClick={handleLogout}><i class="fas fa-sign-out-alt mr-2"></i>Log Out</Link>
+            <Link className="nav-link text-dark" to="/profile"><i className="far fa-id-card mr-2"></i>My Profile</Link>
+            <Link className="nav-link text-dark" to="/#" onClick={handleLogout}><i className="fas fa-sign-out-alt mr-2"></i>Log Out</Link>
           </div>
           </li>)}
 
