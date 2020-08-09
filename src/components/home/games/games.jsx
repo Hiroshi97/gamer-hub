@@ -8,8 +8,9 @@ export default function Games() {
     const isDone = useRef(false);
 
     useEffect(() => {
+        isDone.current = false;
         getGames(platform).then(gamesList => {
-            if(!isDone)
+            if(!isDone.current)
                 setGames(gamesList);
         });
         return () => {isDone.current = true};
