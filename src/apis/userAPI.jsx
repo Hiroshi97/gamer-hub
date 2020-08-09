@@ -13,6 +13,8 @@ export const userSignUp = async (userInfo) => {
 
     const res = await axios.post(url, request);
 
+    const updateName = await userUpdateInfo({idToken: res.data.idToken, displayName: userInfo.name});
+
     return res.data;
 }
 
@@ -31,5 +33,11 @@ export const userLogin = async (email, password) => {
     return res.data;
 }
 
-//SAVE USER INFO AFTER REGISTRATION
-export const saveUserInfo = () => {};
+//UPDATE USER INFO AFTER REGISTRATION
+export const userUpdateInfo = async (info) => {
+    const url = 'https://identitytoolkit.googleapis.com/v1/accounts:update?key=' + API_KEY;
+
+    const res = await axios.post(url, info);
+
+    return res.data;
+};

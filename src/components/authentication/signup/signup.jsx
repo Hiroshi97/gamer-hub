@@ -40,7 +40,7 @@ export default function Signup() {
     if (errors.length > 0) {
       setErrors(errors);
     } else {
-      userSignUp({email: email.value, password: password.value})
+      userSignUp({email: email.value, password: password.value, name: name.value})
         .then((res) => {
           localStorage.setItem(
             "user",
