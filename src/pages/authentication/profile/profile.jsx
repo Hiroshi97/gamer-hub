@@ -1,10 +1,15 @@
-import React, { useContext } from "react";
-import { AuthContext } from "../../../contexts";
+import React, { useState, useEffect } from "react";
+import {useSelector} from 'react-redux';
 import "./profile.scss";
 import { Link } from "react-router-dom";
 
 export default function Profile() {
-  const { userData, setUserData } = useContext(AuthContext);
+  const userInfo = useSelector(state => state.authState.userInfo);
+  const [userData, setUserData] = useState(userInfo);
+
+  useEffect(() => {
+    setUserData(userInfo);
+  }, [])
 
   return (
     <div className="container-fluid h-100 profile-page">
@@ -29,7 +34,7 @@ export default function Profile() {
           <h3>
             Level <span>4</span>
           </h3>
-          <p className="d-inline"><i class="far fa-arrow-alt-circle-up mr-2"></i>EXP:</p>
+          <p className="d-inline"><i className="far fa-arrow-alt-circle-up mr-2"></i>EXP:</p>
           <div className="progress w-25">
               <div
                 className="progress-bar bg-success"

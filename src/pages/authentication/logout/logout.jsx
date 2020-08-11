@@ -1,12 +1,14 @@
 import React, { useContext, useEffect } from 'react'
-import { useHistory, Redirect } from 'react-router-dom'
-import { AuthContext } from '../../../contexts';
+import { Redirect } from 'react-router-dom'
+import { LoggedOut, LogoutSuccessful } from '../../../actions/auth.actions';
+import {useDispatch} from 'react-redux';
 
 export default function Logout() {
-    const {userData, setUserData} = useContext(AuthContext);
+    const dispatch = useDispatch();
     useEffect(() => {
         localStorage.clear();
-        setUserData(null);
+        dispatch(LoggedOut());
+        dispatch(LogoutSuccessful());
     }, [])
     
     return (<Redirect to={{pathname: '/'}} />);

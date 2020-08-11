@@ -4,16 +4,18 @@ import { userLogin } from '../../../apis/userAPI';
 import { emailRegex } from '../../../constants/constants';
 import "./login.scss";
 import {AuthContext} from "../../../contexts/";
-
+import {useSelector, useDispatch} from "react-redux";
+import { LoggedIn, LoginSuccessful } from "../../../actions/auth.actions";
 
 export default function Login(props) {
+  const dispatch = useDispatch();
   let email = useRef();
   let password = useRef();
   const history = useHistory();
   const [error, setError] = useState('');
-  const { userData, setUserData } = useContext(AuthContext);
-
-  if (userData)
+  const isLoggedIn = useSelector(state=>state.authState.result);
+ 
+  if (isLoggedIn)
     return (<Redirect to={{pathname: '/profile'}} />);
 
   const handleLogin = (e) => {
@@ -25,7 +27,8 @@ export default function Login(props) {
       userLogin(email.value, password.value)
       .then(res => {
         localStorage.setItem('user', JSON.stringify(res))
-        setUserData(res);
+        dispatch(LoginSuccessful(res));
+        dispatch(LoggedIn());
         history.push('/');
       })
       .catch(err => {

@@ -2,8 +2,9 @@ import React, { useRef, useState, useContext } from "react";
 import { Link, Redirect, useHistory } from "react-router-dom";
 import { emailRegex, nameRegex } from "../../../constants/constants";
 import "./signup.scss";
-import { AuthContext } from "../../../contexts";
 import { userSignUp } from "../../../apis/userAPI";
+import {useSelector, useDispatch} from "react-redux";
+import { LoggedIn } from "../../../actions/auth.actions";
 
 export default function Signup() {
   let email = useRef();
@@ -12,9 +13,10 @@ export default function Signup() {
   let name = useRef();
   const history = useHistory();
   const [errors, setErrors] = useState([]);
-  const { userData, setUserData } = useContext(AuthContext);
+  const isLoggedIn = useSelector(state=>state.authState.result);
 
-  if (userData) return <Redirect to={{ pathname: "/profile" }} />;
+  if (isLoggedIn)
+    return (<Redirect to={{pathname: '/profile'}} />);
 
   const handleValidation = () => {
 

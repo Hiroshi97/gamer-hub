@@ -1,11 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import './navbar.scss';
 import { Link} from "react-router-dom";
-import { AuthContext } from "../../../contexts";
-
+import {useSelector} from "react-redux";
 export default function Navbar() {
-  const { userData, setUserData } = useContext(AuthContext);
-
+  const isLoggedIn = useSelector(state => state.authState.result);
   return (
     <nav className="navbar navbar-expand-lg navbar-dark py-0">
       <Link className="navbar-brand" to="/">
@@ -43,7 +41,7 @@ export default function Navbar() {
           </li>
         </ul>
         <ul className="navbar-nav ml-auto mr-4">
-        {!userData ?
+        {!isLoggedIn ?
           (<li className="nav-item login">
               <Link className="nav-link" to="/login">
               <i className="fas fa-user login-icon pr-1"></i>
