@@ -45,7 +45,7 @@ export const getComingSoonGames = async () => {
     const response = await apicalypse(REQUEST)
             .fields('name, cover.*, genres.*, rating')
             .where(`platforms = 48 & release_dates.date >${now}`)
-            .offset(7)
+            .offset(0)
             .limit(5)
             .request('/games');
     coming_soon = response.data;
