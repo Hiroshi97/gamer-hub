@@ -7,10 +7,13 @@ export default function Prelaunch() {
     const isDone = useRef(false);
     //6 - PC, 48 - PS4, 49 - XBOX ONE, Switch - 130
     useEffect(() => { 
+        isDone.current = false;
         fetchGameData().then(games => 
             {
-                setSlides(games)
+                if(!isDone.current)
+                    setSlides(games)
             });
+            return () => {isDone.current = true;}
         }, [])
     
         return (
