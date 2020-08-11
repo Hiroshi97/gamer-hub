@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Home } from "./components/home/";
-import { Navbar, Footer } from "./components/templates";
-import { Login, AuthRoute, Signup, Profile, Logout } from "./components/authentication";
+import { Home } from "./pages/home";
+import { Navbar, Footer } from "./pages/templates";
+import { Login, AuthRoute, Signup, Profile, Logout } from "./pages/authentication";
 import { AuthContext } from "./contexts";
-import Page404 from "./components/404/404";
+import Page404 from "./pages/404/404";
 import "./App.scss";
 
 function App() {
