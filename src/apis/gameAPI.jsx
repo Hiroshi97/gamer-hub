@@ -21,7 +21,7 @@ export const getGamesBasedOnPlatform = async(platform) => {
             game.rating = game.rating ? (game.rating / 10.0).toFixed(1) : null;
             if(game.genres && game.genres.length > 0)
                 game.genres = game.genres.reduce(((genres, genre) => genres + " " + genre.name ), "").split(" ").slice(1, 5).join(", ");
-            else game.genres = 'Unknown'
+            else game.genres = ''
                 // console.log(game.involved_companies[0]);
             // const response = await apicalypse(request)
             //     .fields('name')
