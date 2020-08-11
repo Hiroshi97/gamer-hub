@@ -5,7 +5,7 @@ export default function Category() {
     return (
         <div className="container game-category mt-5">
             <h3 className="d-inline-block title">Games by category: </h3>
-            <div className="row my-5">
+            <div className="row mt-3 mb-5">
                 <div className="col-12 col-md-6 col-lg-6 p-0">
                     <img src={require('../../../assets/action.jpg')}></img>
                     <NavLink to="/#" className="category-link">Action <span className="navigate px-1"><i className="fas fa-chevron-right"></i></span></NavLink>
