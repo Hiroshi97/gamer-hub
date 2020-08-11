@@ -29,7 +29,7 @@ export default function Profile() {
           <h3>
             Level <span>4</span>
           </h3>
-          <p className="d-inline">EXP:</p>
+          <p className="d-inline"><i class="far fa-arrow-alt-circle-up mr-2"></i>EXP:</p>
           <div className="progress w-25">
               <div
                 className="progress-bar bg-success"
@@ -74,9 +74,9 @@ export default function Profile() {
               <li>
                 <Link className="text-white" to="/#">Friends<i className="fas fa-user-friends ml-2"></i></Link>
               </li>
-              <li>
+              {/* <li>
                 <Link className="text-white" to="/logout">Log Out<i className="fas fa-sign-out-alt ml-2"></i></Link>
-              </li>
+              </li> */}
 
           </ul>
         </div>
