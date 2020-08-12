@@ -4,7 +4,7 @@ import { emailRegex, nameRegex } from "../../../constants/constants";
 import "./signup.scss";
 import { userSignUp } from "../../../apis/userAPI";
 import {useSelector, useDispatch} from "react-redux";
-import { LoggedIn } from "../../../actions/auth.actions";
+import { LoggedIn, LoginSuccessful } from "../../../actions/auth.actions";
 
 export default function Signup() {
   let email = useRef();
@@ -13,8 +13,8 @@ export default function Signup() {
   let name = useRef();
   const history = useHistory();
   const [errors, setErrors] = useState([]);
-  const isLoggedIn = useSelector(state=>state.authState.result);
-
+  const isLoggedIn = useSelector(state => state.authState.result);
+  const dispatch = useDispatch();
   if (isLoggedIn)
     return (<Redirect to={{pathname: '/profile'}} />);
 
@@ -48,6 +48,7 @@ export default function Signup() {
             "user",
             JSON.stringify(res)
           );
+          dispatch(LoginSuccessful(res));
           history.push("/");
         })
         .catch((err) => {
