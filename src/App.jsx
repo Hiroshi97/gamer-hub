@@ -4,8 +4,9 @@ import { Home } from "./pages/home";
 import { Navbar, Footer } from "./pages/templates";
 import { Login, AuthRoute, Signup, Profile, Logout } from "./pages/authentication";
 import Page404 from "./pages/404/404";
+import GameStore from "./pages/game-store/game-store";
+import { useSelector } from 'react-redux';
 import "./App.scss";
-import {useSelector} from 'react-redux';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
             <Route exact path="/" component={Home} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
+            <Route exact path="/store" component={GameStore}/>
             <AuthRoute
               exact
               path="/profile"

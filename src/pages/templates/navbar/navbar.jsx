@@ -28,7 +28,7 @@ export default function Navbar() {
             </Link>
           </li>
           <li className="nav-item game px-1">
-            <Link className="nav-link" to="#">
+            <Link className="nav-link" to="/store">
             <i className="fas fa-gamepad game-icon pr-1"></i>
               Games
             </Link>
