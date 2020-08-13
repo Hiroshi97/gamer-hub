@@ -49,6 +49,7 @@ export default function Signup() {
             JSON.stringify(res)
           );
           dispatch(LoginSuccessful(res));
+          dispatch(LoggedIn());
           history.push("/");
         })
         .catch((err) => {
