@@ -10,7 +10,7 @@ export const getGamesBasedOnPlatform = async(platform) => {
     try {
         const response = await apicalypse(REQUEST)
                 .fields('name, age_ratings, involved_companies.*, cover.*, genres.*, rating')
-                .where('rating >= 80 & platforms =' + platform)
+                .where('rating >= 80 & platforms =' + platform + '& cover != null')
                 .offset(20)
                 .limit(4)
                 .sort('popularity', 'asc')
@@ -44,7 +44,7 @@ export const getComingSoonGames = async () => {
     let coming_soon = [];
     const response = await apicalypse(REQUEST)
             .fields('name, cover.*, genres.*, rating')
-            .where(`platforms = 48 & release_dates.date >${now}`)
+            .where(`platforms = 48 & release_dates.date >${now} & cover != null`)
             .offset(0)
             .limit(5)
             .request('/games');
@@ -52,4 +52,30 @@ export const getComingSoonGames = async () => {
     coming_soon.forEach(game => game.cover.url = "https://" + game.cover.url.split("//")[1].replace("thumb", "720p"));
     coming_soon = coming_soon.map((game, index) => (<img src={game.cover.url} alt={index.toString()} />));
     return coming_soon;
+}
+
+export const getGamesBasedOnCategory = async (category, page, platform) => {
+    try {
+        let fetchGames = [];
+        let offset = page * 10 - 10;
+        const response = await apicalypse(REQUEST)
+                .fields('name, cover.*, genres.*, rating, summary')
+                .where(`platforms = ${platform} & genres != null & cover != null`)
+                .offset(offset.toString())
+                .limit(10)
+                .sort('popularity', 'desc')
+                .request('/games')
+        fetchGames = response.data;
+        fetchGames.forEach(game => {
+            game.cover.url = "https://" + game.cover.url.split("//")[1].replace("thumb", "720p");
+            game.rating = game.rating / 20.0;
+            if(game.genres && game.genres.length > 0)
+                game.genres = game.genres.map(genre => genre.name);
+            else game.genres = ''
+        })
+        return fetchGames;
+    }
+    catch(err) {
+        console.log(err);
+    }
 }
