@@ -63,7 +63,7 @@ export default function Profile() {
             </div>
             </div>
           <p><i className="fas fa-user-clock mr-2"></i>Hours Played: 100 hrs</p>
-          <ul className="profile-sub-menu">
+          <ul className="profile-sub-menu list-unstyled">
               <li>
                   <Link className="text-white" to="/#">Games<i className="fas fa-gamepad ml-2"></i></Link>
               </li>
