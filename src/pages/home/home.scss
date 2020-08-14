@@ -21,7 +21,7 @@
 }
 
 /*CAROUSEL - SLIDER*/
-.carousel-indicators li {
+.carousel .carousel-indicators li {
     width: 8px;
     height: 7px;
     background: transparent;
@@ -29,23 +29,23 @@
     border-radius: 50%;
 }
 
-.carousel-indicators li.active {
+.carousel .carousel-indicators li.active {
     background: white;
 }
 
-.item-1{
+.carousel .carousel-inner .item-1{
     background:linear-gradient((to top, black, transparent)), url("../../assets/slide1.jpg");
 }
 
-.item-2{
+.carousel .carousel-inner .item-2{
     background:linear-gradient((to top, black, transparent)), url("../../assets/slide2.jpg");
 }
 
-.item-3{
+.carousel .carousel-inner .item-3{
     background:linear-gradient((to top, black, transparent)), url("../../assets/slide3.jpg");
 }
 
-.carousel-item {
+.carousel .carousel-inner .carousel-item {
     height: 100vh;
     background-position: 50% 10%;
     background-size: cover;
