@@ -22,7 +22,7 @@ export default function GameStoreGameList({list}) {
                         numberOfStars={5}
                         name="rating"
                       />
-                      <p className="game-genres">{game.genres.map(genre => (<span className="badge badge-secondary mr-2 mt-3">{genre}</span>))}</p>
+                      <p className="game-genres">{game.genres.map((genre, index) => (<span key={index} className="badge badge-secondary mr-2 mt-3">{genre}</span>))}</p>
                       <p className="game-price">$9.99</p>
                       <button className="btn btn-danger">Add to cart</button>
                     </div>
