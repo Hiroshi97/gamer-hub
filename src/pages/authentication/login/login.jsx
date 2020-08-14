@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { useHistory, Redirect, Link } from "react-router-dom";
 import { userLogin } from "../../../apis/userAPI";
-import { emailRegex } from "../../../constants/constants";
+import { EMAIL_REGEX } from "../../../constants/constants";
 import "./login.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { LoggedIn, LoginSuccessful } from "../../../actions/auth.actions";
@@ -18,7 +18,7 @@ export default function Login(props) {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    if (!emailRegex.test(email.value)) {
+    if (!EMAIL_REGEX.test(email.value)) {
       setError("Invalid email format!");
     } else {
       userLogin(email.value, password.value)

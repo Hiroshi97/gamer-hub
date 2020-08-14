@@ -1,6 +1,6 @@
-import React, { useRef, useState, useContext } from "react";
+import React, { useRef, useState } from "react";
 import { Link, Redirect, useHistory } from "react-router-dom";
-import { emailRegex, nameRegex } from "../../../constants/constants";
+import { EMAIL_REGEX, NAME_REGEX } from "../../../constants/constants";
 import "./signup.scss";
 import { userSignUp } from "../../../apis/userAPI";
 import {useSelector, useDispatch} from "react-redux";
@@ -23,9 +23,9 @@ export default function Signup() {
     //VALIDATION ERROR HANDLER
     let errors = [];
 
-    if (!nameRegex.test(name.value)) errors.push("Please enter a valid name");
+    if (!NAME_REGEX.test(name.value)) errors.push("Please enter a valid name");
 
-    if (!email.value || !emailRegex.test(email.value))
+    if (!email.value || !EMAIL_REGEX.test(email.value))
       errors.push("Invalid email format!");
 
     if (!password.value) errors.push("Please input password!");
