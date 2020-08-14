@@ -85,17 +85,18 @@
   font-size: 100%;
 }
 
-.pagination >.page-item > .page-link { 
+.pagination >.page-item > .page-link {
   border-radius: 50% !important;
   margin: 0 5px;
   background-color: transparent;
-  border: transparent;
+  border: 3px solid transparent;
   color: white;
-
+  outline: 0;
+  padding: 10px 12px 10px 12px;
 }
 
-.pagination > li:hover > .page-link, .pagination > .page-item.active >.page-link {
-  border: 1px solid #dc3545;
+.pagination > li:hover > .page-link, .pagination > .page-item.active >.page-link, .pagination > li:focus > .page-link {
+  border: 2px solid #dc3545;
   color: #dc3545;
 }
 

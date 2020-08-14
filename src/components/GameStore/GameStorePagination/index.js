@@ -55,6 +55,15 @@ export default function GameStorePagination({ page, handlePagination }) {
             </li>
             <li className="page-item">
               <a
+                id={page+ 3}
+                onClick={handleChangePage}
+                className="page-link"
+                href="#">
+                {page + 3}
+              </a>
+            </li>
+            <li className="page-item">
+              <a
                 id="next"
                 onClick={handleChangePage}
                 className="page-link"
