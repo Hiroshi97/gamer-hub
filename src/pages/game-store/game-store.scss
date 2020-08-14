@@ -85,7 +85,7 @@
   font-size: 100%;
 }
 
-.pagination >.page-item > .page-link {
+.game-store-game-list-pagination .pagination >.page-item > .page-link {
   border-radius: 50% !important;
   margin: 0 5px;
   background-color: transparent;
@@ -95,12 +95,12 @@
   padding: 10px 12px 10px 12px;
 }
 
-.pagination > li:hover > .page-link, .pagination > .page-item.active >.page-link, .pagination > li:focus > .page-link {
+.game-store-game-list-pagination .pagination > li:hover > .page-link, .pagination > .page-item.active >.page-link, .pagination > li:focus > .page-link {
   border: 2px solid #dc3545;
   color: #dc3545;
 }
 
-.pagination > .page-item.disabled >.page-link {
+.game-store-game-list-pagination .pagination > .page-item.disabled >.page-link {
   color: grey;
 }
 
@@ -124,6 +124,13 @@
     bottom: 0;
     left: 0;
   }
+
+  .game-store-page
+    .game-store-content
+    .game-store-game-list
+    .game-preview {
+      padding-left: 0;
+    }
 }
 
 @media only screen and (max-width: 844px) {

@@ -4,15 +4,15 @@ import PropTypes from 'prop-types';
 
 export default function GameStoreGameList({list}) {
     return (
-        <div className="row game-store-game-list justify-content-center">
+        <div className="row game-store-game-list justify-content-between">
           {list && list.length > 0
             ? list.map((game, index) => (
-                <div key={index} className="col-6 col-sm-6 mt-5">
-                  <div className="row justify-content-center mr-auto">
-                    <div className="col-12 col-md-6 game-cover pl-0">
+                <div key={index} className="col-12 col-sm-6 mt-5">
+                  <div className="row justify-content-center">
+                    <div className="col-12 col-md-6 game-cover">
                       <img src={game.img} />
                     </div>
-                    <div className="col-12 col-md-6 game-preview m-0 p-0">
+                    <div className="col-12 col-md-6 game-preview">
                       <h5 className="game-title">{game.game_title}</h5>
                       <StarRatings
                         // rating={game.rating}
