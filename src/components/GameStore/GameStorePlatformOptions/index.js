@@ -26,7 +26,7 @@ export default function GameStorePlatformOptions({handlePlatform}) {
     return (
         <div className="row game-store-platforms mt-3">
         {options.map(option => 
-          <div className="col-12 col-md-4">
+          <div className="col-md-4 mt-3">
             <div className="card bg-dark">
               <div className="card-body row justify-content-around align-items-center">
                 <i className={option.icon}></i>

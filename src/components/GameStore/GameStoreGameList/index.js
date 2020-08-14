@@ -8,12 +8,12 @@ export default function GameStoreGameList({list}) {
           {list && list.length > 0
             ? list.map((game, index) => (
                 <div key={index} className="col-6 col-sm-6 mt-5">
-                  <div className="row justify-content-center">
+                  <div className="row justify-content-center mr-auto">
                     <div className="col-12 col-md-6 game-cover">
                       <img src={game.img} />
                     </div>
-                    <div className="col-12 col-md-6 game-preview m-0 p-0">
-                      <h5>{game.game_title}</h5>
+                    <div className="col-12 col-md-6 game-preview float-left">
+                      <h5 className="game-title">{game.game_title}</h5>
                       <StarRatings
                         // rating={game.rating}
                         rating={3.5}

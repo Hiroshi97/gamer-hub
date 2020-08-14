@@ -20,7 +20,7 @@ export default function GameStorePagination({ page, handlePagination }) {
                 href="#"
                 tabIndex="-1"
               >
-                Previous
+                «
               </a>
             </li>
             <li className="page-item active">
@@ -59,7 +59,7 @@ export default function GameStorePagination({ page, handlePagination }) {
                 onClick={handleChangePage}
                 className="page-link"
                 href="#">
-                Next
+                »
               </a>
             </li>
           </ul>
