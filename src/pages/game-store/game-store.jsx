@@ -2,19 +2,19 @@ import React, { useEffect } from "react";
 import "./game-store.scss";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { getGamesBasedOnCategory } from "../../apis/gameAPI";
+import { getGamesBasedOnPlatform } from "../../apis/gameAPI";
 import StarRatings from "react-star-ratings";
 
 export default function GameStore() {
   const [list, setList] = useState([]);
-  const [platform, setPlatform] = useState("6");
-  const [category, setCategory] = useState("4");
+  const [platform, setPlatform] = useState("4919");
+//   const [category, setCategory] = useState("4");
   const [page, setPage] = useState(1);
   useEffect(() => {
-    getGamesBasedOnCategory(category, page, platform).then((res) => {
+    getGamesBasedOnPlatform(platform, page).then((res) => {
       setList(res);
     });
-  }, [category, page, platform]);
+  }, [page, platform]);
 
   const handlePagination = (e) => {
     e.preventDefault();
@@ -24,6 +24,13 @@ export default function GameStore() {
     else if (e.target.id === "next") setPage(page + 1);
     else setPage(page - 1);
   };
+
+  const handlePlatform = (e) => {
+      e.preventDefault();
+      setPage(1);
+      setPlatform(e.target.id.split('-')[1]);
+  }
+
   return (
     <div className="container-fluid game-store-page">
       <div className="container game-store-content">
@@ -57,7 +64,7 @@ export default function GameStore() {
                 <i className="fab fa-playstation fa-2x"></i>
                 <div className="d-block">
                   <h5 className="card-title">Playstation</h5>
-                  <a href="/#" className="card-text text-danger">
+                  <a id="plat-4919" onClick={handlePlatform} href="/#" className="card-text text-danger">
                     VIEW GAMES
                   </a>
                 </div>
@@ -70,7 +77,7 @@ export default function GameStore() {
                 <i className="fab fa-xbox fa-2x"></i>
                 <div className="d-block">
                   <h5 className="card-title">Xbox</h5>
-                  <a href="/#" className="card-text text-danger">
+                  <a id="plat-4920" onClick={handlePlatform} href="/#" className="card-text text-danger">
                     VIEW GAMES
                   </a>
                 </div>
@@ -83,7 +90,7 @@ export default function GameStore() {
                 <i className="fab fa-windows fa-2x"></i>
                 <div className="d-block">
                   <h5 className="card-title">PC</h5>
-                  <a href="/#" className="card-text text-danger">
+                  <a id="plat-1" onClick={handlePlatform} href="/#" className="card-text text-danger">
                     VIEW GAMES
                   </a>
                 </div>
@@ -99,10 +106,10 @@ export default function GameStore() {
                 <div key={index} className="col-8 col-sm-6 mt-5">
                   <div className="row justify-content-center">
                     <div className="col-12 col-md-6 game-cover">
-                      <img src={game.cover.url} />
+                      <img src={game.img} />
                     </div>
-                    <div className="col-12 col-md-6 game-preview">
-                      <h5>{game.name}</h5>
+                    <div className="col-12 col-md-6 game-preview m-0 p-0">
+                      <h5>{game.game_title}</h5>
                       <StarRatings
                         // rating={game.rating}
                         rating={3.5}
@@ -111,7 +118,7 @@ export default function GameStore() {
                         numberOfStars={5}
                         name="rating"
                       />
-                      <p className="game-genres">{game.genres.map(genre => (<span className="badge badge-secondary mr-2">{genre}</span>))}</p>
+                      <p className="game-genres">{game.genres.map(genre => (<span className="badge badge-secondary mr-2 mt-3">{genre}</span>))}</p>
                       <p className="game-price">$9.99</p>
                       <button className="btn btn-danger">Add to cart</button>
                     </div>
@@ -130,7 +137,7 @@ export default function GameStore() {
                     onClick={handlePagination}
                     className="page-link"
                     href="#"
-                    tabindex="-1"
+                    tabIndex="-1"
                   >
                     Previous
                   </a>

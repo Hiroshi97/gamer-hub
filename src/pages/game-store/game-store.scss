@@ -71,37 +71,19 @@
   margin-left: 1%;
 }
 
-.game-store-page .game-store-content .game-store-platforms .card .card-body i {
-  padding-right: 10%;
-  border-right: 1px solid white;
-}
+// .game-store-page .game-store-content .game-store-platforms .card .card-body i {
+//   padding-right: 10%;
+//   border-right: 1px solid white;
+// }
 
 .game-store-page .game-store-content .game-store-game-list .game-cover img {
   width: 100%;
-  max-height: 340px;
+  height: 320px;
 }
 
 .game-store-page .game-store-content .game-store-game-list .game-preview {
   font-size: 100%;
 }
-
-// .game-store-page
-//   .game-store-content
-//   .game-store-game-list
-//   .game-preview
-//   .game-price {
-//   position: absolute;
-//   top: 90%;
-// }
-
-// .game-store-page
-//   .game-store-content
-//   .game-store-game-list
-//   .game-preview
-//   button {
-//   position: absolute;
-//   top: 100%;
-// }
 
 @media only screen and (min-width: 844px) {
   .game-store-page
@@ -111,6 +93,7 @@
     .game-price {
     position: absolute;
     bottom: 10%;
+    left: 0;
   }
 
   .game-store-page
@@ -120,5 +103,6 @@
   button {
   position: absolute;
   bottom: 0;
+  left: 0;
 }
 }

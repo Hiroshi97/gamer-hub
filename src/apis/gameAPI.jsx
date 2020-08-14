@@ -1,81 +1,70 @@
-import React from 'react';
-import apicalypse from 'apicalypse';
-import {REQUEST} from '../constants/constants';
+import React from "react";
+import apicalypse from "apicalypse";
+import { REQUEST, GAME_GENRES, GAME_API_KEY } from "../constants/constants";
+import Axios from "axios";
 
-//GET GAMES BASED ON PLATFORM
-export const getGamesBasedOnPlatform = async(platform) => {
-    if (platform === "0")
-        platform = "(6,48,49)";
+export const getGamesBasedOnPlatform = async (platform, page, limit = 0) => {
+  try {
     let fetchGames = [];
-    try {
-        const response = await apicalypse(REQUEST)
-                .fields('name, age_ratings, involved_companies.*, cover.*, genres.*, rating')
-                .where('rating >= 80 & platforms =' + platform + '& cover != null')
-                .offset(20)
-                .limit(4)
-                .sort('popularity', 'asc')
-                .request('/games');
-        fetchGames = response.data;
-        fetchGames.forEach(async (game) => {
-            game.cover.url = "https://" + game.cover.url.split("//")[1].replace("thumb", "1080p");
-            game.rating = game.rating ? (game.rating / 10.0).toFixed(1) : null;
-            if(game.genres && game.genres.length > 0)
-                game.genres = game.genres.reduce(((genres, genre) => genres + " " + genre.name ), "").split(" ").slice(1, 5).join(", ");
-            else game.genres = ''
-                // console.log(game.involved_companies[0]);
-            // const response = await apicalypse(request)
-            //     .fields('name')
-            //     .where('id = ' + game.involved_companies[0].id)
-            //     .limit(4)
-            //     .sort('popularity', 'desc')
-            //     .request('/companies');
-            // game.involve_companies = response.data;
-            // console.log(game.involve_companies);
-        });
-        return fetchGames;
-    } catch (err){
-        console.log(err.response);
-    }
-}
+    if (platform === "0")
+        platform = "1,4919,4920";
+    const url = `https://cors-anywhere.herokuapp.com/https://api.thegamesdb.net/v1/Games/ByPlatformID?apikey=${GAME_API_KEY}&id=${platform}&fields=rating,genres,overview,publishers&include=boxart&page=${page}`;
+    console.log(url);
+    const response = await Axios.get(url);
+    fetchGames = response.data.data.games;
+
+    //Get the boxart
+    let covers = Object.values(response.data.include.boxart.data);
+    console.log(fetchGames);
+    //Get the name of each genre
+    fetchGames = fetchGames.map((game, index) => {
+      if (game.genres && game.genres.length > 0)
+        //Check whether a game has its genres
+        game.genres = game.genres.map((genre) => GAME_GENRES[genre].name);
+      else game.genres = [GAME_GENRES[0].name];
+
+      let cover_img = "";
+
+      //Generate an url of cover img
+      covers[index].some((cover) => {
+        if (cover.side === "front") {
+          cover_img =
+            "https://cdn.thegamesdb.net/images/large/" + cover.filename;
+          return true;
+        }
+      });
+
+      return { ...game, img: cover_img };
+    });
+    
+    //Limit the length of games
+    if (limit)
+        return fetchGames.slice(0, limit);
+    return fetchGames;
+
+  } catch (err) {
+    console.log(err);
+  }
+};
 
 //GET COMING SOON GAME
 export const getComingSoonGames = async () => {
-    const now = Date.now();
-    let coming_soon = [];
-    const response = await apicalypse(REQUEST)
-            .fields('name, cover.*, genres.*, rating')
-            .where(`platforms = 48 & release_dates.date >${now} & cover != null`)
-            .offset(0)
-            .limit(5)
-            .request('/games');
-    coming_soon = response.data;
-    coming_soon.forEach(game => game.cover.url = "https://" + game.cover.url.split("//")[1].replace("thumb", "720p"));
-    coming_soon = coming_soon.map((game, index) => (<img src={game.cover.url} alt={index.toString()} />));
-    return coming_soon;
-}
-
-export const getGamesBasedOnCategory = async (category, page, platform) => {
-    try {
-        let fetchGames = [];
-        let offset = page * 10 - 10;
-        const response = await apicalypse(REQUEST)
-                .fields('name, cover.*, genres.*, rating, summary')
-                .where(`platforms = ${platform} & genres != null & cover != null`)
-                .offset(offset.toString())
-                .limit(10)
-                .sort('popularity', 'desc')
-                .request('/games')
-        fetchGames = response.data;
-        fetchGames.forEach(game => {
-            game.cover.url = "https://" + game.cover.url.split("//")[1].replace("thumb", "720p");
-            game.rating = game.rating / 20.0;
-            if(game.genres && game.genres.length > 0)
-                game.genres = game.genres.map(genre => genre.name);
-            else game.genres = ''
-        })
-        return fetchGames;
-    }
-    catch(err) {
-        console.log(err);
-    }
-}
+  const now = Date.now();
+  let coming_soon = [];
+  const response = await apicalypse(REQUEST)
+    .fields("name, cover.*, genres.*, rating")
+    .where(`platforms = 48 & release_dates.date >${now} & cover != null`)
+    .offset(0)
+    .limit(5)
+    .request("/games");
+  coming_soon = response.data;
+  coming_soon.forEach(
+    (game) =>
+      (game.cover.url =
+        "https://" + game.cover.url.split("//")[1].replace("thumb", "720p"))
+  );
+  coming_soon = coming_soon.map((game, index) => (
+    <img src={game.cover.url} alt={index.toString()} />
+  ));
+  return coming_soon;
+};

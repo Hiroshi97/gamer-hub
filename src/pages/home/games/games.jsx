@@ -4,12 +4,12 @@ import {NavLink } from 'react-router-dom';
 
 export default function Games() {
     const [games, setGames] = useState([]);
-    const [platform, setPlatform] = useState('6');
+    const [platform, setPlatform] = useState('0');
     const isDone = useRef(false);
 
     useEffect(() => {
         isDone.current = false;
-        getGames(platform).then(gamesList => {
+        getGames(platform, 1, 4).then(gamesList => {
             if(!isDone.current)
                 setGames(gamesList);
         });
@@ -19,8 +19,8 @@ export default function Games() {
     const handlePlatformClick = (e) => {
         e.preventDefault();
         console.log(e.target.id)
-        if (platform !== e.target.id)
-            setPlatform(e.target.id);
+        if (platform !== e.target.id.split("-")[1])
+            setPlatform(e.target.id.split("-")[1]);
     }
 
     return (
@@ -29,10 +29,10 @@ export default function Games() {
                 <div className="col-12">
                     <h3 className="d-inline-block title">Choose your platform: </h3>
                     
-                    <NavLink activeClassName={platform === '0' ? 'active': ''} onClick={handlePlatformClick} id="0" to="/#" className="d-inline-block platform-option px-2"><i className="fas fa-th-large pr-1"></i>All</NavLink>
-                    <NavLink activeClassName={platform === '6' ? 'active': ''} onClick={handlePlatformClick} id="6" to="/#" className="d-inline-block platform-option px-2"><i className="fab fa-windows pr-1"></i>PC</NavLink>
-                    <NavLink activeClassName={platform === '48' ? 'active': ''} onClick={handlePlatformClick} id="48" to="/#" className="d-inline-block platform-option px-2"><i className="fab fa-playstation pr-1"></i>Playstation</NavLink>
-                    <NavLink activeClassName={platform === '49' ? 'active': ''} onClick={handlePlatformClick} id="49" to="/#" className="d-inline-block platform-option px-2"><i className="fab fa-xbox pr-1"></i>Xbox</NavLink>
+                    <NavLink activeClassName={platform === '0' ? 'active': ''} onClick={handlePlatformClick} id="plat-0" to="/#" className="d-inline-block platform-option px-2"><i className="fas fa-th-large pr-1"></i>All</NavLink>
+                    <NavLink activeClassName={platform === '1' ? 'active': ''} onClick={handlePlatformClick} id="plat-1" to="/#" className="d-inline-block platform-option px-2"><i className="fab fa-windows pr-1"></i>PC</NavLink>
+                    <NavLink activeClassName={platform === '4919' ? 'active': ''} onClick={handlePlatformClick} id="plat-4919" to="/#" className="d-inline-block platform-option px-2"><i className="fab fa-playstation pr-1"></i>Playstation</NavLink>
+                    <NavLink activeClassName={platform === '4920' ? 'active': ''} onClick={handlePlatformClick} id="plat-4920" to="/#" className="d-inline-block platform-option px-2"><i className="fab fa-xbox pr-1"></i>Xbox</NavLink>
 
                 </div>
             </div>
@@ -41,11 +41,11 @@ export default function Games() {
             {games ? games.map(game => (
                 <div key={game.id}  className="col-6 col-xs-6 col-sm-6 col-md-3 col-lg-3">
                     <div className="game-preview">
-                            <div className="game-cover"><img src={game.cover.url} alt=""/></div>
-                            <h4 className="text-uppercase font-weight-bold game-name">{game.name}</h4>
-                            {game.rating ? <span className="game-rating">{game.rating}</span> : null}
+                            <div className="game-cover"><img src={game.img} alt=""/></div>
+                            <h4 className="text-uppercase font-weight-bold game-name">{game.game_title}</h4>
+                            {/* {game.rating ? <span className="game-rating">{game.rating}</span> : null} */}
                             <div className="game-info">
-                                <p className="game-genres">{game.genres}</p>
+                                <p className="game-genres">{game.genres.map(genre => genre)}</p>
                             </div>
                             <div className="text-center">
                                 <p className="game-price">$9.99</p>
