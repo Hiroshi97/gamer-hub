@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 import { getGamesBasedOnPlatform } from "../../apis/gameAPI";
 import GameStorePagination from "../../components/GameStore/GameStorePagination";
@@ -13,6 +13,7 @@ export default function GameStore() {
 //   const [category, setCategory] = useState("4");
   const [page, setPage] = useState(1);
   useEffect(() => {
+    window.scrollTo(0, 400);
     getGamesBasedOnPlatform(platform, page).then((res) => {
       setList(res);
     });
