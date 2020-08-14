@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Home } from "./pages/home";
 import { Navbar, Footer } from "./pages/templates";
-import { Login, AuthRoute, Signup, Profile, Logout } from "./pages/authentication";
-import Page404 from "./pages/404/404";
-import GameStore from "./pages/game-store/game-store";
+import { Home, Login, Signup, Profile, Logout, Page404, GameStore } from "./pages";
+import AuthRoute from './utils/auth-route';
 import { useSelector } from 'react-redux';
 import "./App.scss";
 

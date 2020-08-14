@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-export default function Category() {
+export default function HomeCategory() {
     return (
         <div className="container game-category mt-5">
             <h3 className="d-inline-block title">Games by category: </h3>

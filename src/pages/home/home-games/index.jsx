@@ -43,9 +43,9 @@ export default function Games() {
                     <div className="game-preview">
                             <div className="game-cover"><img src={game.img} alt=""/></div>
                             <h4 className="text-uppercase font-weight-bold game-name">{game.game_title}</h4>
-                            {/* {game.rating ? <span className="game-rating">{game.rating}</span> : null} */}
+                            {game.rating ? <span className="game-rating">8.5</span> : null}
                             <div className="game-info">
-                                <p className="game-genres">{game.genres.map(genre => genre)}</p>
+                                <p className="game-genres">{game.genres.map(genre => genre + " ")}</p>
                             </div>
                             <div className="text-center">
                                 <p className="game-price">$9.99</p>

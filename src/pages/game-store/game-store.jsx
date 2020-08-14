@@ -103,7 +103,7 @@ export default function GameStore() {
         <div className="row game-store-game-list justify-content-center">
           {list && list.length > 0
             ? list.map((game, index) => (
-                <div key={index} className="col-8 col-sm-6 mt-5">
+                <div key={index} className="col-6 col-sm-6 mt-5">
                   <div className="row justify-content-center">
                     <div className="col-12 col-md-6 game-cover">
                       <img src={game.img} />

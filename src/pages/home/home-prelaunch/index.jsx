@@ -2,7 +2,7 @@ import {Carousel} from '3d-react-carousal';
 import React, {useEffect, useState, useRef} from 'react';
 import { getComingSoonGames as fetchGameData } from '../../../apis/gameAPI';
 
-export default function Prelaunch() {
+export default function HomePrelaunch() {
     const [slides, setSlides]= useState([]);
     const isDone = useRef(false);
     //6 - PC, 48 - PS4, 49 - XBOX ONE, Switch - 130
