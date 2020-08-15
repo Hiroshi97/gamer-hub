@@ -1,11 +1,8 @@
 import React, { useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 import { getGamesBasedOnPlatform } from "../../apis/gameAPI";
-import GameStorePagination from "../../components/GameStore/GameStorePagination";
-import GameStoreGameList from "../../components/GameStore/GameStoreGameList";
+import {GameStoreGallery, GameStoreGameList, GameStorePagination, GameStorePlatformOptions } from '../../components/GameStore';
 import "./game-store.scss";
-import GameStorePlatformOptions from "../../components/GameStore/GameStorePlatformOptions";
-import GameStoreGallery from "../../components/GameStore/GameStoreGallery";
 
 export default function GameStore() {
   const [list, setList] = useState([]);

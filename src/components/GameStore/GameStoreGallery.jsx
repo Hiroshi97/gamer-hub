@@ -8,7 +8,7 @@ export default function GameStoreGallery() {
               <span id="selected-category" className="text-uppercase"></span>{" "}
               GAMES
             </h3>
-            <img src={require("../../../assets/Banner-Image.jpg")} />
+            <img src={require("../../assets/Banner-Image.jpg")} />
           </div>
         </div>
     )
