@@ -1,7 +1,7 @@
-import GameStorePagination from "../../components/GameStore/GameStorePagination";
-import GameStoreGameList from "../../components/GameStore/GameStoreGameList";
+import GameStorePagination from "./GameStorePagination";
+import GameStoreGameList from "./GameStoreGameList";
 
-import GameStorePlatformOptions from "../../components/GameStore/GameStorePlatformOptions";
-import GameStoreGallery from "../../components/GameStore/GameStoreGallery";
+import GameStorePlatformOptions from "./GameStorePlatformOptions";
+import GameStoreGallery from "./GameStoreGallery";
 
 export {GameStorePagination, GameStoreGameList, GameStorePlatformOptions, GameStoreGallery}
