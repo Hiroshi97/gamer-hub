@@ -1,19 +1,28 @@
-import React, {useState, useEffect, useRef} from 'react'
+import React, {useState, useEffect, useRef} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
 import {getGamesBasedOnPlatform as getGames} from '../../../apis/gameAPI';
-import {NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { LoadingSuccessful, Loading } from '../../../actions/LoadingActions';
 
 export default function Games() {
     const [games, setGames] = useState([]);
     const [platform, setPlatform] = useState('0');
     const isDone = useRef(false);
+    const isLoading = useSelector(state =>  state.isLoading);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         isDone.current = false;
+        dispatch(Loading());
         getGames(platform, 1, 4).then(gamesList => {
-            if(!isDone.current)
+            if(!isDone.current) {
                 setGames(gamesList);
+                dispatch(LoadingSuccessful())
+            }
         });
-        return () => {isDone.current = true};
+        return () => {
+            isDone.current = true;
+        };
     }, [platform])
 
     const handlePlatformClick = (e) => {
@@ -38,7 +47,7 @@ export default function Games() {
             </div>
             
             <div className="row mt-3 justify-content-center">
-            {games ? games.map(game => (
+            {games && !isLoading ? games.map(game => (
                 <div key={game.id}  className="col-6 col-xs-6 col-sm-6 col-md-3 col-lg-3">
                     <div className="game-preview">
                             <div className="game-cover"><img src={game.img} alt=""/></div>
@@ -60,7 +69,7 @@ export default function Games() {
                         </div>
                     </div>
                 </div>
-            )) : <div className="col text-center error-no-list"><p>Something wrong. Please try again!</p></div>}
+            )) : <div className="col mt-1"><img className="d-block mx-auto" src="https://mentalapp.org/app/library/images/loading.gif"/></div>}
             </div>
         </div>
     )
