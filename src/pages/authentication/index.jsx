@@ -1,6 +1,6 @@
-import Login from './login/login';
-import Signup from './signup/signup';
-import Profile from './profile/profile';
-import Logout from './logout/logout';
+import Login from './login';
+import Signup from './signup';
+import Profile from './profile';
+import Logout from './logout';
 
 export { Login, Signup, Profile, Logout };

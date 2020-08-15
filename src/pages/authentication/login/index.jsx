@@ -4,7 +4,7 @@ import { userLogin } from "../../../apis/userAPI";
 import { EMAIL_REGEX } from "../../../constants/constants";
 import "./login.scss";
 import { useSelector, useDispatch } from "react-redux";
-import { LoggedIn, LoginSuccessful } from "../../../actions/auth.actions";
+import { LoggedIn, LoginSuccessful } from "../../../actions/AuthActions";
 
 export default function Login(props) {
   const dispatch = useDispatch();

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
-import { LoggedOut, LogoutSuccessful } from '../../../actions/auth.actions';
+import { LoggedOut, LogoutSuccessful } from '../../../actions/AuthActions';
 import {useDispatch} from 'react-redux';
 
 export default function Logout() {

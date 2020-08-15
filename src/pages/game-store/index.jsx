@@ -1,18 +1,25 @@
 import React, { useEffect, useState} from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getGamesBasedOnPlatform } from "../../apis/gameAPI";
 import {GameStoreGallery, GameStoreGameList, GameStorePagination, GameStorePlatformOptions } from '../../components/GameStore';
 import "./game-store.scss";
+import { Loading, LoadingSuccessful } from "../../actions/LoadingActions";
 
 export default function GameStore() {
   const [list, setList] = useState([]);
   const [platform, setPlatform] = useState("4919");
 //   const [category, setCategory] = useState("4");
   const [page, setPage] = useState(1);
+  const dispatch = useDispatch();
+  const isLoading = useSelector(state => state.isLoading);
+
   useEffect(() => {
     window.scrollTo(0, 400);
+    dispatch(Loading());
     getGamesBasedOnPlatform(platform, page).then((res) => {
       setList(res);
+      dispatch(LoadingSuccessful());
     });
   }, [page, platform]);
 
@@ -52,7 +59,7 @@ export default function GameStore() {
         {/* OPTIONS */}
         
         {/* GAME LIST */}
-        <GameStoreGameList list={list}/>
+        <GameStoreGameList list={list} isLoading={isLoading}/>
         {/* PAGINATION */}
         <GameStorePagination page={page} handlePagination={handlePagination}/>
       </div>
