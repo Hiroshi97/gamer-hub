@@ -2,10 +2,10 @@ import React from 'react'
 import StarRatings from "react-star-ratings";
 import PropTypes from 'prop-types';
 
-export default function GameStoreGameList({list}) {
+export default function GameStoreGameList({list, isLoading}) {
     return (
         <div className="row game-store-game-list justify-content-between">
-          {list && list.length > 0
+          {list && list.length > 0 && !isLoading
             ? list.map((game, index) => (
                 <div key={index} className="col-12 col-sm-6 mt-5">
                   <div className="row justify-content-center">
@@ -29,7 +29,7 @@ export default function GameStoreGameList({list}) {
                   </div>
                 </div>
               ))
-            : null}
+            : <div className="col mt-5"><img className="d-block mx-auto" src="https://mentalapp.org/app/library/images/loading.gif"/></div>}
         </div>
     )
 }
