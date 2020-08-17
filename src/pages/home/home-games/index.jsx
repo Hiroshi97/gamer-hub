@@ -37,12 +37,12 @@ export default function Games() {
             <div className="row mt-5 platforms">
                 <div className="col-12">
                     <h3 className="d-inline-block title">Choose your platform: </h3>
-                    
-                    <NavLink activeClassName={platform === '0' ? 'active': ''} onClick={handlePlatformClick} id="plat-0" to="/#" className="d-inline-block platform-option px-2"><i className="fas fa-th-large pr-1"></i>All</NavLink>
-                    <NavLink activeClassName={platform === '1' ? 'active': ''} onClick={handlePlatformClick} id="plat-1" to="/#" className="d-inline-block platform-option px-2"><i className="fab fa-windows pr-1"></i>PC</NavLink>
-                    <NavLink activeClassName={platform === '4919' ? 'active': ''} onClick={handlePlatformClick} id="plat-4919" to="/#" className="d-inline-block platform-option px-2"><i className="fab fa-playstation pr-1"></i>Playstation</NavLink>
-                    <NavLink activeClassName={platform === '4920' ? 'active': ''} onClick={handlePlatformClick} id="plat-4920" to="/#" className="d-inline-block platform-option px-2"><i className="fab fa-xbox pr-1"></i>Xbox</NavLink>
-
+                    <ul className="list-inline">
+                    <li className="list-inline-item"><NavLink activeClassName={platform === '0' ? 'active': ''} onClick={handlePlatformClick} id="plat-0" to="/#" className="platform-option px-2"><i className="fas fa-th-large pr-1"></i>All</NavLink></li>
+                    <li className="list-inline-item"><NavLink activeClassName={platform === '1' ? 'active': ''} onClick={handlePlatformClick} id="plat-1" to="/#" className="platform-option px-2"><i className="fab fa-windows pr-1"></i>PC</NavLink></li>
+                    <li className="list-inline-item"><NavLink activeClassName={platform === '4919' ? 'active': ''} onClick={handlePlatformClick} id="plat-4919" to="/#" className="platform-option px-2"><i className="fab fa-playstation pr-1"></i>Playstation</NavLink></li>
+                    <li className="list-inline-item"><NavLink activeClassName={platform === '4920' ? 'active': ''} onClick={handlePlatformClick} id="plat-4920" to="/#" className="platform-option px-2"><i className="fab fa-xbox pr-1"></i>Xbox</NavLink></li>
+                    </ul>
                 </div>
             </div>
             
