@@ -1,12 +1,14 @@
 .page404 {
-	color: white;
+    color: white;
+    background: linear-gradient(to top, black, rgba(0,0,0,0.8)), url('../../assets/background-login.jpg');
 	.page404-display {
 		padding: 7% 0 7% 0;
 		.text-404 {
-			font-size: 800%;
+            font-size: 800%;
+            color: #d4183b;
 		}
 		.page404-current-location {
-			color: rgb(39, 130, 160);
+			color: #d4183b;
 		}
 		.msg-404 {
 			>p {
