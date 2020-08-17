@@ -5,12 +5,7 @@ import { Link } from "react-router-dom";
 
 export default function Profile() {
   const userInfo = useSelector(state => state.authState.userInfo);
-  const [userData, setUserData] = useState(userInfo);
-
-  useEffect(() => {
-    setUserData(userInfo);
-  }, [])
-
+  console.log(userInfo);
   return (
     <div className="container-fluid h-100 profile-page">
       <div className="container main-page">
@@ -21,8 +16,8 @@ export default function Profile() {
               <img src={require("../../../assets/default-avatar.png")} />
             </div>
             <div className="user-profile-info px-3">
-              <h3 className="user-profile-name font-weight-bold">{userData.displayName}</h3>
-              <p className="user-profile-email">{userData.email}</p>
+              <h3 className="user-profile-name font-weight-bold">{userInfo.displayName}</h3>
+              <p className="user-profile-email">{userInfo.email}</p>
               <button className="btn btn-primary">Edit my profile</button>
               <p className="user-profile-info mt-3">
                 No basic information given

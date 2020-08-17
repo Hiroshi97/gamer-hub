@@ -17,7 +17,7 @@ export default function Page404({location}) {
                 <h1 className="text-404">404</h1>
                 <h2 className="alert-404">No match found for <span className="page404-current-location">{location.pathname}</span></h2>
                 <p className="msg-404">Sorry but we couldn't find the page you are looking for. Please check to make sure you've typed the URL correctly.</p>
-                <button className="btn btn-dark btn-lg" onClick={goBack}><i class="fa fa-arrow-left pr-2" aria-hidden="true"></i>Go back</button>
+                <button className="btn btn-dark btn-lg" onClick={goBack}><i className="fa fa-arrow-left pr-2" aria-hidden="true"></i>Go back</button>
                 </div>
             </div>
         </div>
