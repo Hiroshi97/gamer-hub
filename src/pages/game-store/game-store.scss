@@ -32,7 +32,7 @@
 }
 
 /* Add a color to all links inside the list */
-.game-store-page .game-store-content .game-store-custom-breadcrumbul li a {
+.game-store-page .game-store-content .game-store-custom-breadcrumb ul li a {
   color: white;
   text-decoration: none;
 }
@@ -67,7 +67,7 @@
   content: "";
   width: 20%;
   height: 5px;
-  background: rgb(220, 53, 69);
+  background: #d4183b;
   margin-left: 1%;
 }
 
@@ -76,6 +76,11 @@
 //   border-right: 1px solid white;
 // }
 
+.game-store-page .game-store-content .game-store-platforms .card {
+  background-color: #273138
+  
+}
+
 .game-store-page .game-store-content .game-store-game-list .game-cover img {
   width: 100%;
   height: 320px;
@@ -83,6 +88,10 @@
 
 .game-store-page .game-store-content .game-store-game-list .game-preview {
   font-size: 100%;
+}
+
+.game-store-page .game-store-content .game-store-game-list .game-preview .game-genres .badge {
+  background-color: #313d46;
 }
 
 .game-store-game-list-pagination .pagination >.page-item > .page-link {
@@ -96,8 +105,8 @@
 }
 
 .game-store-game-list-pagination .pagination > li:hover > .page-link, .pagination > .page-item.active >.page-link, .pagination > li:focus > .page-link {
-  border: 2px solid #dc3545;
-  color: #dc3545;
+  border: 2px solid #d4183b;
+  color: #d4183b;
 }
 
 .game-store-game-list-pagination .pagination > .page-item.disabled >.page-link {

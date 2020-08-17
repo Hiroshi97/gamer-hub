@@ -17,7 +17,7 @@ const GameStoreGameList = ({list, isLoading}) => {
                       <StarRatings
                         // rating={game.rating}
                         rating={3.5}
-                        starRatedColor="rgb(220, 53, 69)"
+                        starRatedColor="#d4183b"
                         starDimension="15px"
                         numberOfStars={5}
                         name="rating"

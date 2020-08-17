@@ -27,7 +27,7 @@ const GameStorePlatformOptions = ({handlePlatform}) => {
         <div className="row game-store-platforms mt-3">
         {options.map((option, index) => 
           <div key={index} className="col-md-4 mt-3">
-            <div className="card bg-dark">
+            <div className="card">
               <div className="card-body row justify-content-around align-items-center">
                 <i className={option.icon}></i>
                 <div className="d-block">
