@@ -1,6 +1,7 @@
 import React from 'react'
 
-export default function GameStoreGallery() {
+const GameStoreGallery = () => {
+
     return (
         <div className="row game-store-game-gallery">
           <div className="col-12">
@@ -13,3 +14,5 @@ export default function GameStoreGallery() {
         </div>
     )
 }
+
+export default React.memo(GameStoreGallery)

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
-export default function GameStorePagination({ page, handlePagination }) {
+const GameStorePagination = ({ page, handlePagination }) => {
 
   const handleChangePage = (e) => {
     e.preventDefault();
@@ -82,3 +82,5 @@ GameStorePagination.propTypes = {
     handlePagination: PropTypes.func,
     page: PropTypes.number
   };
+
+  export default React.memo(GameStorePagination);

@@ -23,19 +23,19 @@ export default function GameStore() {
     });
   }, [page, platform]);
 
-  const handlePagination = (e) => {
+  const handlePagination = React.useCallback((e) => {
     e.preventDefault();
     if (e.target.id !== "next" && e.target.id !== "previous")
       setPage(parseInt(e.target.id));
     else if (e.target.id === "next") setPage(page + 1);
     else setPage(page - 1);
-  };
+  }, [page]);
 
-  const handlePlatform = (e) => {
+  const handlePlatform = React.useCallback((e) => {
       e.preventDefault();
       setPage(1);
       setPlatform(e.target.id.split('-')[1]);
-  }
+  }, [platform]);
 
   return (
     <div className="container-fluid game-store-page">

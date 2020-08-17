@@ -2,7 +2,7 @@ import React from 'react'
 import StarRatings from "react-star-ratings";
 import PropTypes from 'prop-types';
 
-export default function GameStoreGameList({list, isLoading}) {
+const GameStoreGameList = ({list, isLoading}) => {
     return (
         <div className="row game-store-game-list justify-content-between">
           {list && list.length > 0 && !isLoading
@@ -37,3 +37,5 @@ export default function GameStoreGameList({list, isLoading}) {
 GameStoreGameList.propTypes = {
     list: PropTypes.array
   };
+
+  export default React.memo(GameStoreGameList);

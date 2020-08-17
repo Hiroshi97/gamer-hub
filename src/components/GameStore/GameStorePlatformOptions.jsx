@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types';
 
-export default function GameStorePlatformOptions({handlePlatform}) {
+const GameStorePlatformOptions = ({handlePlatform}) => {
     const options = [
         {
             id: "plat-1",
@@ -25,8 +25,8 @@ export default function GameStorePlatformOptions({handlePlatform}) {
     }
     return (
         <div className="row game-store-platforms mt-3">
-        {options.map(option => 
-          <div className="col-md-4 mt-3">
+        {options.map((option, index) => 
+          <div key={index} className="col-md-4 mt-3">
             <div className="card bg-dark">
               <div className="card-body row justify-content-around align-items-center">
                 <i className={option.icon}></i>
@@ -48,3 +48,5 @@ export default function GameStorePlatformOptions({handlePlatform}) {
 GameStorePlatformOptions.propTypes = {
   handlePlatform: PropTypes.func,
 }
+
+export default React.memo(GameStorePlatformOptions);
