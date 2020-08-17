@@ -1,34 +1,40 @@
 .profile-page {
-    color: white;
-    font-family: Nunito;
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.8)), url("../../../assets/profile-background.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    padding: 10% 3% 10% 3%;
-    font-size: 100%;
+	color: white;
+	font-family: Nunito;
+	background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.8)), url("../../../assets/profile-background.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	padding: 10% 3% 10% 3%;
+	font-size: 100%;
+	.main-page {
+		background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), white;
+		.user-profile {
+			.user-profile-basic-info {
+				.user-profile-avatar {
+					max-width: 200px;
+					height: auto;
+					img {
+						max-width: 100%;
+					}
+				}
+			}
+			.user-profile-addtional-info {
+				.profile-sub-menu {
+					// list-style-type: none;
+					padding: 0;
+				}
+			}
+		}
+	}
 }
-
-.profile-page .main-page {
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), white;
-}
-
-.profile-page .main-page .user-profile .user-profile-basic-info .user-profile-avatar {
-    max-width: 200px;
-    height: auto;
-}
-
-.profile-page .main-page .user-profile .user-profile-basic-info .user-profile-avatar img{
-    max-width: 100%;
-}
-
-.profile-page .main-page .user-profile .user-profile-addtional-info .profile-sub-menu{
-    // list-style-type: none;
-    padding: 0;
-}
-
-@media only screen and (max-width: 991px){
-    .profile-page .user-profile .user-profile-basic-info .user-profile-info {
-        text-align: center;
-    }
-
+@media only screen and (max-width: 991px) {
+	.profile-page {
+		.user-profile {
+			.user-profile-basic-info {
+				.user-profile-info {
+					text-align: center;
+				}
+			}
+		}
+	}
 }

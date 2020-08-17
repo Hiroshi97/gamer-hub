@@ -1,153 +1,165 @@
 .game-store-page {
-  font-family: Nunito;
-  color: white;
+	font-family: Nunito;
+	color: white;
+	.game-store-content {
+		padding: 5% 0 0 0;
+		.game-store-custom-breadcrumb {
+			ul {
+				padding: 10px 16px;
+				list-style: none;
+				background-color: transparent;
+				li {
+					display: inline;
+					font-size: 14px;
+					+ {
+						li {
+							&:before {
+								padding: 8px;
+								color: white;
+								content: "/\00a0";
+							}
+						}
+					}
+					a {
+						color: white;
+						text-decoration: none;
+						&:hover {
+							opacity: 0.7;
+							text-decoration: underline;
+						}
+					}
+				}
+			}
+		}
+		.game-store-game-gallery {
+			img {
+				width: 100%;
+			}
+			.game-store-category-name {
+				font-size: 160%;
+				&::after {
+					display: inline-block;
+					content: "";
+					width: 20%;
+					height: 5px;
+					background: #d4183b;
+					margin-left: 1%;
+				}
+			}
+		}
+		.game-store-platforms {
+			.card {
+				background-color: #273138;
+			}
+		}
+		.game-store-game-list {
+			.game-cover {
+				img {
+					width: 100%;
+					height: 320px;
+				}
+			}
+			.game-preview {
+				font-size: 100%;
+				.game-genres {
+					.badge {
+						background-color: #313d46;
+					}
+				}
+			}
+		}
+	}
 }
-
-.game-store-page .game-store-content {
-  padding: 5% 0 0 0;
-}
-
-.game-store-page .game-store-content .game-store-custom-breadcrumb ul {
-  padding: 10px 16px;
-  list-style: none;
-  background-color: transparent;
-}
-
-/* Display list items side by side */
-.game-store-page .game-store-content .game-store-custom-breadcrumb ul li {
-  display: inline;
-  font-size: 14px;
-}
-
-/* Add a slash symbol (/) before/behind each list item */
-.game-store-page
-  .game-store-content
-  .game-store-custom-breadcrumb
-  ul
-  li
-  + li:before {
-  padding: 8px;
-  color: white;
-  content: "/\00a0";
-}
-
-/* Add a color to all links inside the list */
-.game-store-page .game-store-content .game-store-custom-breadcrumb ul li a {
-  color: white;
-  text-decoration: none;
-}
-
-/* Add a color on mouse-over */
-.game-store-page
-  .game-store-content
-  .game-store-custom-breadcrumb
-  ul
-  li
-  a:hover {
-  opacity: 0.7;
-  text-decoration: underline;
-}
-
-.game-store-page .game-store-content .game-store-game-gallery img {
-  width: 100%;
-}
-
-.game-store-page
-  .game-store-content
-  .game-store-game-gallery
-  .game-store-category-name {
-  font-size: 160%;
-}
-
-.game-store-page
-  .game-store-content
-  .game-store-game-gallery
-  .game-store-category-name::after {
-  display: inline-block;
-  content: "";
-  width: 20%;
-  height: 5px;
-  background: #d4183b;
-  margin-left: 1%;
-}
-
-// .game-store-page .game-store-content .game-store-platforms .card .card-body i {
-//   padding-right: 10%;
-//   border-right: 1px solid white;
+// // {
+// 	.game-store-page {
+// 		.game-store-content {
+// 			.game-store-platforms {
+// 				.card {
+// 					.card-body {
+// 						i {
+// 							// padding-right: 10%;
+// 							// border-right: 1px solid white;
+// 						}
+// 					}
+// 				}
+// 			}
+// 		}
+// 	}
 // }
-
-.game-store-page .game-store-content .game-store-platforms .card {
-  background-color: #273138
-  
-}
-
-.game-store-page .game-store-content .game-store-game-list .game-cover img {
-  width: 100%;
-  height: 320px;
-}
-
-.game-store-page .game-store-content .game-store-game-list .game-preview {
-  font-size: 100%;
-}
-
-.game-store-page .game-store-content .game-store-game-list .game-preview .game-genres .badge {
-  background-color: #313d46;
-}
-
-.game-store-game-list-pagination .pagination >.page-item > .page-link {
-  border-radius: 50% !important;
-  margin: 0 5px;
-  background-color: transparent;
-  border: 3px solid transparent;
-  color: white;
-  outline: 0;
-  padding: 10px 12px 10px 12px;
-}
-
-.game-store-game-list-pagination .pagination > li:hover > .page-link, .pagination > .page-item.active >.page-link, .pagination > li:focus > .page-link {
-  border: 2px solid #d4183b;
-  color: #d4183b;
-}
-
-.game-store-game-list-pagination .pagination > .page-item.disabled >.page-link {
-  color: grey;
+.game-store-game-list-pagination {
+	.pagination {
+		>.page-item {
+			>.page-link {
+				border-radius: 50% !important;
+				margin: 0 5px;
+				background-color: transparent;
+				border: 3px solid transparent;
+				color: white;
+				outline: 0;
+				padding: 10px 12px 10px 12px;
+			}
+		}
+		>li {
+			&:hover {
+				>.page-link {
+					border: 2px solid #d4183b;
+					color: #d4183b;
+				}
+			}
+		}
+		>.page-item.disabled {
+			>.page-link {
+				color: grey;
+			}
+    }
+    >.page-item.active {
+      >.page-link {
+        border: 2px solid #d4183b;
+        color: #d4183b;
+      }
+    }
+    >li {
+      &:focus {
+        >.page-link {
+          border: 2px solid #d4183b;
+          color: #d4183b;
+        }
+      }
+    }
+	}
 }
 
 @media only screen and (min-width: 845px) {
-  .game-store-page
-    .game-store-content
-    .game-store-game-list
-    .game-preview
-    .game-price {
-    position: absolute;
-    bottom: 10%;
-    left: 0;
-  }
-
-    .game-store-page
-    .game-store-content
-    .game-store-game-list
-    .game-preview
-    button {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-  }
-
-  .game-store-page
-    .game-store-content
-    .game-store-game-list
-    .game-preview {
-      padding-left: 0;
-    }
+	.game-store-page {
+		.game-store-content {
+			.game-store-game-list {
+				.game-preview {
+					.game-price {
+						position: absolute;
+						bottom: 10%;
+						left: 0;
+					}
+					button {
+						position: absolute;
+						bottom: 0;
+						left: 0;
+					}
+					padding-left: 0;
+				}
+			}
+		}
+	}
 }
-
 @media only screen and (max-width: 844px) {
-  .game-store-page
-  .game-store-content
-  .game-store-game-list
-  .game-preview
-  .game-title {
-  margin-top: 3%;
-}
+	.game-store-page {
+		.game-store-content {
+			.game-store-game-list {
+				.game-preview {
+					.game-title {
+						margin-top: 3%;
+					}
+				}
+			}
+		}
+	}
 }
