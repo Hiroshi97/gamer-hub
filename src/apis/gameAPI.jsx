@@ -9,13 +9,13 @@ export const getGamesBasedOnPlatform = async (platform, page, limit = 0) => {
     if (platform === "0")
         platform = "1,4919,4920";
     const url = `https://cors-anywhere.herokuapp.com/https://api.thegamesdb.net/v1/Games/ByPlatformID?apikey=${GAME_API_KEY}&id=${platform}&fields=rating,genres,overview,publishers&include=boxart&page=${page}`;
-    console.log(url);
+
     const response = await Axios.get(url);
     fetchGames = response.data.data.games;
 
     //Get the boxart
     let covers = Object.values(response.data.include.boxart.data);
-    console.log(fetchGames);
+
     //Get the name of each genre
     fetchGames = fetchGames.map((game, index) => {
       if (game.genres && game.genres.length > 0)
