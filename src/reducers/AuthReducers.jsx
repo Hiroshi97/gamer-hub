@@ -16,6 +16,7 @@ const AuthReducer = (state = initialState, action) => {
         ...state,
         result: false,
       };
+      
     case "LOGIN_SUCCESSFUL":
       return {
         userInfo: action.payload,

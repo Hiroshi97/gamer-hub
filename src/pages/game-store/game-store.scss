@@ -35,17 +35,6 @@
 			img {
 				width: 100%;
 			}
-			.game-store-category-name {
-				font-size: 160%;
-				&::after {
-					display: inline-block;
-					content: "";
-					width: 20%;
-					height: 5px;
-					background: #d4183b;
-					margin-left: 1%;
-				}
-			}
 		}
 		.game-store-platforms {
 			.card {

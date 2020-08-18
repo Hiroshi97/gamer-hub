@@ -1,14 +1,12 @@
 import React from 'react'
+import PageTitle from '../PageTitle'
 
 const GameStoreGallery = () => {
 
     return (
         <div className="row game-store-game-gallery">
           <div className="col-12">
-            <h3 className="game-store-category-name font-weight-bold">
-              <span id="selected-category" className="text-uppercase"></span>{" "}
-              GAMES
-            </h3>
+            <PageTitle name="GAMES"/>
             <img src={require("../../assets/Banner-Image.jpg")} />
           </div>
         </div>
