@@ -34,14 +34,26 @@
     }
 }
 
-.cart-page .cart-content .cart-table img {
+.cart-page {
+    background: linear-gradient(to top, black, rgba(0,0,0,0.8)), url('../../assets/background-login.jpg');
+}
+
+.cart-page .cart-content .cart-table .non-empty-table img {
     width: 15%;
     margin-right: 2%;
 }
 
 
-.cart-page .cart-content .cart-table td button {
+.cart-page .cart-content .cart-table .non-empty-table td button {
     outline: 0;
     background-color: transparent;
     border: none;
+}
+
+.cart-page .cart-content .empty-cart {
+    padding-bottom: 10%;
+    img {
+        width: 25%;
+        padding: 5% 2% 3% 2%;
+    }
 }
