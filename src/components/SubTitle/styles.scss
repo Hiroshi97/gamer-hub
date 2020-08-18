@@ -1,0 +1,19 @@
+.sub-title {
+  font-size: 160%;
+  position: relative;
+  margin-bottom: 1%;
+  &::after {
+    display: inline-block;
+    content: "";
+    width: 70%;
+    height: 5px;
+    background: #273138;
+  }
+  h4 {
+    position: absolute;
+    background: linear-gradient(black, rgba(0,0,0,0.5));
+    padding: 0 12px 0 12px;
+    top: 20%;
+    left: 3%;
+  }
+}
