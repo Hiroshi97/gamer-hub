@@ -1,0 +1,47 @@
+.cart-page {
+	font-family: Nunito;
+	color: white;
+	.cart-content {
+		padding: 5% 0 0 0;
+		.cart-custom-breadcrumb {
+			ul {
+				padding: 10px 16px;
+				list-style: none;
+				background-color: transparent;
+				li {
+					display: inline;
+					font-size: 14px;
+					+ {
+						li {
+							&:before {
+								padding: 8px;
+								color: white;
+								content: "/\00a0";
+							}
+						}
+					}
+					a {
+						color: white;
+						text-decoration: none;
+						&:hover {
+							opacity: 0.7;
+							text-decoration: underline;
+						}
+					}
+				}
+			}
+        }
+    }
+}
+
+.cart-page .cart-content .cart-table img {
+    width: 15%;
+    margin-right: 2%;
+}
+
+
+.cart-page .cart-content .cart-table td button {
+    outline: 0;
+    background-color: transparent;
+    border: none;
+}

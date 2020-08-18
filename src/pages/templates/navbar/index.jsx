@@ -4,6 +4,7 @@ import { Link} from "react-router-dom";
 import {useSelector} from "react-redux";
 export default function Navbar() {
   const isLoggedIn = useSelector(state => state.authState.result);
+  const numberItemCart = useSelector(state => state.cartState.length);
   return (
     <nav className="navbar navbar-expand-lg navbar-dark py-0">
       <Link className="navbar-brand" to="/">
@@ -60,9 +61,9 @@ export default function Navbar() {
           </li>)}
 
           <li className="nav-item cart">
-            <Link className="nav-link" to="#">
+            <Link className="nav-link" to="/cart">
               <i className="fas fa-shopping-cart cart-icon pr-1"></i>
-              <span className="badge" id="cart-count">0</span>
+              <span className="badge" id="cart-count">{numberItemCart}</span>
               {/* <span className="nav-item-text">Cart</span> */}
             </Link>
           </li>
