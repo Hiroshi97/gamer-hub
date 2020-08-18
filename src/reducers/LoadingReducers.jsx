@@ -1,5 +1,5 @@
-export default (state = false, { type }) => {
-    switch (type) {
+export default (state = false, action) => {
+    switch (action.type) {
 
     case "LOADING":
         return true;
