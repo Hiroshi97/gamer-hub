@@ -1,15 +1,16 @@
 import React from "react";
-import CartTableHead from "./CartTableHead";
+import CartTableHeader from "./CartTableHeader";
 import CartTableItem from "./CartTableItem";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-export default function CartTable({currCart, removeItem, updateQty}) {
+const CartTable = ({currCart, removeItem, updateQty}) => {
 
   return (
     <div className="cart-table">
       {currCart && currCart.length > 0 ? (
         <table className="non-empty-table table table-dark ">
-          <CartTableHead />
+          <CartTableHeader />
           <tbody>
             {currCart.map((item) => (
               <CartTableItem
@@ -33,3 +34,11 @@ export default function CartTable({currCart, removeItem, updateQty}) {
     </div>
   );
 }
+
+CartTable.propTypes = {
+  currCart: PropTypes.array,
+  removeItem: PropTypes.func,
+  updateQty: PropTypes.func
+};
+
+export default React.memo(CartTable);

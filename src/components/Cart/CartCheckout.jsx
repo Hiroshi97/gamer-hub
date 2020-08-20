@@ -1,12 +1,8 @@
 import React from "react";
 import SubTitle from "../SubTitle";
+import PropTypes from "prop-types";
 
-const CartCheckout = ({ currCart }) => {
-  const calculateTotalPrice = () => {
-    return currCart
-      .reduce((total, item) => total + item.qty * item.price, 0)
-      .toFixed(2);
-  };
+const CartCheckout = ({ total }) => {
 
   return (
     <div className="cart-checkout pb-5">
@@ -25,7 +21,7 @@ const CartCheckout = ({ currCart }) => {
             </td>
             <td className="col-6 d-flex align-items-center justify-content-between">
               <h5>Total:</h5>
-              <h5>{"$" + calculateTotalPrice()}</h5>
+              <h5>{"$" + total}</h5>
             </td>
           </tr>
         </tbody>
@@ -33,6 +29,10 @@ const CartCheckout = ({ currCart }) => {
       <button className="btn btn-danger text-uppercase">checkout</button>
     </div>
   );
+};
+
+CartCheckout.propTypes = {
+  total: PropTypes.number
 };
 
 export default React.memo(CartCheckout);

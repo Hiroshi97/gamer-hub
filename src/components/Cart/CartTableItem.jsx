@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 
 const CartTableItem = ({ item, removeItem, updateQty }) => {
   
@@ -41,6 +42,12 @@ const CartTableItem = ({ item, removeItem, updateQty }) => {
       </td>
     </tr>
   );
+};
+
+CartTableItem.propTypes = {
+  item: PropTypes.object,
+  removeItem: PropTypes.func,
+  updateQty: PropTypes.func
 };
 
 export default React.memo(CartTableItem);

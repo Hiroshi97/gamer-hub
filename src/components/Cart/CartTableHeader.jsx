@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function CartTableHead() {
+const CartTableHeader = () => {
   return (
     <thead>
       <tr>
@@ -21,3 +21,5 @@ export default function CartTableHead() {
     </thead>
   );
 }
+
+export default React.memo(CartTableHeader);
