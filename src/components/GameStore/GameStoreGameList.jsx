@@ -1,8 +1,9 @@
 import React from "react";
-import StarRatings from "react-star-ratings";
 import PropTypes from "prop-types";
 import { AddItem } from "../../actions/CartActions";
 import { useDispatch } from "react-redux";
+import Rating from "react-rating";
+
 const GameStoreGameList = ({ list, isLoading }) => {
   const dispatch = useDispatch();
   return (
@@ -16,13 +17,14 @@ const GameStoreGameList = ({ list, isLoading }) => {
               </div>
               <div className="col-12 col-md-6 game-preview">
                 <h5 className="game-title">{game.game_title}</h5>
-                <StarRatings
-                  rating={3.5}
-                  starRatedColor="#d4183b"
-                  starDimension="15px"
-                  numberOfStars={5}
-                  name="rating"
+                <Rating
+                  readonly
+                  fractions={2}
+                  emptySymbol={<i className="text-danger far fa-star"></i>}
+                  fullSymbol={<i className="text-danger fas fa-star"></i>}
+                  initialRating={3.5}
                 />
+
                 <p className="game-genres">
                   {game.genres.map((genre, index) => (
                     <span
