@@ -2,7 +2,7 @@ import React, { useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getGamesBasedOnPlatform } from "../../apis/gameAPI";
-import {GameStoreGallery, GameStoreGameList, GameStorePagination, GameStorePlatformOptions } from '../../components/GameStore';
+import {GameStoreHeader, GameStoreGameList, GameStorePagination, GameStorePlatformOptions } from '../../components/GameStore';
 import "./game-store.scss";
 import { Loading, LoadingSuccessful } from "../../actions/LoadingActions";
 
@@ -53,7 +53,7 @@ export default function GameStore() {
           </ul>
         </div>
         {/* GALLERY */}
-        <GameStoreGallery />
+        <GameStoreHeader />
         {/* PLATFORMS */}
         <GameStorePlatformOptions handlePlatform={handlePlatform}/>
         {/* OPTIONS */}

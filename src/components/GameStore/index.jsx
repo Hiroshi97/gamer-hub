@@ -1,6 +1,6 @@
 import GameStorePagination from "./GameStorePagination";
 import GameStoreGameList from "./GameStoreGameList";
 import GameStorePlatformOptions from "./GameStorePlatformOptions";
-import GameStoreGallery from "./GameStoreGallery";
+import GameStoreHeader from "./GameStoreHeader";
 
-export {GameStorePagination, GameStoreGameList, GameStorePlatformOptions, GameStoreGallery}
+export {GameStorePagination, GameStoreGameList, GameStorePlatformOptions, GameStoreHeader}
