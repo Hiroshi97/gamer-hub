@@ -1,5 +1,5 @@
 const initialState = {
-  userInfo: localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : {},
+  userInfo: JSON.parse(localStorage.getItem("user")) || {},
   result: localStorage.getItem("user") ? true : false,
 };
 

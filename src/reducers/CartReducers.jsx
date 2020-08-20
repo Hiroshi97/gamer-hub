@@ -1,6 +1,6 @@
 const initialState = {
-    cart: localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [],
-    length: localStorage.getItem('cart-length') ? parseInt(localStorage.getItem('cart-length')) : 0
+    cart: JSON.parse(localStorage.getItem('cart')) || [],
+    length: parseInt(localStorage.getItem('cart-length')) || 0
 }
 
 export default (state = initialState, action) => {
