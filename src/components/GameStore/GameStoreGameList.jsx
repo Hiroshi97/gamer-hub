@@ -19,9 +19,8 @@ const GameStoreGameList = ({ list, isLoading }) => {
                 <h5 className="game-title">{game.game_title}</h5>
                 <Rating
                   readonly
-                  fractions={2}
-                  emptySymbol={<i className="text-danger far fa-star"></i>}
-                  fullSymbol={<i className="text-danger fas fa-star"></i>}
+                  emptySymbol={<i className="text-danger far fa-star mr-2"></i>}
+                  fullSymbol={<i className="text-danger fas fa-star mr-2"></i>}
                   initialRating={3.5}
                 />
 
