@@ -45,7 +45,7 @@ export default function Cart() {
             </li>
             <li>
               <Link to="#" className="text-white active">
-                Store
+                Cart
               </Link>
             </li>
           </ul>
