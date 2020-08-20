@@ -4,7 +4,7 @@ export default (state = false, action) => {
     case "LOADING":
         return true;
     
-    case "LOADING_SUCCESSFUL":
+    case "DONE":
         return false;
         
     default:

@@ -3,5 +3,5 @@ export const Loading = () => ({
 })
 
 export const LoadingSuccessful = () => ({
-    type: "LOADING_SUCCESSFUL"
+    type: "DONE"
 })
