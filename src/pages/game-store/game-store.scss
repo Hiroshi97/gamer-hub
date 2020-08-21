@@ -152,3 +152,17 @@
 		}
 	}
 }
+@media only screen and (max-width: 575px) {
+	.game-store-page {
+		.game-store-content {
+			.game-store-game-list {
+				.game-cover {
+					img {
+						width: 100%;
+						height: 100%;
+					}
+				}
+			}
+		}
+	}
+}
