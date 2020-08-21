@@ -1,5 +1,7 @@
 import React from 'react'
+import PropTypes from "prop-types";
 import './styles.scss';
+
 export default function SubTitle({title}) {
     return (
         <div className="sub-title">
@@ -7,3 +9,7 @@ export default function SubTitle({title}) {
         </div>
     )
 }
+
+SubTitle.propTypes = {
+    title: PropTypes.string,
+  };

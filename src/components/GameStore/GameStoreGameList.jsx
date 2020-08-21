@@ -70,6 +70,7 @@ const GameStoreGameList = ({ list, isLoading }) => {
 
 GameStoreGameList.propTypes = {
   list: PropTypes.array,
+  isLoading: PropTypes.bool,
 };
 
 export default React.memo(GameStoreGameList);
