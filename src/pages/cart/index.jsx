@@ -25,9 +25,9 @@ export default function Cart() {
 
   useEffect(() => {
     const calculateTotalPrice = () => {
-      return currCart
+      return parseFloat(currCart
         .reduce((total, item) => total + item.qty * item.price, 0)
-        .toFixed(2);
+        .toFixed(2));
     };
     
     setTotal(calculateTotalPrice());
@@ -35,7 +35,7 @@ export default function Cart() {
 
   return (
     <div className="container-fluid cart-page">
-      <div className="container cart-content">
+      <div className="container cart-content pt-5">
         <div className="row cart-custom-breadcrumb">
           <ul>
             <li>

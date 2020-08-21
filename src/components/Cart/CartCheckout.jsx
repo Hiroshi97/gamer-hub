@@ -3,25 +3,25 @@ import SubTitle from "../SubTitle";
 import PropTypes from "prop-types";
 
 const CartCheckout = ({ total }) => {
-
   return (
-    <div className="cart-checkout pb-5">
+    <div className="cart-checkout pb-5 table-responsive">
       <SubTitle title="TOTAL" />
-      <table className="table table-dark">
+      <table className="cart-checkout-table table table-dark">
         <tbody>
-          <tr className="d-flex">
-            <td className="col-2 border-right d-flex align-items-center justify-content-between">
-              <h5>Subtotal:</h5>
-              <h5>$0</h5>
+          <tr>
+            <td className="col-4 border-right align-middle">
+              <p className="d-inline-block float-left">Total:</p>
+              <p className="d-inline-block float-right">{"$" + total}</p>
             </td>
-            <td className="col-4 border-right align-items-center d-flex">
-              <select className="form-control" id="additionalOptions">
+            
+            <td className="col-4 border-right align-middle">
+              <select id="additionalOptions">
                 <option>Shipping</option>
               </select>
             </td>
-            <td className="col-6 d-flex align-items-center justify-content-between">
-              <h5>Total:</h5>
-              <h5>{"$" + total}</h5>
+            <td className="col-4 align-middle">
+              <p className="d-inline-block float-left">Subtotal:</p>
+              <p className="d-inline-block float-right">$0</p>
             </td>
           </tr>
         </tbody>
@@ -32,7 +32,7 @@ const CartCheckout = ({ total }) => {
 };
 
 CartCheckout.propTypes = {
-  total: PropTypes.number
+  total: PropTypes.number,
 };
 
 export default React.memo(CartCheckout);
