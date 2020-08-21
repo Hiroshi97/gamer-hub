@@ -9,7 +9,7 @@ const CartTable = ({currCart, removeItem, updateQty}) => {
   return (
     <div className="cart-table">
       {currCart && currCart.length > 0 ? (
-        <table className="non-empty-table table table-dark ">
+        <table className="non-empty-table table table-hover table-dark ">
           <CartTableHeader />
           <tbody>
             {currCart.map((item) => (

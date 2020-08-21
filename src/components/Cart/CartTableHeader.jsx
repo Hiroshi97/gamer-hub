@@ -4,19 +4,19 @@ const CartTableHeader = () => {
   return (
     <thead>
       <tr>
-        <th className="text-center" scope="col">
+        <th className="col text-center" scope="col">
           Product
         </th>
-        <th className="text-center" scope="col">
+        <th className="col text-center" scope="col">
           Price
         </th>
-        <th className="text-center" scope="col">
+        <th className="col text-center" scope="col">
           Quantity
         </th>
-        <th className="text-center" scope="col">
+        <th className="col text-center" scope="col">
           Total
         </th>
-        <th className="text-center"></th>
+        <th className="col text-center" scope="col"></th>
       </tr>
     </thead>
   );

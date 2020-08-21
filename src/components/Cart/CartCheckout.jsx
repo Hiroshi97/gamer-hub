@@ -4,24 +4,24 @@ import PropTypes from "prop-types";
 
 const CartCheckout = ({ total }) => {
   return (
-    <div className="cart-checkout pb-5 table-responsive">
+    <div className="cart-checkout pb-5">
       <SubTitle title="TOTAL" />
       <table className="cart-checkout-table table table-dark">
         <tbody>
           <tr>
-            <td className="col-4 border-right align-middle">
-              <p className="d-inline-block float-left">Total:</p>
-              <p className="d-inline-block float-right">{"$" + total}</p>
+            <td className="col-2 border-right align-middle">
+              <p className="d-inline-block float-left">Subtotal:</p>
+              <p className="d-inline-block float-right">$0</p>
             </td>
-            
-            <td className="col-4 border-right align-middle">
+            <td className="col-2 border-right align-middle text-center">
               <select id="additionalOptions">
                 <option>Shipping</option>
               </select>
             </td>
-            <td className="col-4 align-middle">
-              <p className="d-inline-block float-left">Subtotal:</p>
-              <p className="d-inline-block float-right">$0</p>
+
+            <td className="col-8 align-middle">
+              <p className="d-inline-block float-left">Total:</p>
+              <p className="d-inline-block float-right">{"$" + total}</p>
             </td>
           </tr>
         </tbody>
