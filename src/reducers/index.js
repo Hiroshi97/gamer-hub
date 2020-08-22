@@ -1,11 +1,11 @@
-import AuthReducer from './AuthReducers';
-import LoadingReducers from './LoadingReducers';
+import AuthReducers from './AuthReducers';
+import GameReducers from './GameReducers';
 import CartReducers from './CartReducers';
 import { combineReducers } from 'redux';
 
 const allReducers = combineReducers({
-    authState: AuthReducer,
-    isLoading: LoadingReducers,
+    authState: AuthReducers,
+    gameState: GameReducers,
     cartState: CartReducers
 })
 

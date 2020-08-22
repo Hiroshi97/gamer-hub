@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { getGamesBasedOnPlatform } from "../../apis/gameAPI";
 import {GameStoreHeader, GameStoreGameList, GameStorePagination, GameStorePlatformOptions } from '../../components/GameStore';
 import "./game-store.scss";
-import { Loading, LoadingSuccessful } from "../../actions/LoadingActions";
+import { FetchGameRequest, FetchGameSuccessful } from "../../actions/GameActions";
 
 export default function GameStore() {
   const [list, setList] = useState([]);
@@ -12,14 +12,14 @@ export default function GameStore() {
 //   const [category, setCategory] = useState("4");
   const [page, setPage] = useState(1);
   const dispatch = useDispatch();
-  const isLoading = useSelector(state => state.isLoading);
+  const isLoading = useSelector(state => state.gameState.loading);
 
   useEffect(() => {
     window.scrollTo(0, 400);
-    dispatch(Loading());
+    dispatch(FetchGameRequest());
     getGamesBasedOnPlatform(platform, page).then((res) => {
       setList(res);
-      dispatch(LoadingSuccessful());
+      dispatch(FetchGameSuccessful());
     });
   }, [page, platform]);
 

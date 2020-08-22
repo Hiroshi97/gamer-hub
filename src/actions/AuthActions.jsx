@@ -14,3 +14,11 @@ export const LoggedIn = () => ({
 export const LoggedOut = () => ({
   type: "LOGGED_OUT",
 });
+
+export const LoggingIn = () => ({
+  type: "LOGGING_IN",
+});
+
+export const LoggingOut = () => ({
+  type: "LOGGING_OUT",
+});
