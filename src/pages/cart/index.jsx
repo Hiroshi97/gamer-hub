@@ -4,7 +4,7 @@ import PageTitle from "../../components/PageTitle";
 import CartTable from "../../components/Cart/CartTable";
 import CartCheckout from "../../components/Cart/CartCheckout";
 import { useSelector, useDispatch } from "react-redux";
-import { RemoveItem, UpdateItemQty } from "../../actions/CartActions";
+import { RemoveItem, UpdateItemQty, ClearCart } from "../../actions/CartActions";
 import "./cart.scss";
 import { useEffect } from "react";
 
@@ -12,6 +12,10 @@ export default function Cart() {
   const currCart = useSelector((state) => state.cartState.cart);
 
   const dispatch = useDispatch();
+
+  const clearCart = useCallback(() => {
+    dispatch(ClearCart());
+  }, [])
 
   const removeItem = useCallback((id) => {
     dispatch(RemoveItem({ id }));
@@ -56,9 +60,8 @@ export default function Cart() {
           removeItem={removeItem}
           updateQty={updateQty}
         />
-        {/* COUPON */}
         {/* CHECKOUT */}
-        <CartCheckout total={total} />
+        <CartCheckout total={total} clearCart={clearCart}/>
       </div>
     </div>
   );

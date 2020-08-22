@@ -2,9 +2,19 @@ import React from "react";
 import SubTitle from "../SubTitle";
 import PropTypes from "prop-types";
 
-const CartCheckout = ({ total }) => {
+const CartCheckout = ({ total, clearCart }) => {
+  const handleResetCart = () => {
+    clearCart();
+  }
+  
   return (
     <div className="cart-checkout pb-5">
+      <div className="mb-3">
+      <h5 className="text-uppercase">Coupon:</h5>
+      <input className="mr-2" placeholder="Enter coupon code..." type="text"/>
+      <button className="btn btn-sm btn-danger text-uppercase">Apply</button>
+      <button onClick={handleResetCart}className="btn btn-sm btn-light float-right font-weight-bold text-uppercase">Clear Cart</button>
+      </div>
       <SubTitle title="TOTAL" />
       <table className="cart-checkout-table table table-dark">
         <tbody>
@@ -26,7 +36,7 @@ const CartCheckout = ({ total }) => {
           </tr>
         </tbody>
       </table>
-      <button className="btn btn-danger text-uppercase">checkout</button>
+      <button className="btn btn-danger btn-sm text-uppercase">checkout</button>
     </div>
   );
 };

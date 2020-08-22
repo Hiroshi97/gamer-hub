@@ -49,6 +49,13 @@ export default (state = initialState, action) => {
         return { ...state, cart: newCart,  length };
     };
 
+    case "CLEAR_CART": {
+        return {
+            cart: [],
+            length: 0
+        }
+    }
+
     default:
         return state
     }
