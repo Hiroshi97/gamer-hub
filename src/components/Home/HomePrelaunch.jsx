@@ -1,6 +1,6 @@
 import {Carousel} from '3d-react-carousal';
 import React, {useEffect, useState, useRef} from 'react';
-import { getComingSoonGames as fetchGameData } from '../../../apis/gameAPI';
+import { getComingSoonGames as fetchGameData } from '../../apis/gameAPI';
 
 export default function HomePrelaunch() {
     const [slides, setSlides]= useState([]);

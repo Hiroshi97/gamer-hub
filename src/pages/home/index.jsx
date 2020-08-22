@@ -1,8 +1,8 @@
 import React from 'react'
-import HomeSlider from './home-slider';
-import HomeGames from './home-games';
-import HomePrelaunch from './home-prelaunch';
-import HomeCategory from './home-category';
+import HomeSlider from '../../components/Home/HomeSlider';
+import HomeGames from '../../components/Home/HomeGames';;
+import HomePrelaunch from '../../components/Home/HomePrelaunch';;
+import HomeCategory from '../../components/Home/HomeCategory';
 import './home.scss';
 
 export default function Home() {

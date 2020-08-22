@@ -1,8 +1,8 @@
 import React, {useState, useEffect, useRef} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {getGamesBasedOnPlatform as getGames} from '../../../apis/gameAPI';
+import {getGamesBasedOnPlatform as getGames} from '../../apis/gameAPI';
 import { NavLink } from 'react-router-dom';
-import { FetchGameRequest, FetchGameSuccessful } from "../../../actions/GameActions";
+import { FetchGameRequest, FetchGameSuccessful } from "../../actions/GameActions";
 
 export default function Games() {
     const [games, setGames] = useState([]);
