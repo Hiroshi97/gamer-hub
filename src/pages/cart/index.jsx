@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 import { Link } from "react-router-dom";
-import PageTitle from "../../components/PageTitle";
+import PageTitle from "../../components/Reusable/PageTitle";
 import CartTable from "../../components/Cart/CartTable";
 import CartCheckout from "../../components/Cart/CartCheckout";
 import { useSelector, useDispatch } from "react-redux";

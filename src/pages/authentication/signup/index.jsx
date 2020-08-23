@@ -42,6 +42,7 @@ export default function Signup() {
     if (errors.length > 0) {
       setErrors(errors);
     } else {
+      dispatch(LoginRequest);
       userSignUp({email: email.value, password: password.value, name: name.value})
         .then((res) => {
           localStorage.setItem(
@@ -49,7 +50,6 @@ export default function Signup() {
             JSON.stringify(res)
           );
           dispatch(LoginSuccess(res));
-          dispatch(LoggedIn());
           history.push("/");
         })
         .catch((err) => {

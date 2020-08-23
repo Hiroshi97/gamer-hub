@@ -23,7 +23,7 @@ export default (state = initialState, action) => {
         localStorage.setItem('cart', JSON.stringify(newCart));
         localStorage.setItem('cart-length', length.toString());
         return { ...state, cart: newCart,  length };
-    };
+    }
 
     case "REMOVE_ITEM": {
     
@@ -33,7 +33,7 @@ export default (state = initialState, action) => {
         localStorage.setItem('cart', JSON.stringify(newCart));
         localStorage.setItem('cart-length', length.toString());
         return { ...state, cart: newCart,  length };
-    };
+    }
 
     case "UPDATE_QUANTITY": {
         const index = currCart.findIndex(item => item.id === action.payload.id);
@@ -47,7 +47,7 @@ export default (state = initialState, action) => {
         localStorage.setItem('cart', JSON.stringify(newCart));
         localStorage.setItem('cart-length', length.toString());
         return { ...state, cart: newCart,  length };
-    };
+    }
 
     case "CLEAR_CART": {
         return {

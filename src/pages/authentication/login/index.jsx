@@ -6,7 +6,7 @@ import "./login.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { LoginSuccess, LoginRequest } from "../../../actions/AuthActions";
 
-export default function Login(props) {
+export default function Login() {
   const dispatch = useDispatch();
   let email = useRef();
   let password = useRef();

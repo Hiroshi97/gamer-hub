@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Navbar, Footer } from "./pages/templates";
 import { Home, Login, Signup, Profile, Logout, Page404, GameStore, Cart } from "./pages";
 import AuthRoute from './utils/auth-route';
 import { useSelector } from 'react-redux';
 import "./App.scss";
+import GameItem from "./pages/game-item/game-item";
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/store" component={GameStore}/>
+            <Route exact path="/store/game/:id" component={GameItem} />
             <Route exact path="/cart" component={Cart}/>
             <AuthRoute
               exact

@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { AddItem } from "../../actions/CartActions";
 import { useDispatch } from "react-redux";
 import Rating from "react-rating";
+import { Link } from "react-router-dom";
 
 const GameStoreGameList = ({ list, isLoading }) => {
   const dispatch = useDispatch();
@@ -13,7 +14,9 @@ const GameStoreGameList = ({ list, isLoading }) => {
           <div key={index} className="col-12 col-sm-6 mt-5">
             <div className="row justify-content-center">
               <div className="col-12 col-md-6 game-cover">
-                <img src={game.img} />
+                <Link to={`/store/game/${game.id}`}>
+                  <img src={game.img} />
+                </Link>
               </div>
               <div className="col-12 col-md-6 game-preview">
                 <h5 className="game-title">{game.game_title}</h5>

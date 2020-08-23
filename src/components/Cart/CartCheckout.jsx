@@ -1,5 +1,5 @@
 import React from "react";
-import SubTitle from "../SubTitle";
+import SubTitle from "../Reusable/SubTitle";
 import PropTypes from "prop-types";
 
 const CartCheckout = ({ total, clearCart }) => {
@@ -43,6 +43,7 @@ const CartCheckout = ({ total, clearCart }) => {
 
 CartCheckout.propTypes = {
   total: PropTypes.number,
+  clearCart: PropTypes.func
 };
 
 export default React.memo(CartCheckout);
