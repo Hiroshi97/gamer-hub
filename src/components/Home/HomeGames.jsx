@@ -2,7 +2,7 @@ import React, {useState, useEffect, useRef} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {getGamesBasedOnPlatform as getGames} from '../../apis/gameAPI';
 import { NavLink } from 'react-router-dom';
-import { FetchGameRequest, FetchGameSuccessful } from "../../actions/GameActions";
+import { FetchGameRequest, FetchGameSuccess } from "../../actions/GameActions";
 
 export default function Games() {
     const [games, setGames] = useState([]);
@@ -17,7 +17,7 @@ export default function Games() {
         getGames(platform, 1, 4).then(gamesList => {
             if(!isDone.current) {
                 setGames(gamesList);
-                dispatch(FetchGameSuccessful())
+                dispatch(FetchGameSuccess())
             }
         });
         return () => {

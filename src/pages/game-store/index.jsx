@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { getGamesBasedOnPlatform } from "../../apis/gameAPI";
 import {GameStoreHeader, GameStoreGameList, GameStorePagination, GameStorePlatformOptions } from '../../components/GameStore';
 import "./game-store.scss";
-import { FetchGameRequest, FetchGameSuccessful } from "../../actions/GameActions";
+import { FetchGameRequest, FetchGameSuccess } from "../../actions/GameActions";
 
 export default function GameStore() {
   const [list, setList] = useState([]);
@@ -19,7 +19,7 @@ export default function GameStore() {
     dispatch(FetchGameRequest());
     getGamesBasedOnPlatform(platform, page).then((res) => {
       setList(res);
-      dispatch(FetchGameSuccessful());
+      dispatch(FetchGameSuccess());
     });
   }, [page, platform]);
 

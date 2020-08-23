@@ -5,24 +5,25 @@ const initialState = {
 
 const AuthReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "LOGGED_IN":
+    case "LOGIN_REQUEST":
       return {
         ...state,
         result: true,
       };
 
-    case "LOGGED_OUT":
-      return {
-        ...state,
-        result: false,
-      };
-      
-    case "LOGIN_SUCCESSFUL":
+    case "LOGIN_SUCCESS":
       return {
         userInfo: action.payload,
         result: true,
       };
-    case "LOGOUT_SUCCESSFUL":
+
+    case "LOGIN_FAILURE":
+      return {
+        userInfo: action.payload,
+        result: true,
+      };
+
+    case "LOGOUT_SUCCESS":
       return {
         userInfo: {},
         result: false,

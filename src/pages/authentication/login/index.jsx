@@ -4,7 +4,7 @@ import { userLogin } from "../../../apis/userAPI";
 import { EMAIL_REGEX } from "../../../constants/constants";
 import "./login.scss";
 import { useSelector, useDispatch } from "react-redux";
-import { LoggedIn, LoginSuccessful } from "../../../actions/AuthActions";
+import { LoginSuccess, LoginRequest } from "../../../actions/AuthActions";
 
 export default function Login(props) {
   const dispatch = useDispatch();
@@ -21,11 +21,11 @@ export default function Login(props) {
     if (!EMAIL_REGEX.test(email.value)) {
       setError("Invalid email format!");
     } else {
+      dispatch(LoginRequest);
       userLogin(email.value, password.value)
         .then((res) => {
           localStorage.setItem("user", JSON.stringify(res));
-          dispatch(LoginSuccessful(res));
-          dispatch(LoggedIn());
+          dispatch(LoginSuccess(res));
           history.push("/");
         })
         .catch((err) => {

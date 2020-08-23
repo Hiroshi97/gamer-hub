@@ -4,7 +4,7 @@ export default (state = {loading: false}, action) => {
     case "FETCH_GAME_REQUEST":
         return {loading: true}
     
-    case "FETCH_GAME_SUCCESSFUL":
+    case "FETCH_GAME_SUCCESS":
         return {loading: false}
         
     default:
