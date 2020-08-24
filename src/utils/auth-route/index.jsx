@@ -1,5 +1,6 @@
-import React, {Component} from 'react';
+import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 export default function AuthRoute({component: Component, isLoggedIn, ...rest}) {
   return (
@@ -10,3 +11,9 @@ export default function AuthRoute({component: Component, isLoggedIn, ...rest}) {
     />
   );
 }
+
+AuthRoute.propTypes = {
+  component: PropTypes.component,
+  isLoggedIn: PropTypes.bool,
+  location: PropTypes.string
+};
