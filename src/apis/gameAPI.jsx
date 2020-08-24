@@ -28,7 +28,7 @@ export const getGamesBasedOnPlatform = async (platform, page, limit = 0) => {
       covers[index].some((cover) => {
         if (cover.side === "front") {
           cover_img =
-            "https://cdn.thegamesdb.net/images/large/" + cover.filename;
+            "https://cdn.thegamesdb.net/images/medium/" + cover.filename;
           return true;
         }
       });
@@ -66,7 +66,7 @@ export const getGamesById = async (id) => {
     //Generate an url of cover img
     covers[index].some((cover) => {
       if (cover.side === "front") {
-        cover_img = "https://cdn.thegamesdb.net/images/large/" + cover.filename;
+        cover_img = "https://cdn.thegamesdb.net/images/medium/" + cover.filename;
         return true;
       }
     });

@@ -64,7 +64,7 @@ export default function GameItem() {
                 <p className="game-preview-overview">{gameInfo.overview.split('.').slice(0,2).join('.') + "."}</p>
                 <h5 className="font-weight-bold game-preview-price">{"$ 9.99"}</h5>
                 <button
-                  className="btn text-uppercase btn-danger"
+                  className="btn text-uppercase btn-danger mt-1 mb-1 mr-2"
                   onClick={() =>
                     dispatch(
                       AddItem({
@@ -80,7 +80,7 @@ export default function GameItem() {
                   Add to cart <i className="fas fa-shopping-basket"></i>
                 </button>
                 <button
-                  className="btn text-uppercase btn-dark ml-2"
+                  className="btn text-uppercase btn-dark mt-1 mb-1"
                 >
                   Add to wishlist <i className="fas fa-heart"></i>
                 </button>
