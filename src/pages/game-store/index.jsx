@@ -51,7 +51,7 @@ export default function GameStore() {
   return (
     <div className="container-fluid game-store-page">
       <div className="container game-store-content">
-        <div className="row game-store-custom-breadcrumb">
+        <div className="row game-store-custom-breadcrumb mt-4">
           <ul>
             <li>
               <Link to="/" className="text-white">
@@ -59,7 +59,7 @@ export default function GameStore() {
               </Link>
             </li>
             <li>
-              <Link to="#" className="text-white active">
+              <Link to="/store" className="text-white active">
                 Store
               </Link>
             </li>
