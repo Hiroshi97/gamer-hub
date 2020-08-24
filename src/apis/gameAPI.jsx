@@ -46,10 +46,20 @@ export const getGamesBasedOnPlatform = async (platform, page, limit = 0) => {
 
 export const getGamesById = async (id) => {
   let fetchGame = [];
-  const url = `https://cors-anywhere.herokuapp.com/https://api.thegamesdb.net/v1/Games/ByGameID?apikey=${GAME_API_KEY}&id=${id}&fields=rating,genres,overview,publishers&include=boxart`;
+  let fetchImages = [];
 
+  const url = `https://cors-anywhere.herokuapp.com/https://api.thegamesdb.net/v1/Games/ByGameID?apikey=${GAME_API_KEY}&id=${id}&fields=rating,genres,overview,publishers&include=boxart`;
   const response = await Axios.get(url);
   fetchGame = response.data.data.games;
+
+  //Get the screenshots/fanarts
+  const urlImage = `https://cors-anywhere.herokuapp.com/https://api.thegamesdb.net/v1/Games/Images?apikey=${GAME_API_KEY}&games_id=${id}`;
+  const responseImages = await Axios.get(urlImage);
+  fetchImages = Object.values(responseImages.data.data.images)[0];
+
+  //Get an array of images
+  fetchImages = fetchImages.filter((image) => image.type === "screenshot" || image.type === "fanart")
+                            .map((image) => "https://cdn.thegamesdb.net/images/medium/" + image.filename).slice(0,4);
 
   //Get the boxart
   let covers = Object.values(response.data.include.boxart.data);
@@ -71,7 +81,7 @@ export const getGamesById = async (id) => {
       }
     });
 
-    return { ...game, img: cover_img };
+    return { ...game, img: cover_img, gallery: fetchImages };
   });
 
   return fetchGame;
