@@ -1,7 +1,8 @@
 .game-item-page {
   font-family: Nunito;
   color: white;
-  background: linear-gradient(to top, black, rgba(0,0,0,0.8)), url('../../assets/background-login.jpg');
+  background: linear-gradient(to top, black, rgba(0, 0, 0, 0.8)),
+    url("../../assets/background-login.jpg");
   .game-item-content {
     padding: 5% 0 0 0;
     .game-item-custom-breadcrumb {
@@ -38,11 +39,18 @@
         img {
           width: 100%;
         }
+        .game-gallery {
+          .game-gallery-col {
+            img {
+                width: 100%;
+              }
+          }
+        }
       }
 
-      .game-preview {
-        margin: auto;
-      }
+    //   .game-preview {
+    //     margin-top: 5%;
+    //   }
     }
   }
 }
