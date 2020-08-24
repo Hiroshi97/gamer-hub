@@ -1,0 +1,60 @@
+.game-item-page {
+  font-family: Nunito;
+  color: white;
+  background: linear-gradient(to top, black, rgba(0,0,0,0.8)), url('../../assets/background-login.jpg');
+  .game-item-content {
+    padding: 5% 0 0 0;
+    .game-item-custom-breadcrumb {
+      ul {
+        padding: 10px 16px;
+        list-style: none;
+        background-color: transparent;
+        li {
+          display: inline;
+          font-size: 14px;
+          + {
+            li {
+              &:before {
+                padding: 8px;
+                color: white;
+                content: "/\00a0";
+              }
+            }
+          }
+          a {
+            color: white;
+            text-decoration: none;
+            &:hover {
+              opacity: 0.7;
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+
+    .game-item-preview {
+      .game-cover {
+        img {
+          width: 100%;
+        }
+      }
+
+      .game-preview {
+        margin: auto;
+      }
+    }
+  }
+}
+
+@media (max-width: 633px) {
+  .game-item-page {
+    .game-item-content {
+      .game-item-preview {
+        .game-preview {
+          margin-top: 3%;
+        }
+      }
+    }
+  }
+}
