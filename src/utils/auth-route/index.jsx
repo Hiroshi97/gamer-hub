@@ -13,7 +13,7 @@ export default function AuthRoute({component: Component, isLoggedIn, ...rest}) {
 }
 
 AuthRoute.propTypes = {
-  component: PropTypes.component,
+  component: PropTypes.elementType,
   isLoggedIn: PropTypes.bool,
   location: PropTypes.string
 };
