@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import PageTitle from "../../components/Reusable/PageTitle";
 import { useParams, Link } from "react-router-dom";
 import { FetchGameSuccess, FetchGameRequest } from "../../actions/GameActions";
@@ -14,13 +14,20 @@ export default function GameItem() {
   const [gameInfo, setGameInfo] = useState(null);
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.gameState.loading);
-  
+  const isDone = useRef(false);
+
   useEffect(() => {
-    dispatch(FetchGameRequest());
-    getGamesById(id).then((res) => {
-      dispatch(FetchGameSuccess());
-      setGameInfo(res[0]);
-    });
+    isDone.current = false;
+    
+    if (!isDone.current) {
+      dispatch(FetchGameRequest());
+      getGamesById(id).then((res) => {
+        dispatch(FetchGameSuccess());
+        setGameInfo(res[0]);
+      });
+    }
+
+    return () => {isDone.current = true;};
   }, []);
 
   const renderSocialMediaIcons = () => (
@@ -66,17 +73,19 @@ export default function GameItem() {
             <div className="col-xs-12 col-sm-6 game-cover">
               <img src={gameInfo.img} alt="" />
               <div className="row game-gallery">
-                {gameInfo.gallery.length > 0 && gameInfo.gallery.map((image, index) => (
-                  <div
-                    key={index}
-                    className="col-3 mt-3 game-gallery-col"
-                  >
-                    <ModalImage small={image} medium={image} alt={`screenshot-${index}`} />
-                    <div className="gallery-image-overlay text-center">
-                      <i className="far fa-eye"></i>
+                {gameInfo.gallery.length > 0 &&
+                  gameInfo.gallery.map((image, index) => (
+                    <div key={index} className="col-3 mt-3 game-gallery-col">
+                      <ModalImage
+                        small={image}
+                        medium={image}
+                        alt={`screenshot-${index}`}
+                      />
+                      <div className="gallery-image-overlay text-center">
+                        <i className="far fa-eye"></i>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
               </div>
             </div>
             <div className="col-xs-12 col-sm-6 game-preview my-auto">
