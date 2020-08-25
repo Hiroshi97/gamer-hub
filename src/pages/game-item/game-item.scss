@@ -56,7 +56,7 @@
               opacity: 0;
               z-index: 0;
               padding-top: 15%;
-              transition: .2s ease-in-out;
+              transition: 0.2s ease-in-out;
               pointer-events: none;
             }
             &:hover {
@@ -68,11 +68,6 @@
         }
       }
     }
-
-    //   .game-preview {
-    //     margin-top: 5%;
-    //   }
-    //   }
   }
 }
 

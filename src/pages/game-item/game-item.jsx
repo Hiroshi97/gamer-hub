@@ -66,7 +66,7 @@ export default function GameItem() {
             <div className="col-xs-12 col-sm-6 game-cover">
               <img src={gameInfo.img} alt="" />
               <div className="row game-gallery">
-                {gameInfo.gallery.map((image, index) => (
+                {gameInfo.gallery.length > 0 && gameInfo.gallery.map((image, index) => (
                   <div
                     key={index}
                     className="col-3 mt-3 game-gallery-col"
@@ -79,7 +79,7 @@ export default function GameItem() {
                 ))}
               </div>
             </div>
-            <div className="col-xs-12 col-sm-6 game-preview">
+            <div className="col-xs-12 col-sm-6 game-preview my-auto">
               <h4 className="font-weight-bold game-preview-title">
                 {gameInfo.game_title}
               </h4>
