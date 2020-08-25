@@ -40,18 +40,39 @@
           width: 100%;
         }
         .game-gallery {
+          position: relative;
           .game-gallery-col {
             img {
-                width: 100%;
+              width: 100%;
+            }
+            .gallery-image-overlay {
+              position: absolute;
+              display: block;
+              top: 0;
+              left: 15px;
+              width: calc(100% - 30px);
+              height: 100%;
+              background-color: #d4183b;
+              opacity: 0;
+              z-index: 0;
+              padding-top: 15%;
+              transition: .2s ease-in-out;
+              pointer-events: none;
+            }
+            &:hover {
+              .gallery-image-overlay {
+                opacity: 0.5;
               }
+            }
           }
         }
       }
+    }
 
     //   .game-preview {
     //     margin-top: 5%;
     //   }
-    }
+    //   }
   }
 }
 

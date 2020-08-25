@@ -14,7 +14,7 @@ export default function GameItem() {
   const [gameInfo, setGameInfo] = useState(null);
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.gameState.loading);
-
+  
   useEffect(() => {
     dispatch(FetchGameRequest());
     getGamesById(id).then((res) => {
@@ -69,9 +69,12 @@ export default function GameItem() {
                 {gameInfo.gallery.map((image, index) => (
                   <div
                     key={index}
-                    className="col-sm-6 col-3 mt-3 game-gallery-col"
+                    className="col-3 mt-3 game-gallery-col"
                   >
                     <ModalImage small={image} medium={image} alt={`screenshot-${index}`} />
+                    <div className="gallery-image-overlay text-center">
+                      <i className="far fa-eye"></i>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -113,6 +116,7 @@ export default function GameItem() {
               <button className="btn text-uppercase btn-dark mt-1 mb-1">
                 Add to wishlist <i className="fas fa-heart"></i>
               </button>
+
               <div className="game-preview-misc mt-3">
                 <p className="d-block">
                   SKU: 300-200-503
