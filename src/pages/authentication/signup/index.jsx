@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { Link, Redirect, useHistory } from "react-router-dom";
-import { EMAIL_REGEX, NAME_REGEX } from "../../../constants/constants";
+import { EMAIL_REGEX, NAME_REGEX } from "../../../constants";
 import "./signup.scss";
 import { userSignUp } from "../../../api-call/userAPI";
 import {useSelector, useDispatch} from "react-redux";

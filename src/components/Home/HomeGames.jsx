@@ -27,7 +27,6 @@ export default function Games() {
 
     const handlePlatformClick = (e) => {
         e.preventDefault();
-        console.log(e.target.id)
         if (platform !== e.target.id.split("-")[1])
             setPlatform(e.target.id.split("-")[1]);
     }

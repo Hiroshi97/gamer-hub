@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 
 export default function Profile() {
   const userInfo = useSelector(state => state.authState.userInfo);
-  console.log(userInfo);
   return (
     <div className="container-fluid h-100 profile-page">
       <div className="container main-page">

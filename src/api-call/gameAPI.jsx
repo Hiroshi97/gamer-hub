@@ -1,6 +1,6 @@
 import React from "react";
 import apicalypse from "apicalypse";
-import { REQUEST, GAME_GENRES, GAME_API_KEY } from "../constants/constants";
+import { REQUEST, GAME_GENRES, GAME_API_KEY } from "../constants";
 import Axios from "axios";
 
 export const getGamesBasedOnPlatform = async (platform, page, limit = 0) => {
