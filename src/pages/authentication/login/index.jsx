@@ -26,7 +26,6 @@ export default function Login() {
         .then((res) => {
           localStorage.setItem("user", JSON.stringify(res));
           dispatch(LoginSuccess(res));
-          history.push("/");
         })
         .catch((err) => {
           let errorMsg = err.response.data.error.message;

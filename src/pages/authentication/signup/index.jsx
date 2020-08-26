@@ -42,7 +42,7 @@ export default function Signup() {
     if (errors.length > 0) {
       setErrors(errors);
     } else {
-      dispatch(LoginRequest);
+      dispatch(LoginRequest());
       userSignUp({email: email.value, password: password.value, name: name.value})
         .then((res) => {
           localStorage.setItem(
