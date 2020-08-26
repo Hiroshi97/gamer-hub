@@ -50,9 +50,18 @@ export default (state = initialState, action) => {
     }
 
     case "CLEAR_CART": {
+        localStorage.removeItem('cart');
+        localStorage.removeItem('cart-length');
         return {
             cart: [],
             length: 0
+        }
+    }
+
+    case "FETCH_CART": {
+        return {
+            cart: JSON.parse(localStorage.getItem('cart')),
+            length: parseInt(localStorage.getItem('cart-length'))
         }
     }
 

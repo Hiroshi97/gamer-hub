@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { useHistory, Redirect, Link } from "react-router-dom";
 import { userLogin } from "../../../api-call/userAPI";
-import { EMAIL_REGEX } from "../../../constants/constants";
+import { EMAIL_REGEX } from "../../../constants";
 import "./login.scss";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -9,6 +9,7 @@ import {
   LoginRequest,
   LoginFailure,
 } from "../../../actions/AuthActions";
+import { FetchCart } from "../../../actions/CartActions";
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -31,14 +32,19 @@ export default function Login() {
         .then((res) => {
           localStorage.setItem("user", JSON.stringify(res));
           dispatch(LoginSuccess(res));
+          dispatch(FetchCart());
           history.push("/");
-        })
-        .catch((err) => {
+        }).catch((err) => {
+          if (err.response) {          
           let errorMsg = err.response.data.error.message;
           errorMsg = errorMsg.split("_").join(" ");
           dispatch(LoginFailure());
           setError(errorMsg);
+          }
+          else console.log(err);
         });
+
+      
     }
   };
 
@@ -50,7 +56,7 @@ export default function Login() {
             <div className="text-center">
               <img src={require("../../../assets/logo-andy.png")} alt="" />
               <h1>LOGIN</h1>
-              {error ? (
+              {!isLoading && error ? (
                 <div className="alert alert-danger" role="alert">
                   <i className="fas fa-times mr-1"></i>
                   {error}

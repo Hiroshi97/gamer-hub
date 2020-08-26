@@ -13,7 +13,10 @@ export const UpdateItemQty = (payload) => ({
     payload
 })
 
-
 export const ClearCart = () => ({
     type: "CLEAR_CART"
+})
+
+export const FetchCart = () => ({
+    type: "FETCH_CART"
 })

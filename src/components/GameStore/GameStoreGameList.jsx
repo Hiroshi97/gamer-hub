@@ -1,12 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { AddItem } from "../../actions/CartActions";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Rating from "react-rating";
 import { Link } from "react-router-dom";
+import { updateCart } from "../../api-call/cartAPI";
 
 const GameStoreGameList = ({ list, isLoading }) => {
   const dispatch = useDispatch();
+  const isLoggedIn = useSelector((state) => state.authState.result);
+  const handleAddItem = (game) => {
+    dispatch(
+      AddItem({
+        id: game.id,
+        name: game.game_title,
+        img: game.img,
+        price: 9.99,
+        qty: 1,
+      }));
+    if (isLoggedIn)
+      updateCart();
+  }
   return (
     <div className="row game-store-game-list justify-content-between">
       {list && list.length > 0 && !isLoading ? (
@@ -41,17 +55,7 @@ const GameStoreGameList = ({ list, isLoading }) => {
                 <p className="game-price">$9.99</p>
                 <button
                   className="btn btn-danger"
-                  onClick={() =>
-                    dispatch(
-                      AddItem({
-                        id: game.id,
-                        name: game.game_title,
-                        img: game.img,
-                        price: 9.99,
-                        qty: 1,
-                      })
-                    )
-                  }
+                  onClick={()=>handleAddItem(game)}
                 >
                   Add to cart
                 </button>

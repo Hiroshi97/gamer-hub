@@ -7,22 +7,30 @@ import { useSelector, useDispatch } from "react-redux";
 import { RemoveItem, UpdateItemQty, ClearCart } from "../../actions/CartActions";
 import "./cart.scss";
 import { useEffect } from "react";
+import { updateCart } from "../../api-call/cartAPI";
 
 export default function Cart() {
   const currCart = useSelector((state) => state.cartState.cart);
+  const isLoggedIn = useSelector((state) => state.authState.result);
 
   const dispatch = useDispatch();
 
   const clearCart = useCallback(() => {
     dispatch(ClearCart());
+    if (isLoggedIn)
+      updateCart();
   }, [])
 
   const removeItem = useCallback((id) => {
     dispatch(RemoveItem({ id }));
+    if (isLoggedIn)
+      updateCart();
   }, []);
 
   const updateQty = useCallback((id, qty) => {
     dispatch(UpdateItemQty({ id, qty }));
+    if (isLoggedIn)
+      updateCart();
   }, []);
 
   const [total, setTotal] = useState(0)

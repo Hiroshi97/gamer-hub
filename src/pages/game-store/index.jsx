@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getGamesBasedOnPlatform } from "../../api-call/gameAPI";
@@ -18,14 +18,19 @@ export default function GameStore() {
   const [page, setPage] = useState(1);
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.gameState.loading);
+  const isDone = useRef(false);
 
   useEffect(() => {
-    window.scrollTo(0, 400);
-    dispatch(FetchGameRequest());
-    getGamesBasedOnPlatform(platform, page).then((res) => {
-      setList(res);
-      dispatch(FetchGameSuccess());
-    });
+    isDone.current = false;
+    if (!isDone.current) {
+      window.scrollTo(0, 400);
+      dispatch(FetchGameRequest());
+      getGamesBasedOnPlatform(platform, page).then((res) => {
+        setList(res);
+        dispatch(FetchGameSuccess());
+      });
+    }
+    return () => {isDone.current = true}
   }, [page, platform]);
 
   const handlePagination = React.useCallback(
