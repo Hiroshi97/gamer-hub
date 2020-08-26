@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { Link, Redirect, useHistory } from "react-router-dom";
 import { EMAIL_REGEX, NAME_REGEX } from "../../../constants/constants";
 import "./signup.scss";
-import { userSignUp } from "../../../apis/userAPI";
+import { userSignUp } from "../../../api-call/userAPI";
 import {useSelector, useDispatch} from "react-redux";
 import { LoginRequest, LoginSuccess } from "../../../actions/AuthActions";
 

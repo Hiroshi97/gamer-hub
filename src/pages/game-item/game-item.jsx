@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import PageTitle from "../../components/Reusable/PageTitle";
 import { useParams, Link } from "react-router-dom";
 import { FetchGameSuccess, FetchGameRequest } from "../../actions/GameActions";
-import { getGamesById } from "../../apis/gameAPI";
+import { getGamesById } from "../../api-call/gameAPI";
 import { useDispatch, useSelector } from "react-redux";
 import "./game-item.scss";
 import { AddItem } from "../../actions/CartActions";

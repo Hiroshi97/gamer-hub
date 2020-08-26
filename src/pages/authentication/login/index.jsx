@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { useHistory, Redirect, Link } from "react-router-dom";
-import { userLogin } from "../../../apis/userAPI";
+import { userLogin } from "../../../api-call/userAPI";
 import { EMAIL_REGEX } from "../../../constants/constants";
 import "./login.scss";
 import { useSelector, useDispatch } from "react-redux";
@@ -21,7 +21,7 @@ export default function Login() {
     if (!EMAIL_REGEX.test(email.value)) {
       setError("Invalid email format!");
     } else {
-      dispatch(LoginRequest);
+      dispatch(LoginRequest());
       userLogin(email.value, password.value)
         .then((res) => {
           localStorage.setItem("user", JSON.stringify(res));
