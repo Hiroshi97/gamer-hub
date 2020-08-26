@@ -8,6 +8,7 @@ import "./game-item.scss";
 import { AddItem } from "../../actions/CartActions";
 import Rating from "react-rating";
 import ModalImage from "react-modal-image";
+import { updateCart } from "../../api-call/cartAPI";
 
 export default function GameItem() {
   const { id } = useParams();
@@ -15,10 +16,23 @@ export default function GameItem() {
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.gameState.loading);
   const isDone = useRef(false);
+  const isLoggedIn = useSelector((state) => state.authState.result);
 
+  const handleAddItem = (game) => {
+    dispatch(
+      AddItem({
+        id: game.id,
+        name: game.game_title,
+        img: game.img,
+        price: 9.99,
+        qty: 1,
+      })
+    );
+    if (isLoggedIn) updateCart();
+  };
   useEffect(() => {
     isDone.current = false;
-    
+
     if (!isDone.current) {
       dispatch(FetchGameRequest());
       getGamesById(id).then((res) => {
@@ -27,7 +41,9 @@ export default function GameItem() {
       });
     }
 
-    return () => {isDone.current = true;};
+    return () => {
+      isDone.current = true;
+    };
   }, []);
 
   const renderSocialMediaIcons = () => (
@@ -108,17 +124,7 @@ export default function GameItem() {
               </h5>
               <button
                 className="btn text-uppercase btn-danger mt-1 mb-1 mr-2"
-                onClick={() =>
-                  dispatch(
-                    AddItem({
-                      id: gameInfo.id,
-                      name: gameInfo.game_title,
-                      img: gameInfo.img,
-                      price: 9.99,
-                      qty: 1,
-                    })
-                  )
-                }
+                onClick={() => handleAddItem(gameInfo)}
               >
                 Add to cart <i className="fas fa-shopping-basket"></i>
               </button>
