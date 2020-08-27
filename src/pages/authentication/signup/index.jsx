@@ -4,7 +4,7 @@ import { EMAIL_REGEX, NAME_REGEX } from "../../../constants";
 import "./signup.scss";
 import { userSignUp } from "../../../api-call/userAPI";
 import {useSelector, useDispatch} from "react-redux";
-import { LoginRequest, LoginSuccess } from "../../../actions/AuthActions";
+import { SignupRequest, SignupSuccess } from "../../../actions/AuthActions";
 
 export default function Signup() {
   let email = useRef();
@@ -42,14 +42,14 @@ export default function Signup() {
     if (errors.length > 0) {
       setErrors(errors);
     } else {
-      dispatch(LoginRequest());
+      dispatch(SignupRequest());
       userSignUp({email: email.value, password: password.value, name: name.value})
         .then((res) => {
           localStorage.setItem(
             "user",
             JSON.stringify(res)
           );
-          dispatch(LoginSuccess(res));
+          dispatch(SignupSuccess(res));
           history.push("/");
         })
         .catch((err) => {
