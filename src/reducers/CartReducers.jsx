@@ -60,8 +60,8 @@ export default (state = initialState, action) => {
 
     case "FETCH_CART": {
         return {
-            cart: JSON.parse(localStorage.getItem('cart')),
-            length: parseInt(localStorage.getItem('cart-length'))
+            cart: JSON.parse(localStorage.getItem('cart')) || [],
+            length: parseInt(localStorage.getItem('cart-length')) || 0
         }
     }
 
