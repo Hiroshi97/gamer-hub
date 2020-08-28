@@ -22,12 +22,12 @@ export default function Checkout() {
     },
     enableReinitialize: true
   });
-  
-  let currentInfo = useRef({...values});
 
   useEffect(() => {
-    currentInfo.current = {...values};
     dispatch(PlaceOrder(values));
+    return () => {window.onbeforeunload = () => {
+      return "Are you sure you want to leave ?";
+  }}
   }, [values])
 
   const isLoggedIn = useSelector((state) => state.authState.result);
