@@ -50,7 +50,7 @@ export default function Signup() {
             JSON.stringify(res)
           );
           dispatch(SignupSuccess(res));
-          history.push("/");
+          history.goBack();
         })
         .catch((err) => {
           //SERVER RESPONSE ERROR HANDLER

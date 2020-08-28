@@ -43,9 +43,9 @@ export default function Games() {
                 onClick={handlePlatformClick}
                 id="plat-0"
                 to="/#"
-                className="platform-option px-2"
+                className="platform-option pr-1"
               >
-                <i className="fas fa-th-large pr-1"></i>All
+                <i className="fas fa-th-large pr-2"></i>All
               </NavLink>
             </li>
             <li className="list-inline-item">
@@ -54,9 +54,9 @@ export default function Games() {
                 onClick={handlePlatformClick}
                 id="plat-1"
                 to="/#"
-                className="platform-option px-2"
+                className="platform-option pr-1"
               >
-                <i className="fab fa-windows pr-1"></i>PC
+                <i className="fab fa-windows pr-2"></i>PC
               </NavLink>
             </li>
             <li className="list-inline-item">
@@ -65,9 +65,9 @@ export default function Games() {
                 onClick={handlePlatformClick}
                 id="plat-4919"
                 to="/#"
-                className="platform-option px-2"
+                className="platform-option pr-1"
               >
-                <i className="fab fa-playstation pr-1"></i>Playstation
+                <i className="fab fa-playstation pr-2"></i>Playstation
               </NavLink>
             </li>
             <li className="list-inline-item">
@@ -76,9 +76,9 @@ export default function Games() {
                 onClick={handlePlatformClick}
                 id="plat-4920"
                 to="/#"
-                className="platform-option px-2"
+                className="platform-option pr-1"
               >
-                <i className="fab fa-xbox pr-1"></i>Xbox
+                <i className="fab fa-xbox pr-2"></i>Xbox
               </NavLink>
             </li>
           </ul>

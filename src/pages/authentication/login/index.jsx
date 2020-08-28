@@ -33,7 +33,7 @@ export default function Login() {
           localStorage.setItem("user", JSON.stringify(res));
           dispatch(LoginSuccess(res));
           dispatch(FetchCart());
-          history.push("/");
+          history.goBack();
         }).catch((err) => {
           if (err.response) {          
           let errorMsg = err.response.data.error.message;
