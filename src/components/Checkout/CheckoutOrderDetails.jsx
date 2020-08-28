@@ -16,6 +16,9 @@ const CheckoutOrderDetails = ({ currCart }) => {
                   Product(s):
                 </th>
                 <th scope="col" className="text-right">
+                  Qty:
+                </th>
+                <th scope="col" className="text-right">
                   Total(s):
                 </th>
               </tr>
@@ -24,11 +27,13 @@ const CheckoutOrderDetails = ({ currCart }) => {
               {currCart.map((item) => (
                 <tr key={item.id}>
                   <td className="text-left pl-4">{item.name}</td>
+                  <td className="text-right">{"x" + item.qty}</td>
                   <td className="text-right">{"$" + item.price * item.qty}</td>
                 </tr>
               ))}
               <tr>
                 <td className="text-left font-weight-bold pl-4">Total:</td>
+                <td>{null}</td>
                 <td className="text-right font-weight-bold">
                   {"$" + calculateTotalPrice(currCart)}
                 </td>
