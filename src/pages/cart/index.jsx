@@ -8,6 +8,7 @@ import { RemoveItem, UpdateItemQty, ClearCart } from "../../actions/CartActions"
 import "./cart.scss";
 import { useEffect } from "react";
 import { updateCart } from "../../api-call/cartAPI";
+import { calculateTotalPrice } from "../../utils/calculate-total-price";
 
 export default function Cart() {
   const currCart = useSelector((state) => state.cartState.cart);
@@ -36,13 +37,7 @@ export default function Cart() {
   const [total, setTotal] = useState(0)
 
   useEffect(() => {
-    const calculateTotalPrice = () => {
-      return parseFloat(currCart
-        .reduce((total, item) => total + item.qty * item.price, 0)
-        .toFixed(2));
-    };
-    
-    setTotal(calculateTotalPrice());
+    setTotal(calculateTotalPrice(currCart));
   }, [currCart]);
 
   return (

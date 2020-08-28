@@ -1,6 +1,7 @@
 import React from "react";
 import SubTitle from "../Reusable/SubTitle";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 const CartCheckout = ({ total, clearCart }) => {
   const handleResetCart = () => {
@@ -36,7 +37,12 @@ const CartCheckout = ({ total, clearCart }) => {
           </tr>
         </tbody>
       </table>
-      <button className="btn btn-danger btn-sm text-uppercase">checkout</button>
+      <Link
+          to="/cart/checkout"
+          className="btn btn-sm btn-danger text-uppercase"
+        >
+          Checkout
+        </Link>
     </div>
   );
 };

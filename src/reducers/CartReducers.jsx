@@ -14,7 +14,7 @@ export default (state = initialState, action) => {
 
         const newCart = currCart.map(item => item);
 
-        if (index == -1) {
+        if (index === -1) {
             newCart.push(action.payload)
         }
         else newCart[index].qty += 1;
