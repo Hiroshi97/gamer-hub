@@ -6,6 +6,7 @@ import AuthRoute from './utils/auth-route';
 import { useSelector } from 'react-redux';
 import "./App.scss";
 import GameItem from "./pages/game-item/game-item";
+import Checkout from "./pages/checkout/checkout";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
             <Route exact path="/store" component={GameStore}/>
             <Route exact path="/store/game/:id" component={GameItem} />
             <Route exact path="/cart" component={Cart}/>
+            <Route exact path="/cart/checkout" component={Checkout}/>
             <AuthRoute
               exact
               path="/profile"

@@ -1,0 +1,35 @@
+.checkout-page {
+  font-family: Nunito;
+  color: white;
+  .checkout-content {
+    padding: 5% 0 0 0;
+    .checkout-custom-breadcrumb {
+      ul {
+        padding: 10px 16px;
+        list-style: none;
+        background-color: transparent;
+        li {
+          display: inline;
+          font-size: 14px;
+          + {
+            li {
+              &:before {
+                padding: 8px;
+                color: white;
+                content: "/\00a0";
+              }
+            }
+          }
+          a {
+            color: white;
+            text-decoration: none;
+            &:hover {
+              opacity: 0.7;
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+  }
+}
