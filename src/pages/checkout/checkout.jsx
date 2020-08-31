@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import { validationSchema } from "../../utils/validation-schema";
 import PageTitle from "../../components/Reusable/PageTitle";
@@ -8,17 +8,20 @@ import { Link, Redirect, useHistory } from "react-router-dom";
 import CheckoutBillingDetails from "../../components/Checkout/CheckoutBillingDetails";
 import CheckoutOrderDetails from "../../components/Checkout/CheckoutOrderDetails";
 import { PlaceOrder } from "../../actions/BillActions";
+import CheckoutSuccessfulPayment from "../../components/Checkout/CheckoutSuccessfulPayment";
+import { ClearCart } from "../../actions/CartActions";
 
 export default function Checkout() {
   const initialValues = useSelector(state => state.billState);
-  console.log(initialValues);
   const dispatch = useDispatch();
-  const history = useHistory();
-  const { handleChange, handleSubmit, resetForm, values, errors } = useFormik({
+  const [open, setOpen] = useState(false);
+  const { handleChange, handleSubmit, setFieldValue, values, errors } = useFormik({
     initialValues,
     validationSchema,
     onSubmit(data) {
-      history.push("/cart/checkout/payment");
+      dispatch(PlaceOrder(data));
+      setOpen(true);
+      dispatch(ClearCart());
     },
     enableReinitialize: true
   });
@@ -59,6 +62,7 @@ export default function Checkout() {
       </div>
     ) : null;
   };
+
   return (
     <div className="container-fluid checkout-page">
       <div className="container checkout-content py-5">
@@ -89,7 +93,8 @@ export default function Checkout() {
           </div>
         </div>
         <CheckoutOrderDetails currCart={currCart}/>
-        <CheckoutBillingDetails values={values} errors={errors} handleChange={handleChange} handleSubmit={handleSubmit}/>
+        <CheckoutBillingDetails values={values} errors={errors} handleChange={handleChange} handleSubmit={handleSubmit} setFieldValue={setFieldValue} />
+        <CheckoutSuccessfulPayment open={open}/>
       </div>
     </div>
   );
