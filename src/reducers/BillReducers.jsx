@@ -10,7 +10,8 @@ const initialState = {
     country: "AUSTRALIA",
     state: "",
     postcode: "",
-    notes: ""
+    notes: "",
+    payment: "",
 }
 
 export default (state = initialState, { type, payload }) => {

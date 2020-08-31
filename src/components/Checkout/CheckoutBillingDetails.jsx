@@ -2,7 +2,13 @@ import React from "react";
 import SubTitle from "../Reusable/SubTitle";
 import { PropTypes } from "prop-types";
 
-const CheckoutBillingDetails = ({ values, errors, handleChange, handleSubmit }) => {
+const CheckoutBillingDetails = ({
+  values,
+  errors,
+  handleChange,
+  handleSubmit,
+  setFieldValue
+}) => {
   return (
     <>
       <SubTitle title="BILLING DETAILS" />
@@ -199,7 +205,58 @@ const CheckoutBillingDetails = ({ values, errors, handleChange, handleSubmit }) 
             value={values.notes}
           ></textarea>
         </div>
-        <button type="submit" className="btn btn-sm btn-danger text-uppercase">Place Order</button>
+        <div className="form-group">
+          <div className="form-check form-check-inline payment">
+            <input
+              className="form-check-input"
+              type="radio"
+              name="payment"
+              id="paypal"
+              value="paypal"
+              checked={values.payment === "paypal"}
+              onChange={() => {setFieldValue("payment", "paypal")}}
+            />
+            <label className="form-check-label" htmlFor="paypal">
+            <i className="fab fa-cc-paypal fa-2x mr-2"></i>Paypal
+            </label>
+          </div>
+          <div className="form-check form-check-inline">
+            <input
+              className="form-check-input"
+              type="radio"
+              name="payment"
+              id="visa"
+              value="visa"
+              checked={values.payment === "visa"}
+              onChange={() => {setFieldValue("payment", "visa")}}
+            />
+            <label className="form-check-label" htmlFor="visa">
+            <i className="fab fa-cc-visa fa-2x mr-2"></i>VISA
+            </label>
+          </div>
+          <div className="form-check form-check-inline">
+            <input
+              className="form-check-input"
+              type="radio"
+              name="payment"
+              id="mastercard"
+              value="mastercard"
+              checked={values.payment === "mastercard"}
+              onChange={() => {setFieldValue("payment", "mastercard")}}
+            />
+            <label className="form-check-label" htmlFor="mastercard">
+            <i className="fab fa-cc-mastercard fa-2x mr-2"></i>Master Card
+            </label>
+          </div>
+          {errors.payment && (
+              <small id="paymentHelp" className="form-text text-danger">
+                {errors.payment}
+              </small>
+            )}
+        </div>
+        <button type="submit" className="btn btn-sm btn-danger text-uppercase">
+          Place Order
+        </button>
       </form>
     </>
   );
@@ -209,7 +266,8 @@ CheckoutBillingDetails.propTypes = {
   values: PropTypes.object,
   errors: PropTypes.object,
   handleChange: PropTypes.func,
-  handleSubmit: PropTypes.func
+  handleSubmit: PropTypes.func,
+  setFieldValue: PropTypes.func
 };
 
 export default React.memo(CheckoutBillingDetails);

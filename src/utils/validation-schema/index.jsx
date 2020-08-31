@@ -31,5 +31,7 @@ export const validationSchema = Yup.object({
     postcode: Yup.string()
     .matches(POSTCODE_REGEX, '*Please input a valid postcode!')
     .required(REQUIRED_FIELD),
-    notes: Yup.string()
+    notes: Yup.string(),
+    payment: Yup.string()
+    .required('*Please select a payment')
 })
