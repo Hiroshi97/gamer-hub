@@ -39,9 +39,10 @@ const CartCheckout = ({ total, clearCart }) => {
       </table>
       <Link
           to="/cart/checkout"
-          className="btn btn-sm btn-danger text-uppercase"
         >
+        <button className="btn btn-sm btn-danger text-uppercase" disabled={total===0}>
           Checkout
+        </button>
         </Link>
     </div>
   );
