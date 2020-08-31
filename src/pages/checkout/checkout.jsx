@@ -12,31 +12,35 @@ import CheckoutSuccessfulPayment from "../../components/Checkout/CheckoutSuccess
 import { ClearCart } from "../../actions/CartActions";
 
 export default function Checkout() {
-  const initialValues = useSelector(state => state.billState);
+  const initialValues = useSelector((state) => state.billState);
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
-  const { handleChange, handleSubmit, setFieldValue, values, errors } = useFormik({
+  const {
+    handleChange,
+    handleSubmit,
+    setFieldValue,
+    values,
+    errors,
+  } = useFormik({
     initialValues,
     validationSchema,
     onSubmit(data) {
       dispatch(PlaceOrder(data));
       setOpen(true);
     },
-    enableReinitialize: true
+    enableReinitialize: true,
   });
 
   useEffect(() => {
+    window.onbeforeunload = () => true;
     dispatch(PlaceOrder(values));
-    return () => {window.onbeforeunload = () => {
-      return "Are you sure you want to leave ?";
-  }}
-  }, [values])
+    return () => {window.onbeforeunload = null;};
+  }, [values]);
 
   const isLoggedIn = useSelector((state) => state.authState.result);
   const currCart = useSelector((state) => state.cartState.cart);
 
-
-  if ((!currCart || currCart.length === 0)) 
+  if (!currCart || currCart.length === 0)
     return <Redirect to={{ pathname: "/cart" }} />;
 
   const renderCouponField = () => {
@@ -57,7 +61,9 @@ export default function Checkout() {
     return !isLoggedIn ? (
       <div className="col-6 text-right pr-auto">
         <h6 className="text-uppercase">You have an account?</h6>
-        <Link to="/login" className="btn btn-sm btn-danger text-uppercase">Login</Link>
+        <Link to="/login" className="btn btn-sm btn-danger text-uppercase">
+          Login
+        </Link>
       </div>
     ) : null;
   };
@@ -91,9 +97,15 @@ export default function Checkout() {
             {renderLoginButton()}
           </div>
         </div>
-        <CheckoutOrderDetails currCart={currCart}/>
-        <CheckoutBillingDetails values={values} errors={errors} handleChange={handleChange} handleSubmit={handleSubmit} setFieldValue={setFieldValue} />
-        <CheckoutSuccessfulPayment open={open}/>
+        <CheckoutOrderDetails currCart={currCart} />
+        <CheckoutBillingDetails
+          values={values}
+          errors={errors}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+          setFieldValue={setFieldValue}
+        />
+        <CheckoutSuccessfulPayment open={open} />
       </div>
     </div>
   );
