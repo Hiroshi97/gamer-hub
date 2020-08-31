@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function HomeSlider() {
   return (
@@ -22,7 +23,7 @@ export default function HomeSlider() {
             <div className="container carousel-item-caption d-none d-md-block">
                 <div className="game-title"><img src="https://i.pinimg.com/originals/6d/b4/85/6db48503abb29129a46ff78cfa354925.png"/></div>
                 <div className="carousel-item-info mt-3">
-                    <a href="#" className="d-inline-block buynow-block text-center py-2 px-4 font-weight-bold">Buy Now</a>
+                    <Link to="/store/game/16489" className="d-inline-block buynow-block text-center py-2 px-4 font-weight-bold">Buy Now</Link>
                 </div>
             </div>
         </div>
@@ -30,7 +31,7 @@ export default function HomeSlider() {
         <div className="container carousel-item-caption d-none d-md-block">
                 <div className="game-title"><img src="https://www.pngmart.com/files/2/Batman-Arkham-Knight-Transparent-Background.png"/></div>
                 <div className="carousel-item-info mt-3">
-                    <a href="#" className="d-inline-block buynow-block text-center py-2 px-4 font-weight-bold">Buy Now</a>
+                    <Link to="/store/game/9058" className="d-inline-block buynow-block text-center py-2 px-4 font-weight-bold">Buy Now</Link>
                 </div>
             </div>
         </div>
@@ -38,7 +39,7 @@ export default function HomeSlider() {
           <div className="container carousel-item-caption d-none d-md-block">
                 <div className="game-title"><img src="https://pluspng.com/img-png/battlefield-logo-png-battlefield-png-images-free-img-3160x676.png"/></div>
                 <div className="carousel-item-info mt-3">
-                    <a href="#" className="d-inline-block buynow-block text-center py-2 px-4 font-weight-bold">Buy Now</a>
+                    <Link to="/store/game/36615" className="d-inline-block buynow-block text-center py-2 px-4 font-weight-bold">Buy Now</Link>
                 </div>
             </div>
         </div>
