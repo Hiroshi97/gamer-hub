@@ -2,9 +2,12 @@ import React from "react";
 import Modal from "react-bootstrap/Modal";
 import { useHistory } from "react-router-dom";
 import { PropTypes } from "prop-types";
+import { useDispatch } from "react-redux";
+import { ClearCart } from "../../actions/CartActions";
 
 export default function CheckoutSuccessfulPayment({open}) {
   const history = useHistory();
+  const dispatch = useDispatch();
   return (
     <Modal show={open}>
       <Modal.Body>
@@ -29,7 +32,7 @@ export default function CheckoutSuccessfulPayment({open}) {
         <p className="text-center text-success">Payment Successful</p>
       </Modal.Body>
       <Modal.Footer>
-        <button className="btn btn-success" onClick={() => {history.push("/")}}>
+        <button className="btn btn-success" onClick={() => {history.push("/"); dispatch(ClearCart)}}>
           OK
         </button>
       </Modal.Footer>

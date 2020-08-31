@@ -21,7 +21,6 @@ export default function Checkout() {
     onSubmit(data) {
       dispatch(PlaceOrder(data));
       setOpen(true);
-      dispatch(ClearCart());
     },
     enableReinitialize: true
   });
