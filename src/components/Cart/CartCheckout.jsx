@@ -25,7 +25,7 @@ const CartCheckout = ({ total, clearCart }) => {
               <p className="d-inline-block float-right">$0</p>
             </td>
             <td className="col-2 border-right align-middle text-center">
-              <select id="additionalOptions">
+              <select className="custom-select" id="additionalOptions">
                 <option>Shipping</option>
               </select>
             </td>
