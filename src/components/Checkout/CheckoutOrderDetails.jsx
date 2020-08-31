@@ -50,4 +50,4 @@ CheckoutOrderDetails.propTypes = {
   currCart: PropTypes.array,
 };
 
-export default CheckoutOrderDetails;
+export default React.memo(CheckoutOrderDetails);
