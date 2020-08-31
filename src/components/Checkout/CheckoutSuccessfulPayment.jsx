@@ -32,7 +32,7 @@ export default function CheckoutSuccessfulPayment({open}) {
         <p className="text-center text-success">Payment Successful</p>
       </Modal.Body>
       <Modal.Footer>
-        <button className="btn btn-success" onClick={() => {history.push("/"); dispatch(ClearCart)}}>
+        <button className="btn btn-success" onClick={() => {history.push("/"); dispatch(ClearCart())}}>
           OK
         </button>
       </Modal.Footer>
