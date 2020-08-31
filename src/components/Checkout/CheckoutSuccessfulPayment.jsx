@@ -4,10 +4,16 @@ import { useHistory } from "react-router-dom";
 import { PropTypes } from "prop-types";
 import { useDispatch } from "react-redux";
 import { ClearCart } from "../../actions/CartActions";
+import { ClearInfo } from "../../actions/BillActions";
 
-export default function CheckoutSuccessfulPayment({open}) {
+export default function CheckoutSuccessfulPayment({ open }) {
   const history = useHistory();
   const dispatch = useDispatch();
+  const handleClick = () => {
+    history.push("/");
+    dispatch(ClearCart());
+    dispatch(ClearInfo());
+  };
   return (
     <Modal show={open}>
       <Modal.Body>
@@ -32,7 +38,7 @@ export default function CheckoutSuccessfulPayment({open}) {
         <p className="text-center text-success">Payment Successful</p>
       </Modal.Body>
       <Modal.Footer>
-        <button className="btn btn-success" onClick={() => {history.push("/"); dispatch(ClearCart())}}>
+        <button className="btn btn-success" onClick={handleClick}>
           OK
         </button>
       </Modal.Footer>
@@ -41,5 +47,5 @@ export default function CheckoutSuccessfulPayment({open}) {
 }
 
 CheckoutSuccessfulPayment.propTypes = {
-    open: PropTypes.bool,
-  };
+  open: PropTypes.bool,
+};

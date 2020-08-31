@@ -20,6 +20,9 @@ export default (state = initialState, { type, payload }) => {
     case "PLACE_ORDER":
         return { ...state, ...payload }
 
+    case "CLEAR_INFO":
+        return {...initialState}
+
     default:
         return state
     }
