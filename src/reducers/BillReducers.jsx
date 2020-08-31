@@ -11,7 +11,7 @@ const initialState = {
     state: "",
     postcode: "",
     notes: "",
-    payment: "",
+    payment: ""
 }
 
 export default (state = initialState, { type, payload }) => {

@@ -2,11 +2,12 @@ import React from "react";
 import Modal from "react-bootstrap/Modal";
 import { useHistory } from "react-router-dom";
 import { PropTypes } from "prop-types";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ClearCart } from "../../actions/CartActions";
 import { ClearInfo } from "../../actions/BillActions";
 
-export default function CheckoutSuccessfulPayment({ open }) {
+export default function CheckoutSuccessfulPayment({ open, total }) {
+  const billInfo = useSelector((state) => state.billState);
   const history = useHistory();
   const dispatch = useDispatch();
   const handleClick = () => {
@@ -36,6 +37,20 @@ export default function CheckoutSuccessfulPayment({ open }) {
           />
         </svg>
         <p className="text-center text-success">Payment Successful</p>
+        <ul className="list-unstyled">
+          <li className="d-flex justify-content-between">
+            <p className="font-weight-bold">Receipt Number: </p><p className="font-weight-bold">{Math.random().toString(36).slice(2).toUpperCase()}</p>
+          </li>
+          <li className="d-flex justify-content-between">
+            <p className="font-weight-bold">Name: </p><p className="font-weight-bold">{billInfo.fname + " " + billInfo.lname}</p>
+          </li>
+          <li className="d-flex justify-content-between">
+            <p className="font-weight-bold">Amount Paid: </p><p className="font-weight-bold">${total}</p>
+          </li>
+          <li className="d-flex justify-content-between">
+            <p className="font-weight-bold">Method: </p><p className="font-weight-bold">{billInfo.payment.toUpperCase()}</p>
+          </li>
+        </ul>
       </Modal.Body>
       <Modal.Footer>
         <button className="btn btn-success" onClick={handleClick}>
@@ -48,4 +63,5 @@ export default function CheckoutSuccessfulPayment({ open }) {
 
 CheckoutSuccessfulPayment.propTypes = {
   open: PropTypes.bool,
+  total: PropTypes.number,
 };

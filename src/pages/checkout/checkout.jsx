@@ -9,7 +9,7 @@ import CheckoutBillingDetails from "../../components/Checkout/CheckoutBillingDet
 import CheckoutOrderDetails from "../../components/Checkout/CheckoutOrderDetails";
 import { PlaceOrder } from "../../actions/BillActions";
 import CheckoutSuccessfulPayment from "../../components/Checkout/CheckoutSuccessfulPayment";
-import { ClearCart } from "../../actions/CartActions";
+import { calculateTotalPrice } from "../../utils/calculate-total-price";
 
 export default function Checkout() {
   const initialValues = useSelector((state) => state.billState);
@@ -39,6 +39,7 @@ export default function Checkout() {
 
   const isLoggedIn = useSelector((state) => state.authState.result);
   const currCart = useSelector((state) => state.cartState.cart);
+  const totalPrice = calculateTotalPrice(currCart);
 
   if (!currCart || currCart.length === 0)
     return <Redirect to={{ pathname: "/cart" }} />;
@@ -97,7 +98,7 @@ export default function Checkout() {
             {renderLoginButton()}
           </div>
         </div>
-        <CheckoutOrderDetails currCart={currCart} />
+        <CheckoutOrderDetails total={totalPrice} currCart={currCart}/>
         <CheckoutBillingDetails
           values={values}
           errors={errors}
@@ -105,7 +106,7 @@ export default function Checkout() {
           handleSubmit={handleSubmit}
           setFieldValue={setFieldValue}
         />
-        <CheckoutSuccessfulPayment open={open} />
+        <CheckoutSuccessfulPayment open={open} total={totalPrice}/>
       </div>
     </div>
   );

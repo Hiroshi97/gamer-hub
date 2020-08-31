@@ -1,9 +1,8 @@
 import React from "react";
 import SubTitle from "../Reusable/SubTitle";
 import { PropTypes } from "prop-types";
-import { calculateTotalPrice } from "../../utils/calculate-total-price";
 
-const CheckoutOrderDetails = ({ currCart }) => {
+const CheckoutOrderDetails = ({ currCart, total }) => {
   return (
     <>
       {currCart && currCart.length > 0 && (
@@ -35,7 +34,7 @@ const CheckoutOrderDetails = ({ currCart }) => {
                 <td className="text-left font-weight-bold pl-4">Total:</td>
                 <td>{null}</td>
                 <td className="text-right font-weight-bold">
-                  {"$" + calculateTotalPrice(currCart)}
+                  {"$" + total}
                 </td>
               </tr>
             </tbody>
@@ -48,6 +47,7 @@ const CheckoutOrderDetails = ({ currCart }) => {
 
 CheckoutOrderDetails.propTypes = {
   currCart: PropTypes.array,
+  total: PropTypes.number
 };
 
 export default React.memo(CheckoutOrderDetails);
