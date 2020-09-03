@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { AddItem } from "../../actions/CartActions";
 import { useSelector, useDispatch } from "react-redux";
@@ -6,7 +6,8 @@ import Rating from "react-rating";
 import { Link } from "react-router-dom";
 import { updateCart } from "../../api-call/cartAPI";
 
-const GameStoreGameList = ({ list, isLoading }) => {
+const GameStoreGameList = ({ list, isLoading, handleShow }) => {
+
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.authState.result);
   const handleAddItem = (game) => {
@@ -17,10 +18,11 @@ const GameStoreGameList = ({ list, isLoading }) => {
         img: game.img,
         price: 9.99,
         qty: 1,
-      }));
-    if (isLoggedIn)
-      updateCart();
-  }
+      })
+    );
+    handleShow();
+    if (isLoggedIn) updateCart();
+  };
   return (
     <div className="row game-store-game-list justify-content-between">
       {list && list.length > 0 && !isLoading ? (
@@ -55,7 +57,7 @@ const GameStoreGameList = ({ list, isLoading }) => {
                 <p className="game-price">$9.99</p>
                 <button
                   className="btn btn-danger"
-                  onClick={()=>handleAddItem(game)}
+                  onClick={() => handleAddItem(game)}
                 >
                   Add to cart
                 </button>
@@ -71,6 +73,7 @@ const GameStoreGameList = ({ list, isLoading }) => {
           />
         </div>
       )}
+      
     </div>
   );
 };
@@ -78,6 +81,7 @@ const GameStoreGameList = ({ list, isLoading }) => {
 GameStoreGameList.propTypes = {
   list: PropTypes.array,
   isLoading: PropTypes.bool,
+  handleShow: PropTypes.func
 };
 
 export default React.memo(GameStoreGameList);
