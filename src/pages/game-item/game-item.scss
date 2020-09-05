@@ -55,9 +55,11 @@
               background-color: #d4183b;
               opacity: 0;
               z-index: 0;
-              padding-top: 15%;
               transition: 0.2s ease-in-out;
               pointer-events: none;
+              i {
+                padding-top: 20%;
+              }
             }
             &:hover {
               .gallery-image-overlay {
