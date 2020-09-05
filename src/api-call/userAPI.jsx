@@ -23,7 +23,7 @@ export const userSignUp = async (userInfo) => {
 
   await fetchUserCart(getInfo.users[0].localId, updateName.idToken);
 
-  return { ...getInfo.users[0], idToken: updateName.idToken };
+  return { ...getInfo.users[0], idToken: updateName.idToken, refreshToken: updateName.refreshToken };
 };
 
 //LOGIN
@@ -44,7 +44,7 @@ export const userLogin = async (email, password) => {
 
   await fetchUserCart(getInfo.users[0].localId, res.data.idToken);
 
-  return { ...getInfo.users[0], idToken: res.data.idToken };
+  return { ...getInfo.users[0], idToken: res.data.idToken, refreshToken: res.data.refreshToken };
 };
 
 //UPDATE USER INFO AFTER REGISTRATION
