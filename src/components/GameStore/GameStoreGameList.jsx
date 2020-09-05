@@ -6,10 +6,11 @@ import Rating from "react-rating";
 import { Link } from "react-router-dom";
 import { updateCart } from "../../api-call/cartAPI";
 
-const GameStoreGameList = ({ list, isLoading, handleShow }) => {
+const GameStoreGameList = ({ list, isLoading, handleShow, show }) => {
 
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.authState.result);
+  const [selected, setSelected] = useState(null)
   const handleAddItem = (game) => {
     dispatch(
       AddItem({
@@ -21,6 +22,7 @@ const GameStoreGameList = ({ list, isLoading, handleShow }) => {
       })
     );
     handleShow();
+    setSelected(game.id);
     if (isLoggedIn) updateCart();
   };
   return (
@@ -58,8 +60,9 @@ const GameStoreGameList = ({ list, isLoading, handleShow }) => {
                 <button
                   className="btn btn-danger"
                   onClick={() => handleAddItem(game)}
+                  disabled={show && selected === game.id}
                 >
-                  Add to cart
+                  {show && selected === game.id ? "Added" : "Add to item"}
                 </button>
               </div>
             </div>
@@ -81,7 +84,8 @@ const GameStoreGameList = ({ list, isLoading, handleShow }) => {
 GameStoreGameList.propTypes = {
   list: PropTypes.array,
   isLoading: PropTypes.bool,
-  handleShow: PropTypes.func
+  handleShow: PropTypes.func,
+  show: PropTypes.bool
 };
 
 export default React.memo(GameStoreGameList);

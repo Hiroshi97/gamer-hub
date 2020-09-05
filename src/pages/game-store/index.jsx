@@ -93,6 +93,7 @@ export default function GameStore() {
           list={list}
           isLoading={isLoading}
           handleShow={handleShow}
+          show={show}
         />
         {/* PAGINATION */}
         <GameStorePagination page={page} handlePagination={handlePagination} />
