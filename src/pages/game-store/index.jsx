@@ -25,7 +25,6 @@ export default function GameStore() {
   useEffect(() => {
     isDone.current = false;
     if (!isDone.current) {
-      window.scrollTo(0, 400);
       dispatch(FetchGameRequest());
       getGamesBasedOnPlatform(platform, page).then((res) => {
         setList(res);
@@ -44,6 +43,7 @@ export default function GameStore() {
         setPage(parseInt(e.target.id));
       else if (e.target.id === "next") setPage(page + 1);
       else setPage(page - 1);
+      window.scrollTo(0, 400);
     },
     [page]
   );
@@ -53,6 +53,7 @@ export default function GameStore() {
       e.preventDefault();
       setPage(1);
       setPlatform(e.target.id.split("-")[1]);
+      window.scrollTo(0, 400);
     },
     [platform]
   );
