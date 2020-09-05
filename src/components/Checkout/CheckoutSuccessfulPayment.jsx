@@ -5,15 +5,18 @@ import { PropTypes } from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import { ClearCart } from "../../actions/CartActions";
 import { ClearInfo } from "../../actions/BillActions";
+import { updateCart } from "../../api-call/cartAPI";
 
 export default function CheckoutSuccessfulPayment({ open, total }) {
   const billInfo = useSelector((state) => state.billState);
+  const isLoggedIn = useSelector((state) => state.authState.result);
   const history = useHistory();
   const dispatch = useDispatch();
   const handleClick = () => {
     history.push("/");
     dispatch(ClearCart());
     dispatch(ClearInfo());
+    if(isLoggedIn) updateCart();     //Clear cart on database
   };
   return (
     <Modal show={open}>
