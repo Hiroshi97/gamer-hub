@@ -9,6 +9,7 @@ import { AddItem } from "../../actions/CartActions";
 import Rating from "react-rating";
 import ModalImage from "react-modal-image";
 import { updateCart } from "../../api-call/cartAPI";
+import { Toast, ToastBody } from "react-bootstrap";
 
 export default function GameItem() {
   const { id } = useParams();
@@ -17,6 +18,7 @@ export default function GameItem() {
   const isLoading = useSelector((state) => state.gameState.loading);
   const isDone = useRef(false);
   const isLoggedIn = useSelector((state) => state.authState.result);
+  const [show, setShow] = useState(false);
 
   const handleAddItem = (game) => {
     dispatch(
@@ -28,8 +30,18 @@ export default function GameItem() {
         qty: 1,
       })
     );
+    handleShow();
     if (isLoggedIn) updateCart();
   };
+
+  const handleShow = () => {
+    setShow(true);
+  };
+
+  const handleClose = React.useCallback(() => {
+    setShow(false);
+  });
+
   useEffect(() => {
     isDone.current = false;
 
@@ -125,8 +137,9 @@ export default function GameItem() {
               <button
                 className="btn text-uppercase btn-danger mt-1 mb-1 mr-2"
                 onClick={() => handleAddItem(gameInfo)}
+                disabled={show}
               >
-                Add to cart <i className="fas fa-shopping-basket"></i>
+                {show ? "Added" : "Add to cart"} <i className='fas fa-shopping-basket'></i>
               </button>
               <button className="btn text-uppercase btn-dark mt-1 mb-1">
                 Add to wishlist <i className="fas fa-heart"></i>
@@ -160,6 +173,21 @@ export default function GameItem() {
           </div>
         )}
       </div>
+      <Toast
+        style={{
+          position: "fixed",
+          bottom: "20px" /* Place the button at the bottom of the page */,
+          right: "30px" /* Place the button 30px from the right */,
+          zIndex: 99 /* Make sure it does not overlap */,
+          backgroundColor: "#5cb85c",
+        }}
+        onClose={handleClose}
+        show={show}
+        autohide
+        delay={1000}
+      >
+        <ToastBody><i className="fas fa-check-circle"></i> Added successfully!</ToastBody>
+      </Toast>
     </div>
   );
 }
