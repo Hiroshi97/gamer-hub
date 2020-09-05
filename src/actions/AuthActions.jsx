@@ -25,5 +25,9 @@ export const SignupFailure = () => ({
 })
 
 export const LogoutSuccess = () => ({
-  type: 'LOGOUT_SUCCESS',
+  type: 'LOGOUT_SUCCESS'
+})
+
+export const InvalidToken = () => ({
+  type: 'INVALID_TOKEN'
 })

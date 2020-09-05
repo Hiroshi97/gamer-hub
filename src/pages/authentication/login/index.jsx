@@ -16,7 +16,8 @@ export default function Login() {
   let email = useRef();
   let password = useRef();
   const history = useHistory();
-  const [error, setError] = useState("");
+  const invalidError = useSelector((state) => state.authState.error);
+  const [error, setError] = useState(invalidError);
   const isLoggedIn = useSelector((state) => state.authState.result);
   const isLoading = useSelector((state) => state.authState.loading);
 

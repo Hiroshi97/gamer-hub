@@ -2,6 +2,7 @@ const initialState = {
   userInfo: JSON.parse(localStorage.getItem("user")) || {},
   result: localStorage.getItem("user") ? true : false,
   loading: false,
+  error: ''
 };
 
 const AuthReducer = (state = initialState, action) => {
@@ -17,6 +18,7 @@ const AuthReducer = (state = initialState, action) => {
     case "LOGIN_SUCCESS":
     case "SIGNUP_SUCCESS":
       return {
+        error: '',
         userInfo: action.payload,
         result: true,
         loading: false,
@@ -25,16 +27,26 @@ const AuthReducer = (state = initialState, action) => {
     case "LOGIN_FAILURE":
     case "SIGNUP_FAILURE":
       return {
-        ...state,
+        error: '',
         result: false,
         loading: false,
       };
 
     case "LOGOUT_SUCCESS":
       return {
+        error: '',
         userInfo: {},
         result: false,
         loading: false,
+      };
+
+    case "INVALID_TOKEN":
+      localStorage.clear();
+      return {
+        error: "INVALID TOKEN! PLEASE LOG IN AGAIN!",
+        userInfo: {},
+        result: false,
+        loading: false
       };
 
     default:

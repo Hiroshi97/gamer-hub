@@ -3,14 +3,15 @@ import PropTypes from "prop-types";
 import { AddItem } from "../../actions/CartActions";
 import { useSelector, useDispatch } from "react-redux";
 import Rating from "react-rating";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { updateCart } from "../../api-call/cartAPI";
+import { LogoutSuccess, InvalidToken } from "../../actions/AuthActions";
 
 const GameStoreGameList = ({ list, isLoading, handleShow, show }) => {
-
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.authState.result);
-  const [selected, setSelected] = useState(null)
+  const [selected, setSelected] = useState(null);
+  const history = useHistory();
   const handleAddItem = (game) => {
     dispatch(
       AddItem({
@@ -23,7 +24,13 @@ const GameStoreGameList = ({ list, isLoading, handleShow, show }) => {
     );
     handleShow();
     setSelected(game.id);
-    if (isLoggedIn) updateCart();
+    if (isLoggedIn) {
+      updateCart()
+        .catch(() => {
+          dispatch(InvalidToken());
+          history.push("/login");
+        });
+    }
   };
   return (
     <div className="row game-store-game-list justify-content-between">
@@ -76,7 +83,6 @@ const GameStoreGameList = ({ list, isLoading, handleShow, show }) => {
           />
         </div>
       )}
-      
     </div>
   );
 };
@@ -85,7 +91,7 @@ GameStoreGameList.propTypes = {
   list: PropTypes.array,
   isLoading: PropTypes.bool,
   handleShow: PropTypes.func,
-  show: PropTypes.bool
+  show: PropTypes.bool,
 };
 
 export default React.memo(GameStoreGameList);
