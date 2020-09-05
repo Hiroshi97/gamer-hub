@@ -41,7 +41,7 @@ const AuthReducer = (state = initialState, action) => {
       };
 
     case "INVALID_TOKEN":
-      localStorage.clear();
+      localStorage.removeItem('user');
       return {
         error: "INVALID TOKEN! PLEASE LOG IN AGAIN!",
         userInfo: {},

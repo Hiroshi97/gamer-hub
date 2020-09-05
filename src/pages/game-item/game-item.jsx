@@ -1,20 +1,21 @@
 import React, { useEffect, useState, useRef } from "react";
 import PageTitle from "../../components/Reusable/PageTitle";
-import { useParams, Link, Redirect } from "react-router-dom";
+import { useParams, Link, useHistory } from "react-router-dom";
 import { FetchGameSuccess, FetchGameRequest } from "../../actions/GameActions";
 import { getGamesById } from "../../api-call/gameAPI";
 import { useDispatch, useSelector } from "react-redux";
 import "./game-item.scss";
-import { AddItem } from "../../actions/CartActions";
+import { AddItem, ClearCart } from "../../actions/CartActions";
 import Rating from "react-rating";
 import ModalImage from "react-modal-image";
 import { updateCart } from "../../api-call/cartAPI";
 import { Toast, ToastBody } from "react-bootstrap";
-import { LogoutSuccess } from "../../actions/AuthActions";
+import { InvalidToken } from "../../actions/AuthActions";
 
 export default function GameItem() {
   const { id } = useParams();
   const [gameInfo, setGameInfo] = useState(null);
+  const history = useHistory();
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.gameState.loading);
   const isDone = useRef(false);
@@ -36,6 +37,7 @@ export default function GameItem() {
       updateCart()
         .catch(() => {
           dispatch(InvalidToken());
+          dispatch(ClearCart());
           history.push("/login");
         });
     }

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { AddItem } from "../../actions/CartActions";
+import { AddItem, ClearCart } from "../../actions/CartActions";
 import { useSelector, useDispatch } from "react-redux";
 import Rating from "react-rating";
 import { Link, useHistory } from "react-router-dom";
 import { updateCart } from "../../api-call/cartAPI";
-import { LogoutSuccess, InvalidToken } from "../../actions/AuthActions";
+import { InvalidToken } from "../../actions/AuthActions";
 
 const GameStoreGameList = ({ list, isLoading, handleShow, show }) => {
   const dispatch = useDispatch();
@@ -28,6 +28,7 @@ const GameStoreGameList = ({ list, isLoading, handleShow, show }) => {
       updateCart()
         .catch(() => {
           dispatch(InvalidToken());
+          dispatch(ClearCart());
           history.push("/login");
         });
     }
