@@ -10,6 +10,7 @@ import {
   LoginFailure,
 } from "../../../actions/AuthActions";
 import { FetchCart } from "../../../actions/CartActions";
+import { triggerAlert } from "../../../utils/trigger-alert";
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -34,18 +35,18 @@ export default function Login() {
           localStorage.setItem("user", JSON.stringify(res));
           dispatch(LoginSuccess(res));
           dispatch(FetchCart());
+          triggerAlert('success', 'LOGIN SUCCESSFUL', 'You haved logged in successfully!');
           history.goBack();
-        }).catch((err) => {
-          if (err.response) {          
-          let errorMsg = err.response.data.error.message;
-          errorMsg = errorMsg.split("_").join(" ");
-          dispatch(LoginFailure());
-          setError(errorMsg);
-          }
-          else console.log(err);
+        })
+        .catch((err) => {
+          if (err.response) {
+            let errorMsg = err.response.data.error.message;
+            errorMsg = errorMsg.split("_").join(" ");
+            dispatch(LoginFailure());
+            setError(errorMsg);
+          } else console.log(err);
+          triggerAlert('error', 'ERROR', 'Something wrong. Please try again!');
         });
-
-      
     }
   };
 

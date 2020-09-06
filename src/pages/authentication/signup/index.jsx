@@ -5,6 +5,7 @@ import "./signup.scss";
 import { userSignUp } from "../../../api-call/userAPI";
 import {useSelector, useDispatch} from "react-redux";
 import { SignupRequest, SignupSuccess } from "../../../actions/AuthActions";
+import { triggerAlert } from "../../../utils/trigger-alert";
 
 export default function Signup() {
   let email = useRef();
@@ -50,6 +51,7 @@ export default function Signup() {
             JSON.stringify(res)
           );
           dispatch(SignupSuccess(res));
+          triggerAlert('success', 'SIGN UP SUCCESSFUL', 'You haved signed up a new account successfully!');
           history.goBack();
         })
         .catch((err) => {
